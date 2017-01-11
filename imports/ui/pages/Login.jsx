@@ -1,15 +1,16 @@
 import React from 'react';
 import { Component } from 'react';
 
-class SignUp extends Component {
+class Login extends Component {
   render() {
     return (
+
       <div>
 
         {/* Title*/}
         <div className="container">
           <ul className="collection with-header">
-            <li className="collection-header"><h4>Sign-Up With Us</h4></li>
+            <li className="collection-header"><h4>Login</h4></li>
           </ul>
         </div>
 
@@ -31,18 +32,11 @@ class SignUp extends Component {
               </div>
             </div>
 
-            <div className="row">
-              <div className="col s6 offset-s3">
-                <input id="confirm" placeholder="Confirm password" type="password" className="validate" />
-                <label for="confirm"></label>
-              </div>
-            </div>
-
             {/* Submit Button */}
             <div className="container">
               <div className="row">
                 <center>
-                  <input className="btn sign-up-btn" type="submit" value="Sign-Up" />
+                  <input className="btn sign-up-btn" type="submit" value="Login" />
                 </center>
               </div>
             </div>
@@ -51,11 +45,9 @@ class SignUp extends Component {
         </div>
 
       </div>
+
     );
   }
 }
 
-export default SignUp;
-
-
-
+export default Login;
