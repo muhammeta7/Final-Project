@@ -13,7 +13,7 @@ class LogWorkout extends Component {
             <li className="collection-item">[Workout Day]</li>
           </ul>
         </div>
-        
+
 
         {/* List of Excerises */}
         <div className="container">
@@ -33,38 +33,38 @@ class LogWorkout extends Component {
                 <div className="collapsible-body">
                   <div className="container">
                     <div className="row">
+                      <br/>
                       <form className="col s12">
                         <div className="row">
 
                           {/* Iterate Over Sets */}
                             <div className="input-field col s4">
-                              <input id="exName-1" type="number" min="0" className="validate" />
+                              <input id="exName-1" placeholder="[xxx]" type="number" min="0" className="validate" />
                               <label for="exName-1">Set 1 (x[Reps])</label>
                             </div>
 
                             <div className="input-field col s4">
-                              <input id="exName-2" type="number" min="0" className="validate" />
+                              <input id="exName-2" placeholder="[xxx]" type="number" min="0" className="validate" />
                               <label for="exName-2">Set 2 (x[Reps])</label>
                             </div>
 
                             <div className="input-field col s4">
-                              <input id="exName-3" type="number" min="0" className="validate" />
+                              <input id="exName-3" placeholder="[xxx]" type="number" min="0" className="validate" />
                               <label for="exName-3">Set 3 (x[Reps])</label>
                             </div>
 
                             <div className="input-field col s4">
-                              <input id="exName-4" type="number" min="0" className="validate" />
+                              <input id="exName-4" placeholder="[xxx]" type="number" min="0" className="validate" />
                               <label for="exName-4">Set 4 (x[Reps])</label>
                             </div>
 
-
                             <div className="input-field col s4">
-                              <input id="exName-5" type="number" min="0" className="validate" />
+                              <input id="exName-5" placeholder="[xxx]" type="number" min="0" className="validate" />
                               <label for="exName-5">Set 5 (x[Reps])</label>
                             </div>
 
                             <div className="input-field col s4">
-                              <input id="exName-6" type="number" min="0" className="validate" />
+                              <input id="exName-6" placeholder="[xxx]" type="number" min="0" className="validate" />
                               <label for="exName-6">Set 6 (x[Reps])</label>
                             </div>                        
 
@@ -77,6 +77,57 @@ class LogWorkout extends Component {
 
               </li>
             </ul>
+
+
+
+
+            {/* Excercise 2 */}
+            <ul className="collapsible" data-collapsible="accordion">
+              <li>
+
+                {/* Exercise Name */}
+                <div className="collapsible-header">
+                  <b>Bench Press</b>
+                </div>
+
+                {/* Exercise Input Form */}
+                <div className="collapsible-body">
+                  <div className="container">
+                    <div className="row">
+                      <br/>
+                      <form className="col s12">
+                        <div className="row">
+
+                          {/* Iterate Over Sets */}
+                            <div className="input-field col s4">
+                              <input id="benchPress-1" placeholder="100" type="number" min="0" className="validate" />
+                              <label for="benchPress-1">Set 1 (x25)</label>
+                            </div>
+
+                            <div className="input-field col s4">
+                              <input id="benchPress-2" placeholder="135" type="number" min="0" className="validate" />
+                              <label for="benchPress-2">Set 2 (x15)</label>
+                            </div>
+
+                            <div className="input-field col s4">
+                              <input id="benchPress-3" placeholder="160" type="number" min="0" className="validate" />
+                              <label for="benchPress-3">Set 3 (x10)</label>
+                            </div>
+
+
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+              </li>
+            </ul>
+
+
+
+
+
 
           </div>
 
