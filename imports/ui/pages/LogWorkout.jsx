@@ -125,11 +125,21 @@ class LogWorkout extends Component {
             </ul>
 
 
-
-
-
-
           </div>
+
+
+
+          {/* Submit Button */}
+          <div className="container">
+            <div className="row">
+              <center>
+                {/* This will need a way to collect all the data from the forms above and then hit an api on the backend */}
+                {/* Maybe add a confirmation modal too... Complete this workout? You will not be able to edit after this */}
+                <input className="btn add-comment-button" type="submit" value="Workout Complete" />
+              </center>
+            </div>
+          </div>
+
 
       </div>
     );
