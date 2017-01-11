@@ -4,7 +4,7 @@ import { Component } from 'react';
 class NotFoundPage extends Component {
   render() {
     return (
-      <div className="page not-found">
+      <div>
         <h1>Page Not Found</h1>
       </div>
     );
