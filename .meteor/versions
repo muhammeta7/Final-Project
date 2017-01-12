@@ -65,13 +65,13 @@ poetic:materialize-scss@1.97.6_1
 promise@0.8.8
 random@1.0.10
 rate-limit@1.0.6
-reactive-dict@1.0.5
+reactive-dict@1.1.8
 reactive-var@1.0.11
 reload@1.1.11
 retry@1.0.9
 routepolicy@1.0.12
 service-configuration@1.0.11
-session@1.0.5
+session@1.1.6
 sha@1.0.9
 shell-server@0.2.1
 softwarerero:accounts-t9n@1.3.7
@@ -80,10 +80,12 @@ spacebars-compiler@1.0.13
 srp@1.0.10
 standard-minifier-css@1.3.2
 standard-minifier-js@1.2.1
+std:accounts-ui@1.2.17
 templating@1.2.15
 templating-compiler@1.2.15
 templating-runtime@1.2.15
 templating-tools@1.0.5
+tmeasday:check-npm-versions@0.3.1
 tracker@1.1.1
 ui@1.0.12
 underscore@1.0.10
@@ -92,3 +94,4 @@ useraccounts:core@1.14.2
 useraccounts:materialize@1.14.2
 webapp@1.3.12
 webapp-hashing@1.0.9
+zetoff:accounts-material-ui@0.0.10
