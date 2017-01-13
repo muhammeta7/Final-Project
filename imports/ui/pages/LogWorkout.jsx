@@ -4,6 +4,7 @@ import { Component } from 'react';
 class LogWorkout extends Component {
   render() {
     return (
+
       <div>
 
         {/* Title */}
@@ -11,6 +12,11 @@ class LogWorkout extends Component {
           <ul className="collection with-header">
             <li className="collection-header"><h4>[Workout Name]</h4></li>
             <li className="collection-item">[Workout Day]</li>
+            <li className="collection-item">
+              <div className="input-field inline">
+                <input id="lift_date" type="date" className="datepicker" />
+              </div>
+            </li>
           </ul>
         </div>
 
