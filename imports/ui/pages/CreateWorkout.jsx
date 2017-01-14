@@ -21,7 +21,7 @@ import SelectField from 'material-ui/SelectField';
 
 // Import Components
 import UnitsDropDownMenu from '../components/UnitsDropDownMenu';
-
+import AddRoutineName from '../components/AddRoutineName';
 
 
 class CreateWorkout extends Component {
@@ -43,16 +43,7 @@ class CreateWorkout extends Component {
 
           {/* Name the Routine */}
           <Row>
-            <Card>
-              <CardHeader>
-                <h2>Create a Workout Routine</h2>
-                <TextField
-                  floatingLabelText="Routine Name"
-                  hintText="My Fitness Plan"
-                  fullWidth={true}
-                />
-              </CardHeader>
-            </Card>
+            <AddRoutineName />
           </Row>
 
           <br />
@@ -122,7 +113,6 @@ class CreateWorkout extends Component {
                                           type="number"
                                           min="0"
                                           hintText="15"
-                                          underlineShow={false}
                                           fullWidth={true}
                                         />
                                       }
@@ -140,7 +130,6 @@ class CreateWorkout extends Component {
                                           type="number"
                                           min="0"
                                           hintText="15"
-                                          underlineShow={false}
                                           fullWidth={true}
                                         />
                                       }
@@ -158,7 +147,6 @@ class CreateWorkout extends Component {
                                           type="number"
                                           min="0"
                                           hintText="15"
-                                          underlineShow={false}
                                           fullWidth={true}
                                         />
                                       }
@@ -189,7 +177,7 @@ class CreateWorkout extends Component {
                                     hintText="Bench Press"
                                     fullWidth={true}
                                   />
-                                <UnitsDropDownMenu />
+                                  <UnitsDropDownMenu />
                                 </Container>
                               }
                             />
