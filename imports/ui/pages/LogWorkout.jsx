@@ -2,157 +2,167 @@
 import React from 'react';
 import { Component } from 'react';
 
-// Import Material-ui
+// Import React Grid System
+import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
+
+// Import Material-ui 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TextField from 'material-ui/TextField';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import DatePicker from 'material-ui/DatePicker';
+
 
 // Page
-class LogWorkout extends Component {
-  render() {
-    return (
-      <div>
+const LogWorkout = () => (
+  <MuiThemeProvider>
+    <Container>
 
-        {/* Title */}
-        <div className="container">
-          <ul className="collection with-header">
-            <li className="collection-header"><h4>[Workout Name]</h4></li>
-            <li className="collection-item">[Workout Day]</li>
-          </ul>
-        </div>
+      {/* Title with Date Picker */}
+      <Row>
+        <Card>
+          <CardHeader>
+             <h2>[Workout Name]</h2>
+             <h4>[Workout Day]</h4>
+             <DatePicker hintText="Date of Workout" firstDayOfWeek={0} defaultDate={new Date()} underlineShow={false} />
+           </CardHeader>
+        </Card>
+      </Row>
 
-
-        {/* List of Excerises */}
-        <div className="container">
-          
-          {/* Iterate Over Excerises */}
-          
-            {/* Excercise 1 */}
-            <ul className="collapsible" data-collapsible="accordion">
-              <li>
-
-                {/* Exercise Name */}
-                <div className="collapsible-header">
-                  <b>[Ex. 1 Name]</b>
-                </div>
-
-                {/* Exercise Input Form */}
-                <div className="collapsible-body">
-                  <div className="container">
-                    <div className="row">
-                      <br/>
-                      <form className="col s12">
-                        <div className="row">
-
-                          {/* Iterate Over Sets */}
-
-                            <div className="input-field col s4">
-                              <input id="exName-1" placeholder="[xxx]" type="number" min="0" className="validate" />
-                              <label for="exName-1">Set 1 (x[Reps])</label>
-                            </div>
-
-                            <div className="input-field col s4">
-                              <input id="exName-2" placeholder="[xxx]" type="number" min="0" className="validate" />
-                              <label for="exName-2">Set 2 (x[Reps])</label>
-                            </div>
-
-                            <div className="input-field col s4">
-                              <input id="exName-3" placeholder="[xxx]" type="number" min="0" className="validate" />
-                              <label for="exName-3">Set 3 (x[Reps])</label>
-                            </div>
-
-                            <div className="input-field col s4">
-                              <input id="exName-4" placeholder="[xxx]" type="number" min="0" className="validate" />
-                              <label for="exName-4">Set 4 (x[Reps])</label>
-                            </div>
-
-                            <div className="input-field col s4">
-                              <input id="exName-5" placeholder="[xxx]" type="number" min="0" className="validate" />
-                              <label for="exName-5">Set 5 (x[Reps])</label>
-                            </div>
-
-                            <div className="input-field col s4">
-                              <input id="exName-6" placeholder="[xxx]" type="number" min="0" className="validate" />
-                              <label for="exName-6">Set 6 (x[Reps])</label>
-                            </div>                        
+      <br />
 
 
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+      {/* List of Excerises */}
+      <Row>
 
-              </li>
-            </ul>
+        {/* Iterate Over Excerises */}
 
+          {/* Lift 1 */}
+          <Card>
+            <CardHeader
+              title="[Excerise Name]"
+              actAsExpander={true}
+              showExpandableButton={true}
+            />
+            <CardText expandable={true}>
 
+              <Container>
+                <Row>
 
+                  <Col sm={4} xs={6}>
+                    <TextField
+                      hintText="100"
+                      type="number"
+                      min="0"
+                      floatingLabelText="Set 1 (x25)"
+                      floatingLabelFixed={true}
+                      underlineShow={false}
+                    />
+                  </Col>
 
-            {/* Excercise 2 */}
-            <ul className="collapsible" data-collapsible="accordion">
-              <li>
+                  <Col sm={4} xs={6}>
+                    <TextField
+                      hintText="150"
+                      type="number"
+                      min="0"
+                      floatingLabelText="Set 2 (x15)"
+                      floatingLabelFixed={true}
+                      underlineShow={false}
+                    />
+                  </Col>
 
-                {/* Exercise Name */}
-                <div className="collapsible-header">
-                  <b>Bench Press</b>
-                </div>
+                  <Col sm={4} xs={6}>
+                    <TextField
+                      hintText="165"
+                      type="number"
+                      min="0"
+                      floatingLabelText="Set 3 (x10)"
+                      floatingLabelFixed={true}
+                      underlineShow={false}
+                    />
+                  </Col>
 
-                {/* Exercise Input Form */}
-                <div className="collapsible-body">
-                  <div className="container">
-                    <div className="row">
-                      <br/>
-                      <form className="col s12">
-                        <div className="row">
+                  <Col sm={4} xs={6}>
+                    <TextField
+                      hintText="175"
+                      type="number"
+                      min="0"
+                      floatingLabelText="Set 4 (x8)"
+                      floatingLabelFixed={true}
+                      underlineShow={false}
+                    />
+                  </Col>
 
-                          {/* Iterate Over Sets */}
-                            <div className="input-field col s4">
-                              <input id="benchPress-1" placeholder="100" type="number" min="0" className="validate" />
-                              <label for="benchPress-1">Set 1 (x25)</label>
-                            </div>
+                </Row>
 
-                            <div className="input-field col s4">
-                              <input id="benchPress-2" placeholder="135" type="number" min="0" className="validate" />
-                              <label for="benchPress-2">Set 2 (x15)</label>
-                            </div>
+              </Container>
 
-                            <div className="input-field col s4">
-                              <input id="benchPress-3" placeholder="160" type="number" min="0" className="validate" />
-                              <label for="benchPress-3">Set 3 (x10)</label>
-                            </div>
-
-
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-
-              </li>
-            </ul>
-
-
-          </div>
-
-
-
-          {/* Submit Button */}
-          <div className="container">
-            <div className="row">
-              <center>
-                {/* This will need a way to collect all the data from the forms above and then hit an api on the backend */}
-                {/* Maybe add a confirmation modal too... Complete this workout? You will not be able to edit after this */}
-                <input className="btn add-comment-button" type="submit" value="Workout Complete" />
-              </center>
-            </div>
-          </div>
+            </CardText>
+          </Card>
 
 
-      </div>
-    );
-  }
-}
+          {/* Add a break after each Lift */}
+          <br/>
+
+          {/* Lift 2 */}
+          <Card>
+            <CardHeader
+              title="Bench Press"
+              actAsExpander={true}
+              showExpandableButton={true}
+            />
+            <CardText expandable={true}>
+
+              <Container>
+                <Row>
+
+                  <Col sm={4} xs={6}>
+                    <TextField
+                      hintText="100"
+                      type="number"
+                      min="0"
+                      floatingLabelText="Set 1 (x25)"
+                      floatingLabelFixed={true}
+                      underlineShow={false}
+                    />
+                  </Col>
+
+                  <Col sm={4} xs={6}>
+                    <TextField
+                      hintText="150"
+                      type="number"
+                      min="0"
+                      floatingLabelText="Set 2 (x15)"
+                      floatingLabelFixed={true}
+                      underlineShow={false}
+                    />
+                  </Col>
+
+                  <Col sm={4} xs={6}>
+                    <TextField
+                      hintText="165"
+                      type="number"
+                      min="0"
+                      floatingLabelText="Set 3 (x10)"
+                      floatingLabelFixed={true}
+                      underlineShow={false}
+                    />
+                  </Col>
+
+                </Row>
+
+              </Container>
+
+            </CardText>
+          </Card>
+
+        </Row>
+
+
+    </Container>
+
+  </MuiThemeProvider>
+
+);
 
 export default LogWorkout;
-
 

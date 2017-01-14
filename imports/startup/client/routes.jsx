@@ -10,7 +10,7 @@ injectTapEventPlugin();
 import HomePage from '../../ui/pages/HomePage.jsx';
 import NotFoundPage from '../../ui/pages/NotFoundPage.jsx';
 import LogWorkout from '../../ui/pages/LogWorkout.jsx';
-import LogWorkout2 from '../../ui/pages/LogWorkout2.jsx';
+import CreateWorkout from '../../ui/pages/CreateWorkout.jsx';
 import SignUp from '../../ui/pages/SignUp.jsx';
 import Login from '../../ui/pages/Login.jsx';
 
@@ -19,7 +19,7 @@ export const renderRoutes = () => (
   <Router history={browserHistory}>
     <Route path="/" component={HomePage} />
     <Route path="/log-workout" component={LogWorkout} />
-    <Route path="/log-workout-2" component={LogWorkout2} />
+    <Route path="/create-workout" component={CreateWorkout} />
     <Route path="/sign-up" component={SignUp} />
     <Route path="/login" component={Login} />
     <Route path="*" component={NotFoundPage} />
