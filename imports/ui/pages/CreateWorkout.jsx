@@ -77,7 +77,12 @@ class CreateWorkout extends Component {
                                   <Col sm={6} xs={6}>
                                     <Card>
                                       <CardHeader
-                                        avatar={<FloatingActionButton secondary={false} mini={true}><ContentAdd/></FloatingActionButton>}
+                                        avatar={
+                                          <div>
+                                            <FloatingActionButton secondary={false} mini={true}><ContentAdd/></FloatingActionButton>
+                                            <FloatingActionButton secondary={true} mini={true}><ContentRemove/></FloatingActionButton>
+                                          </div>
+                                        }
                                         title={
                                           <TextField
                                             floatingLabelText="Reps for Set 1"
@@ -97,7 +102,7 @@ class CreateWorkout extends Component {
                                   <Col sm={6} xs={6}>
                                     <Card>
                                       <CardHeader
-                                        avatar={<FloatingActionButton secondary={false} mini={true}><ContentAdd/></FloatingActionButton>}
+                                        
                                         title={
                                           <TextField
                                             floatingLabelText="Reps for Set 2"
@@ -117,7 +122,7 @@ class CreateWorkout extends Component {
                                   <Col sm={6} xs={6}>
                                     <Card>
                                       <CardHeader
-                                        avatar={<FloatingActionButton secondary={true} mini={true}><ContentRemove/></FloatingActionButton>}
+                                      
                                         title={
                                           <TextField
                                             floatingLabelText="Reps for Set 3"
