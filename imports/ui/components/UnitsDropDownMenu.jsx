@@ -14,8 +14,8 @@ class UnitsDropDownMenu extends Component {
   }
 
   _selectFieldChange(event, index, value){
-    this.setState({value});
-    console.log(event.target.value)
+    this.setState({value})
+    console.log(value)   
   }
 
   render(){

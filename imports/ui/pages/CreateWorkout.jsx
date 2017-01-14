@@ -24,8 +24,12 @@ class CreateWorkout extends Component {
     this.state = {dataSubmission: []};
   }
 
-  _selectFieldChange(event, index, value){
-    this.setState({value});
+  _uploadRoutine(event, index, value){
+    console.log(this.state)
+  }
+
+  _cancelRoutine(event, index, value){
+    console.log('Exit Page')
   }
 
   render() {
@@ -71,9 +75,9 @@ class CreateWorkout extends Component {
           <Row>
             <center>
               <Row>
-                <RaisedButton label="Submit"  primary={true}  />
+                <RaisedButton label="Submit" primary={true} onClick={this._uploadRoutine.bind(this)} />
                 <span> </span>
-                <RaisedButton label="Cancel" />
+                <RaisedButton label="Cancel" onClick={this._cancelRoutine.bind(this)} />
               </Row>
             </center>
           </Row>
