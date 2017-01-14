@@ -23,7 +23,7 @@ const LogWorkout = () => (
           <CardHeader>
              <h2>[Workout Name]</h2>
              <h4>[Workout Day]</h4>
-             <DatePicker hintText="Date of Workout" firstDayOfWeek={0} defaultDate={new Date()} underlineShow={false} />
+             <DatePicker hintText="Date of Workout" firstDayOfWeek={0} fullWidth={true} defaultDate={new Date()} />
            </CardHeader>
         </Card>
       </Row>
@@ -48,47 +48,47 @@ const LogWorkout = () => (
               <Container>
                 <Row>
 
-                  <Col sm={4} xs={6}>
+                  <Col sm={3} xs={4}>
                     <TextField
                       hintText="100"
                       type="number"
                       min="0"
                       floatingLabelText="Set 1 (x25)"
                       floatingLabelFixed={true}
-                      underlineShow={false}
+                      fullWidth={true}
                     />
                   </Col>
 
-                  <Col sm={4} xs={6}>
+                  <Col sm={3} xs={4}>
                     <TextField
                       hintText="150"
                       type="number"
                       min="0"
                       floatingLabelText="Set 2 (x15)"
                       floatingLabelFixed={true}
-                      underlineShow={false}
+                      fullWidth={true}
                     />
                   </Col>
 
-                  <Col sm={4} xs={6}>
+                  <Col sm={3} xs={4}>
                     <TextField
                       hintText="165"
                       type="number"
                       min="0"
                       floatingLabelText="Set 3 (x10)"
                       floatingLabelFixed={true}
-                      underlineShow={false}
+                      fullWidth={true}
                     />
                   </Col>
 
-                  <Col sm={4} xs={6}>
+                  <Col sm={3} xs={4}>
                     <TextField
                       hintText="175"
                       type="number"
                       min="0"
                       floatingLabelText="Set 4 (x8)"
                       floatingLabelFixed={true}
-                      underlineShow={false}
+                      fullWidth={true}
                     />
                   </Col>
 
@@ -115,36 +115,36 @@ const LogWorkout = () => (
               <Container>
                 <Row>
 
-                  <Col sm={4} xs={6}>
+                  <Col sm={3} xs={4}>
                     <TextField
                       hintText="100"
                       type="number"
                       min="0"
                       floatingLabelText="Set 1 (x25)"
                       floatingLabelFixed={true}
-                      underlineShow={false}
+                      fullWidth={true}
                     />
                   </Col>
 
-                  <Col sm={4} xs={6}>
+                  <Col sm={3} xs={4}>
                     <TextField
                       hintText="150"
                       type="number"
                       min="0"
                       floatingLabelText="Set 2 (x15)"
                       floatingLabelFixed={true}
-                      underlineShow={false}
+                      fullWidth={true}
                     />
                   </Col>
 
-                  <Col sm={4} xs={6}>
+                  <Col sm={3} xs={4}>
                     <TextField
                       hintText="165"
                       type="number"
                       min="0"
                       floatingLabelText="Set 3 (x10)"
                       floatingLabelFixed={true}
-                      underlineShow={false}
+                      fullWidth={true}
                     />
                   </Col>
 
