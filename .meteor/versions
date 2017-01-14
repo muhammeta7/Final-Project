@@ -65,6 +65,7 @@ poetic:materialize-scss@1.97.6_1
 promise@0.8.8
 random@1.0.10
 rate-limit@1.0.6
+react-meteor-data@0.2.9
 reactive-dict@1.0.5
 reactive-var@1.0.11
 reload@1.1.11
@@ -84,7 +85,9 @@ templating@1.2.15
 templating-compiler@1.2.15
 templating-runtime@1.2.15
 templating-tools@1.0.5
+tmeasday:check-npm-versions@0.2.0
 tracker@1.1.1
+twbs:bootstrap@3.3.6
 ui@1.0.12
 underscore@1.0.10
 url@1.0.11
