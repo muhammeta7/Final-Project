@@ -19,13 +19,24 @@ import MenuItem from 'material-ui/MenuItem';
 import SelectField from 'material-ui/SelectField';
 
 
+// Import Components
+import UnitsDropDownMenu from '../components/UnitsDropDownMenu';
+
 
 
 class CreateWorkout extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {value: 1};
+  }
 
+  _selectFieldChange(event, index, value){
+    this.setState({value});
+  }
 
   render() {
+
     return (
       <MuiThemeProvider>
         <Container>
@@ -65,8 +76,7 @@ class CreateWorkout extends Component {
                             fullWidth={true}
                           />
                         }
-                      >
-                       </CardHeader>
+                      />
                        <CardText expandable={true}>
 
 
@@ -86,11 +96,7 @@ class CreateWorkout extends Component {
                                     hintText="Bench Press"
                                     fullWidth={true}
                                   />
-                                  <SelectField value={1} autoWidth={true} fullWidth={true}>
-                                    <MenuItem value={1} primaryText="lb" />
-                                    <MenuItem value={2} primaryText="kg" />
-                                    <MenuItem value={3} primaryText="body weight" />
-                                  </SelectField>
+                                  <UnitsDropDownMenu />
                                 </Container>
                               }
                             />
@@ -107,7 +113,7 @@ class CreateWorkout extends Component {
                                           <i> </i>
                                           <FloatingActionButton secondary={true} mini={true}><ContentRemove/></FloatingActionButton>
                                           <i> </i>
-                                          <i> Please leave the Reps field empty for Lift Until Failure (xf)</i>
+                                          <i> Please leave the Reps field empty if you plan to Lift Until Failure (xf)</i>
                                         </div>
                                       }
                                       title={
@@ -169,8 +175,7 @@ class CreateWorkout extends Component {
 
 
 
-                          {/* Add another Ex */}
-
+                          {/* Add another Exercise */}
 
                           <Card>
                             <CardHeader
@@ -178,11 +183,14 @@ class CreateWorkout extends Component {
                               showExpandableButton={true}
                               avatar={<FloatingActionButton secondary={true} mini={true}><ContentRemove/></FloatingActionButton>}
                               title={
-                                <TextField
-                                  floatingLabelText="Excercise Name"
-                                  hintText="Bench Press"
-                                  fullWidth={true}
-                                />
+                                <Container>
+                                  <TextField
+                                    floatingLabelText="Excercise Name"
+                                    hintText="Bench Press"
+                                    fullWidth={true}
+                                  />
+                                <UnitsDropDownMenu />
+                                </Container>
                               }
                             />
                           </Card>
@@ -196,6 +204,26 @@ class CreateWorkout extends Component {
 
                 </Container>
 
+
+                {/* Add Another Workout */}
+                <br/>
+
+                <Container>
+                  <Card>
+                    <CardHeader
+                      actAsExpander={true}
+                      showExpandableButton={true}
+                      avatar={<FloatingActionButton secondary={true} mini={true}><ContentRemove/></FloatingActionButton>}
+                      title={
+                        <TextField
+                          floatingLabelText="Workout Name"
+                          hintText="Chest Day"
+                          fullWidth={true}
+                        />
+                      }
+                    />
+                  </Card>
+                </Container>
 
 
 
