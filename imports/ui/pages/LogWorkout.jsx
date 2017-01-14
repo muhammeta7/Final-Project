@@ -1,6 +1,12 @@
+// Import React
 import React from 'react';
 import { Component } from 'react';
 
+// Import Material-ui
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import TextField from 'material-ui/TextField';
+
+// Page
 class LogWorkout extends Component {
   render() {
     return (
@@ -38,6 +44,7 @@ class LogWorkout extends Component {
                         <div className="row">
 
                           {/* Iterate Over Sets */}
+
                             <div className="input-field col s4">
                               <input id="exName-1" placeholder="[xxx]" type="number" min="0" className="validate" />
                               <label for="exName-1">Set 1 (x[Reps])</label>
