@@ -7,7 +7,7 @@ import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 
 // Create Component
-class AddRoutineName extends Component {
+class AddRepSecondary extends Component {
 
   constructor(props) {
     super(props);
@@ -22,20 +22,23 @@ class AddRoutineName extends Component {
   render(){
     return(
       <Card>
-        <CardHeader>
-          <h2>Create a Workout Routine</h2>
-          <TextField
-            value={this.state.value}
-            onChange={this._handleChange.bind(this)}
-            floatingLabelText="Routine Name"
-            hintText="My Fitness Plan"
-            fullWidth={true}
-          />
-        </CardHeader>
+        <CardHeader
+          title={
+            <TextField
+              value={this.state.value}
+              onChange={this._handleChange.bind(this)}
+              floatingLabelText="Reps for Set [i]"
+              type="number"
+              min="0"
+              hintText="15"
+              fullWidth={true}
+            />
+          }
+        />
       </Card>
     )
   }
 }
 
 
-export default AddRoutineName;
+export default AddRepSecondary;
