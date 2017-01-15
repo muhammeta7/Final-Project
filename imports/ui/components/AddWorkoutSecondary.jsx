@@ -30,13 +30,18 @@ class AddWorkoutSecondary extends Component {
     console.log(event.target.value)
   }
 
+  _handleClick(){
+    this.props._removeSelectedWorkout(this.props._iOfWorkout);
+    // console.log(this.props._iOfWorkout)
+  }
+
   render(){
     return(
       <Card>
         <CardHeader
           actAsExpander={true}
           showExpandableButton={true}
-          avatar={<FloatingActionButton secondary={true} mini={true}><ContentRemove/></FloatingActionButton>}
+          avatar={<FloatingActionButton onClick={this._handleClick.bind(this)} secondary={true} mini={true}><ContentRemove/></FloatingActionButton>}
           title={
             <TextField
               value={this.state.value}

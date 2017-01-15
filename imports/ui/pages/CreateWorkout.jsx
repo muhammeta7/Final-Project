@@ -67,6 +67,21 @@ class CreateWorkout extends Component {
 
   }
 
+  _removeSelectedWorkout(iOfWorkout){
+
+    // Get current workouts array
+    let workoutsArray = this.state.workouts;
+    
+    // Remove unwanted Workout using its position in the Workouts array
+    workoutsArray.splice(iOfWorkout, 1);
+
+    // Update the state
+    this.setState({workouts: workoutsArray})
+
+    console.log('Delete Workout at i:' + '\n' + iOfWorkout)
+
+  }
+
   _uploadRoutine(event, index, value){
     console.log(this.state)
   }
@@ -112,7 +127,7 @@ class CreateWorkout extends Component {
                     return (
                       <div key={"workout-"+i}>
                         <br/>
-                        <AddWorkoutSecondary />
+                        <AddWorkoutSecondary _iOfWorkout={i} _removeSelectedWorkout={this._removeSelectedWorkout.bind(this)} />
                       </div>
                     );
                   }
