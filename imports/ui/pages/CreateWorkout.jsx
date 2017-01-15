@@ -9,9 +9,7 @@ import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
-
-
-
+  
 // Import Components
 import AddRoutineName from '../components/AddRoutineName';
 import AddWorkoutPrimary from '../components/AddWorkoutPrimary';
