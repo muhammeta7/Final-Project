@@ -30,6 +30,10 @@ class AddFirstWorkout extends Component {
     console.log(event.target.value)
   }
 
+  _handleClick(){
+    this.props._addAnotherWorkout();
+  }
+
   render(){
     return(
       
@@ -37,7 +41,7 @@ class AddFirstWorkout extends Component {
         <CardHeader
           actAsExpander={true}
           showExpandableButton={true}
-          avatar={<FloatingActionButton secondary={false} mini={true}><ContentAdd/></FloatingActionButton>}
+          avatar={<FloatingActionButton onClick={this._handleClick.bind(this)} secondary={false} mini={true}><ContentAdd/></FloatingActionButton>}
           title={
             <TextField
               value={this.state.value}

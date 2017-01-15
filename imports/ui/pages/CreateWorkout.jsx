@@ -43,6 +43,30 @@ class CreateWorkout extends Component {
     // console.log('Routine Name:' + '\n' + value)
   }
 
+  _addAnotherWorkout(){
+
+    // Get current workouts array
+    let workoutsArray = this.state.workouts;
+
+    // Push to the workouts array
+    workoutsArray.push(
+      {
+        workoutName: "",
+        exercises: [
+          {
+            exerciseName: "",
+            exerciseUnit: 1,
+            reps: [""]
+          }
+        ]
+      }
+    );
+
+    // Update the state
+    this.setState({workouts: workoutsArray})
+
+  }
+
   _uploadRoutine(event, index, value){
     console.log(this.state)
   }
@@ -79,7 +103,7 @@ class CreateWorkout extends Component {
                   if(i==0){
                     return (
                       <div key={"workout-"+i}>
-                        <AddWorkoutPrimary />
+                        <AddWorkoutPrimary _addAnotherWorkout={this._addAnotherWorkout.bind(this)} />
                       </div>
                     );
                   }
@@ -93,7 +117,7 @@ class CreateWorkout extends Component {
                     );
                   }
 
-                })}
+                }.bind(this))}
                 {/* +++++++++++++++++++++++++++++++++++++++++++ */}
 
               </CardText>
