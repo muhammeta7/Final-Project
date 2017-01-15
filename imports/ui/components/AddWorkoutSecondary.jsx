@@ -22,12 +22,12 @@ class AddWorkoutSecondary extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {value: ""};
+    //this.state = {value: ""};
   }
 
   _handleChange(event, index, value){
     // Change Locally
-    this.setState({value: event.target.value});
+    //this.setState({value: event.target.value});
     //console.log(event.target.value)
 
     //Change Globally
@@ -35,8 +35,13 @@ class AddWorkoutSecondary extends Component {
   }
 
   _handleClick(){
+
+    // Remove selected workout
     this.props._removeSelectedWorkout(this.props._iOfWorkout);
     //console.log(this.props._iOfWorkout)
+
+    // Refresh all the Workout Components (due a weird behavior upon delete)
+    this.props._pingToRefresh();
   }
 
   render(){
@@ -48,7 +53,7 @@ class AddWorkoutSecondary extends Component {
           avatar={<FloatingActionButton onClick={this._handleClick.bind(this)} secondary={true} mini={true}><ContentRemove/></FloatingActionButton>}
           title={
             <TextField
-              value={this.state.value}
+              defaultValue={this.props._enteredWorkoutName}
               onChange={this._handleChange.bind(this)}
               floatingLabelText="Workout Name"
               hintText="Chest Day"

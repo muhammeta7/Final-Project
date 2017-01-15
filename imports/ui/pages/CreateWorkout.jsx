@@ -82,6 +82,11 @@ class CreateWorkout extends Component {
 
   }
 
+  _pingToRefresh(){
+    this.forceUpdate();
+    console.log('refresh')
+  }
+
 
   _editWorkoutName(iOfWorkout, nameOfWorkout){
     //console.log('Position:' + '\n' + iOfWorkout)
@@ -134,7 +139,7 @@ class CreateWorkout extends Component {
                   if(i==0){
                     return (
                       <div key={"workout-"+i}>
-                        <AddWorkoutPrimary _iOfWorkout={i} _addAnotherWorkout={this._addAnotherWorkout.bind(this)} _editWorkoutName={this._editWorkoutName.bind(this)} />
+                        <AddWorkoutPrimary _iOfWorkout={i} _addAnotherWorkout={this._addAnotherWorkout.bind(this)} _editWorkoutName={this._editWorkoutName.bind(this)} _enteredWorkoutName={this.state.workouts[i].workoutName} />
                       </div>
                     );
                   }
@@ -143,7 +148,7 @@ class CreateWorkout extends Component {
                     return (
                       <div key={"workout-"+i}>
                         <br/>
-                        <AddWorkoutSecondary _iOfWorkout={i} _removeSelectedWorkout={this._removeSelectedWorkout.bind(this)} _editWorkoutName={this._editWorkoutName.bind(this)} />
+                        <AddWorkoutSecondary _iOfWorkout={i} _removeSelectedWorkout={this._removeSelectedWorkout.bind(this)} _editWorkoutName={this._editWorkoutName.bind(this)} _enteredWorkoutName={this.state.workouts[i].workoutName} _pingToRefresh={this._pingToRefresh.bind(this)} />
                       </div>
                     );
                   }
@@ -167,7 +172,7 @@ class CreateWorkout extends Component {
               <Row>
                 <RaisedButton label="Submit" primary={true} onClick={this._uploadRoutine.bind(this)} />
                 <span> </span>
-                <RaisedButton label="Cancel" onClick={this._cancelRoutine.bind(this)} />
+                <RaisedButton label="Cancel" onClick={this._pingToRefresh.bind(this)} />
               </Row>
             </center>
           </Row>

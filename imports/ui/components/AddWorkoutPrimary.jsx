@@ -22,12 +22,12 @@ class AddFirstWorkout extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {value: ""};
+    // this.state = {value: ""};
   }
 
   _handleChange(event, index, value){
     // Change Locally
-    this.setState({value: event.target.value});
+  //  this.setState({value: event.target.value});
     //console.log(event.target.value)
 
     // Change Globally
@@ -35,7 +35,10 @@ class AddFirstWorkout extends Component {
   }
 
   _handleClick(){
+
+    // Add another workout (empty)
     this.props._addAnotherWorkout();
+
   }
 
   render(){
@@ -48,7 +51,7 @@ class AddFirstWorkout extends Component {
           avatar={<FloatingActionButton onClick={this._handleClick.bind(this)} secondary={false} mini={true}><ContentAdd/></FloatingActionButton>}
           title={
             <TextField
-              value={this.state.value}
+              defaultValue={this.props._enteredWorkoutName}
               onChange={this._handleChange.bind(this)}
               floatingLabelText="Workout Name"
               hintText="Chest Day"
