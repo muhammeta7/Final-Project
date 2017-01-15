@@ -21,7 +21,26 @@ class CreateWorkout extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {dataSubmission: []};
+    this.state = {
+      routineName: "",
+      workouts: [
+        {
+          workoutName: "",
+          exercises: [
+            {
+              exerciseName: "",
+              exerciseUnit: 1,
+              reps: [""]
+            }
+          ]
+        }
+      ]
+    };
+  }
+
+  _changeRoutineName(value){
+    this.setState({routineName: value})
+    // console.log('Routine Name:' + '\n' + value)
   }
 
   _uploadRoutine(event, index, value){
@@ -41,7 +60,7 @@ class CreateWorkout extends Component {
 
           {/* Name the Routine */}
           <Row>
-            <AddRoutineName />
+            <AddRoutineName _changeRoutineName={this._changeRoutineName.bind(this)} />
           </Row>
 
 
@@ -53,13 +72,29 @@ class CreateWorkout extends Component {
             <Card>
               <CardText>
 
-                {/* Add First Workout */}
-                <AddWorkoutPrimary />
+                {/* ++++++++++ ITERATE OVER WORKOUTS ++++++++++ */}
+                {this.state.workouts.map(function(search, i) {
+                  
+                  // First, render the primary workout
+                  if(i==0){
+                    return (
+                      <div key={"workout-"+i}>
+                        <AddWorkoutPrimary />
+                      </div>
+                    );
+                  }
+                  // Then, render any additional workouts
+                  else{
+                    return (
+                      <div key={"workout-"+i}>
+                        <br/>
+                        <AddWorkoutSecondary />
+                      </div>
+                    );
+                  }
 
-
-                {/* Add Additional Workouts */}
-                <br/>
-                <AddWorkoutSecondary />
+                })}
+                {/* +++++++++++++++++++++++++++++++++++++++++++ */}
 
               </CardText>
             </Card>

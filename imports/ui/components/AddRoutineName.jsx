@@ -11,12 +11,15 @@ class AddRoutineName extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {value: ""};
+    this.state = {routineName: ""};
   }
 
   _handleChange(event, index, value){
-    this.setState({value: event.target.value});
-    console.log(event.target.value)
+    // Update Locally
+    this.setState({routineName: event.target.value});
+
+    // Update in Parent
+    this.props._changeRoutineName(event.target.value)
   }
 
   render(){
@@ -25,7 +28,7 @@ class AddRoutineName extends Component {
         <CardHeader>
           <h2>Create a Workout Routine</h2>
           <TextField
-            value={this.state.value}
+            value={this.state.routineName}
             onChange={this._handleChange.bind(this)}
             floatingLabelText="Routine Name"
             hintText="My Fitness Plan"
