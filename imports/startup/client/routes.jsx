@@ -13,6 +13,7 @@ import LogWorkout from '../../ui/pages/LogWorkout.jsx';
 import LogWorkout2 from '../../ui/pages/LogWorkout2.jsx';
 import SignUp from '../../ui/pages/SignUp.jsx';
 import Login from '../../ui/pages/Login.jsx';
+import BasePage from '../../ui/pages/BasePage.jsx';
 
 // React Router
 export const renderRoutes = () => (
@@ -22,7 +23,9 @@ export const renderRoutes = () => (
     <Route path="/log-workout-2" component={LogWorkout2} />
     <Route path="/sign-up" component={SignUp} />
     <Route path="/login" component={Login} />
+    <Route path="/base" component={BasePage} />
     <Route path="*" component={NotFoundPage} />
+    
   </Router>
 );
 

@@ -46,7 +46,7 @@ const LogWorkout2 = () => (
             <Container>
               <Row>
 
-                <Col sm={4} xs={6}>
+                <Col sm={3} xs={6}>
                   <TextField
                     hintText="100"
                     floatingLabelText="Set 1 (x25)"
@@ -55,7 +55,7 @@ const LogWorkout2 = () => (
                   />
                 </Col>
 
-                <Col sm={4} xs={6}>
+                <Col sm={3} xs={6}>
                   <TextField
                     hintText="150"
                     floatingLabelText="Set 2 (x15)"
@@ -64,7 +64,7 @@ const LogWorkout2 = () => (
                   />
                 </Col>
 
-                <Col sm={4} xs={6}>
+                <Col sm={3} xs={6}>
                   <TextField
                     hintText="165"
                     floatingLabelText="Set 3 (x10)"
@@ -73,7 +73,7 @@ const LogWorkout2 = () => (
                   />
                 </Col>
 
-                <Col sm={4} xs={6}>
+                <Col sm={3} xs={6}>
                   <TextField
                     hintText="175"
                     floatingLabelText="Set 4 (x8)"
