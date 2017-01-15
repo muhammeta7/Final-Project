@@ -26,13 +26,17 @@ class AddWorkoutSecondary extends Component {
   }
 
   _handleChange(event, index, value){
+    // Change Locally
     this.setState({value: event.target.value});
-    console.log(event.target.value)
+    //console.log(event.target.value)
+
+    //Change Globally
+    this.props._editWorkoutName(this.props._iOfWorkout, event.target.value);
   }
 
   _handleClick(){
     this.props._removeSelectedWorkout(this.props._iOfWorkout);
-    // console.log(this.props._iOfWorkout)
+    //console.log(this.props._iOfWorkout)
   }
 
   render(){

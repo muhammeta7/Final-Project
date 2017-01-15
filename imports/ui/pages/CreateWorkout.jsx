@@ -40,7 +40,7 @@ class CreateWorkout extends Component {
 
   _changeRoutineName(value){
     this.setState({routineName: value})
-    // console.log('Routine Name:' + '\n' + value)
+    //console.log('Routine Name:' + '\n' + value)
   }
 
   _addAnotherWorkout(){
@@ -82,6 +82,22 @@ class CreateWorkout extends Component {
 
   }
 
+
+  _editWorkoutName(iOfWorkout, nameOfWorkout){
+    //console.log('Position:' + '\n' + iOfWorkout)
+    //console.log('Name:' + '\n' + nameOfWorkout)
+
+    // Get current workouts array
+    let workoutsArray = this.state.workouts;
+
+    // Set object at correct array position to the new name value 
+    workoutsArray[iOfWorkout].workoutName = nameOfWorkout;
+
+    // Update the state
+    this.setState({workouts: workoutsArray})
+
+  }
+
   _uploadRoutine(event, index, value){
     console.log(this.state)
   }
@@ -118,7 +134,7 @@ class CreateWorkout extends Component {
                   if(i==0){
                     return (
                       <div key={"workout-"+i}>
-                        <AddWorkoutPrimary _addAnotherWorkout={this._addAnotherWorkout.bind(this)} />
+                        <AddWorkoutPrimary _iOfWorkout={i} _addAnotherWorkout={this._addAnotherWorkout.bind(this)} _editWorkoutName={this._editWorkoutName.bind(this)} />
                       </div>
                     );
                   }
@@ -127,7 +143,7 @@ class CreateWorkout extends Component {
                     return (
                       <div key={"workout-"+i}>
                         <br/>
-                        <AddWorkoutSecondary _iOfWorkout={i} _removeSelectedWorkout={this._removeSelectedWorkout.bind(this)} />
+                        <AddWorkoutSecondary _iOfWorkout={i} _removeSelectedWorkout={this._removeSelectedWorkout.bind(this)} _editWorkoutName={this._editWorkoutName.bind(this)} />
                       </div>
                     );
                   }

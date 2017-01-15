@@ -26,8 +26,12 @@ class AddFirstWorkout extends Component {
   }
 
   _handleChange(event, index, value){
+    // Change Locally
     this.setState({value: event.target.value});
-    console.log(event.target.value)
+    //console.log(event.target.value)
+
+    // Change Globally
+    this.props._editWorkoutName(this.props._iOfWorkout, event.target.value);
   }
 
   _handleClick(){
