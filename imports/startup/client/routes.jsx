@@ -8,10 +8,10 @@ injectTapEventPlugin();
 
 // Import Pages and/or Components
 import HomePage from '../../ui/pages/HomePage.jsx';
-import NotFoundPage from '../../ui/pages/NotFoundPage.jsx';
+import NotFoundPage from '../../ui/pages/NotFound.jsx';
 import LogWorkout from '../../ui/pages/LogWorkout.jsx';
 import LogWorkout2 from '../../ui/pages/LogWorkout2.jsx';
-import SignUp from '../../ui/pages/SignUp.jsx';
+import SignUp from '../../ui/pages/SignUpPage.jsx';
 import Login from '../../ui/pages/Login.jsx';
 import BasePage from '../../ui/pages/BasePage.jsx';
 
