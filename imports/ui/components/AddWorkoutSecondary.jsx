@@ -43,7 +43,7 @@ class AddWorkoutSecondary extends Component {
     return(
       <Card>
         <CardHeader
-          actAsExpander={true}
+          actAsExpander={false}
           showExpandableButton={true}
           avatar={<FloatingActionButton onClick={this._handleClick.bind(this)} secondary={true} mini={true}><ContentRemove/></FloatingActionButton>}
           title={
@@ -58,13 +58,37 @@ class AddWorkoutSecondary extends Component {
         <CardText expandable={true}>
           <Container>
 
-            {/* First Exercise */}
-            <AddExercisePrimary />
+            {/* ++++++++++ ITERATE OVER EXERCISES ++++++++++ */}
+            {this.props._submissionObject.workouts[this.props._iOfWorkout].exercises.map(function(search, i) {
 
-            <br/>
+              // First, render the primary excercise
+              if(i==0){
+                return (
+                  <div key={"workout-" + this.props._iOfWorkout + "-excercise-" + i} >
+                    <AddExercisePrimary
+                      _iOfWorkout={this.props._iOfWorkout}
+                      _iOfExcerise={i}
+                      _addAnotherExcerise={this.props._addAnotherExcerise.bind(this)}
+                    />
+                  </div>
+                );
+              }
+              // Then, render any additional excercises
+              else{
+                return(
+                  <div key={"workout-" + this.props._iOfWorkout + "-excercise-" + i}>
+                    <br/>
+                    <AddExerciseSecondary
+                      _iOfWorkout={this.props._iOfWorkout}
+                      _iOfExcerise={i}
+                      _removeSelectedExercise={this.props._removeSelectedExercise.bind(this)}
+                    />
+                  </div>
+                );
+              }
 
-            {/* MAPPING NEEDED HERE -> Additional Exercises */}
-              <AddExerciseSecondary />
+            }.bind(this))}
+            {/* +++++++++++++++++++++++++++++++++++++++++++ */}
 
           </Container>
         </CardText>

@@ -96,6 +96,35 @@ class CreateWorkout extends Component {
 
   }
 
+
+  _addAnotherExcerise(iOfWorkout){
+    //console.log('add exercise to workout: ' + iOfWorkout)
+
+    // Get current excercise array
+    let workoutsArray = this.state.workouts;
+
+
+    // Push to the excercise array
+    workoutsArray[iOfWorkout].exercises.push(
+      {
+        exerciseName: "",
+        exerciseUnit: 1,
+        reps: [""]
+      }
+    );
+
+
+    // Update the state
+    this.setState({workouts: workoutsArray});
+
+    console.log(this.state)
+    
+  }
+
+  _removeSelectedExercise(iOfWorkout, iOfExercise){
+    console.log('delete exercise: ' + iOfExercise +' from workout: ' + iOfWorkout)
+  }
+
   _uploadRoutine(event, index, value){
     console.log(this.state)
   }
@@ -132,7 +161,17 @@ class CreateWorkout extends Component {
                   if(i==0){
                     return (
                       <div key={"workout-"+i}>
-                        <AddWorkoutPrimary _iOfWorkout={i} _addAnotherWorkout={this._addAnotherWorkout.bind(this)} _editWorkoutName={this._editWorkoutName.bind(this)} />
+                        <AddWorkoutPrimary
+                          _submissionObject={this.state}
+                          _iOfWorkout={i}
+
+                          _addAnotherWorkout={this._addAnotherWorkout.bind(this)}
+                          _editWorkoutName={this._editWorkoutName.bind(this)}
+
+                          _addAnotherExcerise={this._addAnotherExcerise.bind(this)}
+                          _removeSelectedExercise={this._removeSelectedExercise.bind(this)}
+
+                        />
                       </div>
                     );
                   }
@@ -141,7 +180,16 @@ class CreateWorkout extends Component {
                     return (
                       <div key={"workout-"+i}>
                         <br/>
-                        <AddWorkoutSecondary _iOfWorkout={i} _removeSelectedWorkout={this._removeSelectedWorkout.bind(this)} _editWorkoutName={this._editWorkoutName.bind(this)} />
+                        <AddWorkoutSecondary
+                          _submissionObject={this.state}
+                          _iOfWorkout={i}
+
+                          _removeSelectedWorkout={this._removeSelectedWorkout.bind(this)}
+                          _editWorkoutName={this._editWorkoutName.bind(this)}
+
+                          _addAnotherExcerise={this._addAnotherExcerise.bind(this)}
+                          _removeSelectedExercise={this._removeSelectedExercise.bind(this)}
+                        />
                       </div>
                     );
                   }

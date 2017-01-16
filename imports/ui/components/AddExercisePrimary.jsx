@@ -31,13 +31,18 @@ class AddExercisePrimary extends Component {
     console.log(event.target.value)
   }
 
+  _handleClick(){
+    // Add another Excerise to the selected Workout 
+    this.props._addAnotherExcerise(this.props._iOfWorkout);
+  }
+
   render(){
     return(
       <Card>
         <CardHeader
-          actAsExpander={true}
+          actAsExpander={false}
           showExpandableButton={true}
-          avatar={<FloatingActionButton secondary={false} mini={true}><ContentAdd/></FloatingActionButton>}
+          avatar={<FloatingActionButton onClick={this._handleClick.bind(this)} secondary={false} mini={true}><ContentAdd/></FloatingActionButton>}
           title={
             <Container>
               <TextField

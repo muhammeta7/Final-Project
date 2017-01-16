@@ -18,7 +18,7 @@ import AddExerciseSecondary from '../components/AddExerciseSecondary';
 
 
 // Create Component
-class AddFirstWorkout extends Component {
+class AddWorkoutPrimary extends Component {
 
   constructor(props) {
     super(props);
@@ -34,7 +34,7 @@ class AddFirstWorkout extends Component {
     this.props._editWorkoutName(this.props._iOfWorkout, event.target.value);
   }
 
-  _handleClick(){
+  _handleClick(event){
     // Add another (blank) workout to the end of the array of objects
     this.props._addAnotherWorkout();
   }
@@ -44,7 +44,7 @@ class AddFirstWorkout extends Component {
       
       <Card>
         <CardHeader
-          actAsExpander={true}
+          actAsExpander={false}
           showExpandableButton={true}
           avatar={<FloatingActionButton onClick={this._handleClick.bind(this)} secondary={false} mini={true}><ContentAdd/></FloatingActionButton>}
           title={
@@ -59,13 +59,36 @@ class AddFirstWorkout extends Component {
         <CardText expandable={true}>
           <Container>
 
-            {/* First Exercise */}
-            <AddExercisePrimary />
+            {/* ++++++++++ ITERATE OVER EXERCISES ++++++++++ */}
+            {this.props._submissionObject.workouts[this.props._iOfWorkout].exercises.map(function(search, i) {
 
-            <br/>
+              // First, render the primary excercise
+              if(i==0){
+                return (
+                  <div key={"workout-" + this.props._iOfWorkout + "-excercise-" + i} >
+                    <AddExercisePrimary
+                      _iOfWorkout = {this.props._iOfWorkout}
+                      _addAnotherExcerise={this.props._addAnotherExcerise.bind(this)}
+                    />
+                  </div>
+                );
+              }
+              // Then, render any additional excercises
+              else{
+                return(
+                  <div key={"workout-" + this.props._iOfWorkout + "-excercise-" + i}>
+                    <br/>
+                    <AddExerciseSecondary
+                      _iOfWorkout = {this.props._iOfWorkout}
+                      _iOfExcerise={i}
+                      _removeSelectedExercise={this.props._removeSelectedExercise.bind(this)}
+                    />
+                  </div>
+                );
+              }
 
-            {/* MAPPING NEEDED HERE -> Additional Exercises */}
-              <AddExerciseSecondary />
+            }.bind(this))}
+            {/* +++++++++++++++++++++++++++++++++++++++++++ */}
 
           </Container>
         </CardText>
@@ -75,4 +98,4 @@ class AddFirstWorkout extends Component {
 }
 
 
-export default AddFirstWorkout;                          
+export default AddWorkoutPrimary;                          
