@@ -67,7 +67,8 @@ class AddWorkoutPrimary extends Component {
                 return (
                   <div key={"workout-" + this.props._iOfWorkout + "-excercise-" + i} >
                     <AddExercisePrimary
-                      _iOfWorkout = {this.props._iOfWorkout}
+                      _iOfWorkout={this.props._iOfWorkout}
+                      _iOfExcerise={i}
                       _addAnotherExcerise={this.props._addAnotherExcerise.bind(this)}
                     />
                   </div>
@@ -79,7 +80,7 @@ class AddWorkoutPrimary extends Component {
                   <div key={"workout-" + this.props._iOfWorkout + "-excercise-" + i}>
                     <br/>
                     <AddExerciseSecondary
-                      _iOfWorkout = {this.props._iOfWorkout}
+                      _iOfWorkout={this.props._iOfWorkout}
                       _iOfExcerise={i}
                       _removeSelectedExercise={this.props._removeSelectedExercise.bind(this)}
                     />
