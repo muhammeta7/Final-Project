@@ -76,7 +76,7 @@ class CreateWorkout extends Component {
     // Update the state
     this.setState({workouts: workoutsArray})
 
-    console.log('Delete Workout at i:' + '\n' + iOfWorkout)
+    console.log('Delete Workout: ' + iOfWorkout)
 
   }
 
@@ -100,9 +100,8 @@ class CreateWorkout extends Component {
   _addAnotherExcerise(iOfWorkout){
     //console.log('add exercise to workout: ' + iOfWorkout)
 
-    // Get current excercise array
+    // Get current workouts array
     let workoutsArray = this.state.workouts;
-
 
     // Push to the excercise array
     workoutsArray[iOfWorkout].exercises.push(
@@ -113,16 +112,25 @@ class CreateWorkout extends Component {
       }
     );
 
-
     // Update the state
     this.setState({workouts: workoutsArray});
-
-    console.log(this.state)
     
   }
 
   _removeSelectedExercise(iOfWorkout, iOfExercise){
     console.log('delete exercise: ' + iOfExercise +' from workout: ' + iOfWorkout)
+
+    // Get current workouts array
+    let workoutsArray = this.state.workouts;
+
+    // Remove unwanted Exercise using its position in the Exercises array
+    workoutsArray[iOfWorkout].exercises.splice(iOfExercise, 1);
+
+    // Update the state
+    this.setState({workouts: workoutsArray})
+
+    console.log('Delete Exercise: ' + iOfExercise + ' in Workout: ' + iOfWorkout)
+
   }
 
   _uploadRoutine(event, index, value){
