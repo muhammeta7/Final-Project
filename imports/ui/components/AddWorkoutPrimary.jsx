@@ -78,6 +78,7 @@ class AddWorkoutPrimary extends Component {
 
                       _addAnotherRep={this.props._addAnotherRep.bind(this)}
                       _removeLastRep={this.props._removeLastRep.bind(this)}
+                      _editNumberOfReps={this.props._editNumberOfReps.bind(this)}
                     />
                   </div>
                 );
@@ -99,6 +100,7 @@ class AddWorkoutPrimary extends Component {
 
                       _addAnotherRep={this.props._addAnotherRep.bind(this)}
                       _removeLastRep={this.props._removeLastRep.bind(this)}
+                      _editNumberOfReps={this.props._editNumberOfReps.bind(this)}
                     />
                   </div>
                 );

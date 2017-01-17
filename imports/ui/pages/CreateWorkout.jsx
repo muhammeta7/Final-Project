@@ -196,6 +196,22 @@ class CreateWorkout extends Component {
 
   }
 
+  _editNumberOfReps(iOfWorkout, iOfExercise, iOfRep, numberOfReps){
+    // console.log('Workout:' + iOfWorkout)
+    // console.log('Exercise: ' + iOfExercise)
+    // console.log('Rep: ' + iOfRep)
+    // console.log('Count: ' + numberOfReps)
+
+    // Get current workouts array
+    let workoutsArray = this.state.workouts;
+
+    // Edit selected Rep in selected Exercise in selected Workout
+    workoutsArray[iOfWorkout].exercises[iOfExercise].reps[iOfRep] = numberOfReps;
+
+    // Update the state
+    this.setState({workouts: workoutsArray});
+
+  }
 
 
   _uploadRoutine(event, index, value){
@@ -248,7 +264,7 @@ class CreateWorkout extends Component {
 
                           _addAnotherRep={this._addAnotherRep.bind(this)}
                           _removeLastRep={this._removeLastRep.bind(this)}
-
+                          _editNumberOfReps={this._editNumberOfReps.bind(this)}
                         />
                       </div>
                     );
@@ -272,7 +288,7 @@ class CreateWorkout extends Component {
 
                           _addAnotherRep={this._addAnotherRep.bind(this)}
                           _removeLastRep={this._removeLastRep.bind(this)}
-                          
+                          _editNumberOfReps={this._editNumberOfReps.bind(this)}
                         />
                       </div>
                     );
