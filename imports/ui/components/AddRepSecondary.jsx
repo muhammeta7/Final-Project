@@ -27,7 +27,7 @@ class AddRepSecondary extends Component {
             <TextField
               value={this.state.value}
               onChange={this._handleChange.bind(this)}
-              floatingLabelText="Reps for Set [i]"
+              floatingLabelText={"Reps for Set " + (this.props._iOfRep + 1)}
               type="number"
               min="0"
               hintText="15"

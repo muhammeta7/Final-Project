@@ -37,7 +37,7 @@ class CreateWorkout extends Component {
   }
 
   _changeRoutineName(value){
-    this.setState({routineName: value})
+    this.setState({routineName: value});
     //console.log('Routine Name:' + '\n' + value)
   }
 
@@ -61,7 +61,7 @@ class CreateWorkout extends Component {
     );
 
     // Update the state
-    this.setState({workouts: workoutsArray})
+    this.setState({workouts: workoutsArray});
 
   }
 
@@ -74,7 +74,7 @@ class CreateWorkout extends Component {
     workoutsArray.splice(iOfWorkout, 1);
 
     // Update the state
-    this.setState({workouts: workoutsArray})
+    this.setState({workouts: workoutsArray});
 
     console.log('Delete Workout: ' + iOfWorkout)
 
@@ -92,7 +92,7 @@ class CreateWorkout extends Component {
     workoutsArray[iOfWorkout].workoutName = nameOfWorkout;
 
     // Update the state
-    this.setState({workouts: workoutsArray})
+    this.setState({workouts: workoutsArray});
 
   }
 
@@ -126,7 +126,7 @@ class CreateWorkout extends Component {
     workoutsArray[iOfWorkout].exercises.splice(iOfExercise, 1);
 
     // Update the state
-    this.setState({workouts: workoutsArray})
+    this.setState({workouts: workoutsArray});
 
     console.log('Delete Exercise: ' + iOfExercise + ' in Workout: ' + iOfWorkout)
 
@@ -144,7 +144,7 @@ class CreateWorkout extends Component {
     workoutsArray[iOfWorkout].exercises[iOfExercise].exerciseName = nameOfExercise;
 
     // Update the state
-    this.setState({workouts: workoutsArray})
+    this.setState({workouts: workoutsArray});
 
   }
 
@@ -160,7 +160,39 @@ class CreateWorkout extends Component {
     workoutsArray[iOfWorkout].exercises[iOfExercise].exerciseUnit = unitsOfExercise;
 
     // Update the state
-    this.setState({workouts: workoutsArray})
+    this.setState({workouts: workoutsArray});
+
+  }
+
+
+  _addAnotherRep(iOfWorkout, iOfExercise){
+    //console.log('add rep to exercise: ' + iOfExercise + ' in workout: ' + iOfWorkout)
+
+    // Get current workouts array
+    let workoutsArray = this.state.workouts;
+
+    // Push reps to selected exercise in selected workout
+    workoutsArray[iOfWorkout].exercises[iOfExercise].reps.push("");
+
+    // Update the state
+    this.setState({workouts: workoutsArray});
+
+  }
+
+  _removeLastRep(iOfWorkout, iOfExercise){
+    //console.log('remove rep from exercise: ' + iOfExercise + ' in workout: ' + iOfWorkout)
+
+    // Get current workouts array
+    let workoutsArray = this.state.workouts;
+
+    // Only delete the last rep if the array of reps has more than 1 entry
+    let repArrayLength = workoutsArray[iOfWorkout].exercises[iOfExercise].reps.length;
+    if(repArrayLength > 1){
+      workoutsArray[iOfWorkout].exercises[iOfExercise].reps.splice(-1,1);
+    }
+
+    // Update the state
+    this.setState({workouts: workoutsArray});
 
   }
 
@@ -214,6 +246,9 @@ class CreateWorkout extends Component {
                           _editExerciseName={this._editExerciseName.bind(this)}
                           _editExerciseUnits={this._editExerciseUnits.bind(this)}
 
+                          _addAnotherRep={this._addAnotherRep.bind(this)}
+                          _removeLastRep={this._removeLastRep.bind(this)}
+
                         />
                       </div>
                     );
@@ -234,6 +269,9 @@ class CreateWorkout extends Component {
                           _removeSelectedExercise={this._removeSelectedExercise.bind(this)}
                           _editExerciseName={this._editExerciseName.bind(this)}
                           _editExerciseUnits={this._editExerciseUnits.bind(this)}
+
+                          _addAnotherRep={this._addAnotherRep.bind(this)}
+                          _removeLastRep={this._removeLastRep.bind(this)}
                           
                         />
                       </div>

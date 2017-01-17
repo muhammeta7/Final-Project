@@ -64,12 +64,43 @@ class AddExerciseSecondary extends Component {
         <CardText expandable={true}>
           <Container>
 
-            {/* First Rep */}
-            <AddRepPrimary />
+            {/* ++++++++++ ITERATE OVER REPS ++++++++++ */}
+            {this.props._submissionObject.workouts[this.props._iOfWorkout].exercises[this.props._iOfExercise].reps.map(function(search, i) {
 
-            {/* MAPPING NEEDED HERE -> Additional Reps */}
-              <AddRepSecondary />
-              <AddRepSecondary />
+              // First, render the primary excercise
+              if(i==0){
+                return (
+                  <div key={"workout-" + this.props._iOfWorkout + "-excercise-" + this.props._iOfExercise + "-rep-" + i} >
+                    <AddRepPrimary
+                      _iOfWorkout={this.props._iOfWorkout}
+                      _iOfExercise={this.props._iOfExercise}
+                      _iOfRep={i}
+
+                      _addAnotherRep={this.props._addAnotherRep.bind(this)}
+                      _removeLastRep={this.props._removeLastRep.bind(this)}
+                    />
+                  </div>
+                );
+              }
+              
+              // Then, render any additional excercises
+              else{
+                return(
+                  <div key={"workout-" + this.props._iOfWorkout + "-excercise-" + this.props._iOfExercise + "-rep-" + i}>
+                    
+                    <AddRepSecondary
+                      _iOfWorkout={this.props._iOfWorkout}
+                      _iOfExercise={this.props._iOfExercise}
+                      _iOfRep={i}
+
+
+                    />
+                  </div>
+                );
+              }
+
+            }.bind(this))}
+            {/* +++++++++++++++++++++++++++++++++++++++++++ */}
 
           </Container>
         </CardText>

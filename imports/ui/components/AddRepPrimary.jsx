@@ -22,15 +22,25 @@ class AddRepPrimary extends Component {
     console.log(event.target.value)
   }
 
+  _handleAddClick(){
+    // Add another Rep to the selected Exercise in the selected Workout
+    this.props._addAnotherRep(this.props._iOfWorkout, this.props._iOfExercise);
+  }
+
+  _handleRemoveClick(){
+    // Remove last Rep in the selected Exercise in the selected Workout
+    this.props._removeLastRep(this.props._iOfWorkout, this.props._iOfExercise);
+  }
+
   render(){
     return(
       <Card>
         <CardHeader
           avatar={
             <div>
-              <FloatingActionButton secondary={false} mini={true}><ContentAdd/></FloatingActionButton>
+              <FloatingActionButton onClick={this._handleAddClick.bind(this)} secondary={false} mini={true}><ContentAdd/></FloatingActionButton>
               <i> </i>
-              <FloatingActionButton secondary={true} mini={true}><ContentRemove/></FloatingActionButton>
+              <FloatingActionButton onClick={this._handleRemoveClick.bind(this)} secondary={true} mini={true}><ContentRemove/></FloatingActionButton>
               <i> </i>
               <i> Please leave the Reps field empty if you plan to Lift Until Failure (xf)</i>
             </div>
@@ -39,7 +49,7 @@ class AddRepPrimary extends Component {
             <TextField
               value={this.state.value}
               onChange={this._handleChange.bind(this)}
-              floatingLabelText="Reps for Set 1"
+              floatingLabelText={"Reps for Set " + (this.props._iOfRep + 1)}
               type="number"
               min="0"
               hintText="15"
