@@ -10,12 +10,17 @@ import SelectField from 'material-ui/SelectField';
 class UnitsDropDownMenu extends Component {
   constructor(props) {
     super(props);
-    this.state = {value: 1};
+    this.state = {
+      value: this.props._submissionObject.workouts[this.props._iOfWorkout].exercises[this.props._iOfExercise].exerciseUnit
+    };
   }
 
   _selectFieldChange(event, index, value){
+    // Locally - Set the unit dropdown value
     this.setState({value})
-    console.log(value)   
+
+    // Globally - Set the unit dropdown value
+    this.props._editExerciseUnits(this.props._iOfWorkout, this.props._iOfExercise, value)
   }
 
   render(){

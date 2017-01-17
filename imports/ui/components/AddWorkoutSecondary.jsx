@@ -66,10 +66,14 @@ class AddWorkoutSecondary extends Component {
                 return (
                   <div key={"workout-" + this.props._iOfWorkout + "-excercise-" + i} >
                     <AddExercisePrimary
+                      _submissionObject={this.props._submissionObject}
+
                       _iOfWorkout={this.props._iOfWorkout}
                       _iOfExercise={i}
+
                       _addAnotherExercise={this.props._addAnotherExercise.bind(this)}
                       _editExerciseName={this.props._editExerciseName.bind(this)}
+                      _editExerciseUnits={this.props._editExerciseUnits.bind(this)}
                     />
                   </div>
                 );
@@ -80,10 +84,14 @@ class AddWorkoutSecondary extends Component {
                   <div key={"workout-" + this.props._iOfWorkout + "-excercise-" + i}>
                     <br/>
                     <AddExerciseSecondary
+                      _submissionObject={this.props._submissionObject}
+
                       _iOfWorkout={this.props._iOfWorkout}
                       _iOfExercise={i}
+                      
                       _removeSelectedExercise={this.props._removeSelectedExercise.bind(this)}
                       _editExerciseName={this.props._editExerciseName.bind(this)}
+                      _editExerciseUnits={this.props._editExerciseUnits.bind(this)}
                     />
                   </div>
                 );

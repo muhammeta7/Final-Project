@@ -50,7 +50,14 @@ class AddExerciseSecondary extends Component {
                 hintText="Bench Press"
                 fullWidth={true}
               />
-              <UnitsDropDownMenu />
+              <UnitsDropDownMenu
+                _submissionObject={this.props._submissionObject}
+
+                _iOfWorkout={this.props._iOfWorkout}
+                _iOfExercise={this.props._iOfExercise}
+                
+                _editExerciseUnits={this.props._editExerciseUnits.bind(this)}
+              />
             </Container>
           }
         />
