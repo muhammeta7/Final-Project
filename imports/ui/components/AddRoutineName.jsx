@@ -19,7 +19,7 @@ class AddRoutineName extends Component {
     this.setState({routineName: event.target.value});
 
     // Update in Parent
-    this.props._changeRoutineName(event.target.value)
+    this.props._changeRoutineName(event.target.value);
   }
 
   render(){

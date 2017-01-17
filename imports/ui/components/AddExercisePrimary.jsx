@@ -23,17 +23,16 @@ class AddExercisePrimary extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {value: ""};
   }
 
   _handleChange(event, index, value){
-    this.setState({value: event.target.value});
-    console.log(event.target.value)
+    // Edit the name of the selected Exerise within the selected Workout
+    this.props._editExerciseName(this.props._iOfWorkout, this.props._iOfExercise, event.target.value);
   }
 
   _handleClick(){
     // Add another Excerise to the selected Workout 
-    this.props._addAnotherExcerise(this.props._iOfWorkout);
+    this.props._addAnotherExercise(this.props._iOfWorkout);
   }
 
   render(){
@@ -46,7 +45,6 @@ class AddExercisePrimary extends Component {
           title={
             <Container>
               <TextField
-                value={this.state.value}
                 onChange={this._handleChange.bind(this)}
                 floatingLabelText="Excercise Name"
                 hintText="Bench Press"

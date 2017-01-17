@@ -82,7 +82,7 @@ class CreateWorkout extends Component {
 
 
   _editWorkoutName(iOfWorkout, nameOfWorkout){
-    //console.log('Position:' + '\n' + iOfWorkout)
+    //console.log('Workout:' + '\n' + iOfWorkout)
     //console.log('Name:' + '\n' + nameOfWorkout)
 
     // Get current workouts array
@@ -97,7 +97,7 @@ class CreateWorkout extends Component {
   }
 
 
-  _addAnotherExcerise(iOfWorkout){
+  _addAnotherExercise(iOfWorkout){
     //console.log('add exercise to workout: ' + iOfWorkout)
 
     // Get current workouts array
@@ -118,7 +118,6 @@ class CreateWorkout extends Component {
   }
 
   _removeSelectedExercise(iOfWorkout, iOfExercise){
-    console.log('delete exercise: ' + iOfExercise +' from workout: ' + iOfWorkout)
 
     // Get current workouts array
     let workoutsArray = this.state.workouts;
@@ -132,6 +131,26 @@ class CreateWorkout extends Component {
     console.log('Delete Exercise: ' + iOfExercise + ' in Workout: ' + iOfWorkout)
 
   }
+
+  _editExerciseName(iOfWorkout, iOfExercise, nameOfExercise){
+    console.log('Workout:' + iOfWorkout)
+    console.log('Exercise: ' + iOfExercise)
+    console.log('Name: ' + nameOfExercise)
+
+    // Get current workouts array
+    let workoutsArray = this.state.workouts;
+
+    // Set selected exercise in selected workout to selected name
+    workoutsArray[iOfWorkout].exercises[iOfExercise].exerciseName = nameOfExercise;
+
+    // Update the state
+    this.setState({workouts: workoutsArray})
+
+  }
+
+
+
+
 
   _uploadRoutine(event, index, value){
     console.log(this.state)
@@ -176,8 +195,9 @@ class CreateWorkout extends Component {
                           _addAnotherWorkout={this._addAnotherWorkout.bind(this)}
                           _editWorkoutName={this._editWorkoutName.bind(this)}
 
-                          _addAnotherExcerise={this._addAnotherExcerise.bind(this)}
+                          _addAnotherExercise={this._addAnotherExercise.bind(this)}
                           _removeSelectedExercise={this._removeSelectedExercise.bind(this)}
+                          _editExerciseName={this._editExerciseName.bind(this)}
 
                         />
                       </div>
@@ -195,8 +215,10 @@ class CreateWorkout extends Component {
                           _removeSelectedWorkout={this._removeSelectedWorkout.bind(this)}
                           _editWorkoutName={this._editWorkoutName.bind(this)}
 
-                          _addAnotherExcerise={this._addAnotherExcerise.bind(this)}
+                          _addAnotherExercise={this._addAnotherExercise.bind(this)}
                           _removeSelectedExercise={this._removeSelectedExercise.bind(this)}
+                          _editExerciseName={this._editExerciseName.bind(this)}
+                          
                         />
                       </div>
                     );
