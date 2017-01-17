@@ -11,6 +11,8 @@ import TextField from 'material-ui/TextField';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import DatePicker from 'material-ui/DatePicker';
 
+// Import Components
+import LogWorkoutDate from '../components/LogWorkoutDate';
 
 // Page
 const LogWorkout = () => (
@@ -19,13 +21,7 @@ const LogWorkout = () => (
 
       {/* Title with Date Picker */}
       <Row>
-        <Card>
-          <CardHeader>
-             <h2>[Workout Name]</h2>
-             <h4>[Workout Day]</h4>
-             <DatePicker hintText="Date of Workout" firstDayOfWeek={0} fullWidth={true} defaultDate={new Date()} />
-           </CardHeader>
-        </Card>
+        <LogWorkoutDate />
       </Row>
 
       <br />
