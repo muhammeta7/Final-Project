@@ -28,6 +28,19 @@ class LogRepWeight extends Component {
 
   }
 
+  _writeFailure(repValue){
+
+    // Return xf for any empty array (lift to failure)
+    if(repValue == ""){
+      return "f";
+    }
+    else{
+      return "";
+    }
+
+  }
+
+
   render(){
     return(
 
@@ -36,7 +49,7 @@ class LogRepWeight extends Component {
           hintText="[prev weight]"
           type="number"
           min="0"
-          floatingLabelText="Set [i] (x[rep/f])"
+          floatingLabelText={"Set " + (this.props._repNumber + 1) + " (x" + this.props._repCount + this._writeFailure(this.props._repCount) + ")"}
           floatingLabelFixed={true}
           fullWidth={true}
           onChange={this._handleChange.bind(this)}

@@ -53,18 +53,23 @@ class LogExercise extends Component {
         <CardText expandable={true}>
 
           <Container>
-
-            {/* List of Reps/Weight Log */}
             <Row>
 
-              {/* ITERATE OVER REPS */}
-              <LogRepWeight />
-              <LogRepWeight />
-              <LogRepWeight />
-              <LogRepWeight />
+              {/* ++++++++++ ITERATE OVER REPS ++++++++++ */}
+              {this.props._repArray.map(function(search, i) {
+
+                return (
+                  <LogRepWeight 
+                    key={"routine-" + this.props._routineId + "-workout-" + this.props.workoutId + "-exercise-" + this.props._exerciseId + "-rep-" + i}
+
+                    _repNumber={i}
+                    _repCount={search}
+                  />
+                );
+
+              }.bind(this))}
 
             </Row>
-
           </Container>
 
         </CardText>

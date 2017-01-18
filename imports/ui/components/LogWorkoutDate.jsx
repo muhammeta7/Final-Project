@@ -32,8 +32,8 @@ class LogWorkoutDate extends Component {
     return(
       <Card>
         <CardHeader>
-           <h2>[Routine Name]</h2>
-           <h4>[Workout Day]</h4>
+           <h2>{this.props._routineName}</h2>
+           <h4>{this.props._workoutName}</h4>
            <DatePicker
             hintText="Date of Workout"
             firstDayOfWeek={0}

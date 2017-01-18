@@ -22,7 +22,7 @@ class LogWorkout extends Component {
 
     // Sample Data
     this.state = {
-      routineName: "My Gym Routine",
+      routineName: "Tommy's Gym Routine",
       workoutName: "Chest Day",
       exercises: [
         {
@@ -62,7 +62,10 @@ class LogWorkout extends Component {
 
           {/* Title with Date Picker */}
           <Row>
-            <LogWorkoutDate />
+            <LogWorkoutDate
+              _routineName={this.state.routineName}
+              _workoutName={this.state.workoutName}
+            />
           </Row>
 
 
@@ -82,6 +85,8 @@ class LogWorkout extends Component {
                     _exerciseId={i}
                     _exerciseName={search.exerciseName}
                     _exerciseUnit={search.exerciseUnit}
+
+                    _repArray={search.reps}
                   />
                 </div>
               );
