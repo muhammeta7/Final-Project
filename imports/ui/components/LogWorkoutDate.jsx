@@ -32,7 +32,7 @@ class LogWorkoutDate extends Component {
     return(
       <Card>
         <CardHeader>
-           <h2>[Workout Name]</h2>
+           <h2>[Routine Name]</h2>
            <h4>[Workout Day]</h4>
            <DatePicker
             hintText="Date of Workout"

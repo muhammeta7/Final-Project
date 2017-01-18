@@ -7,158 +7,112 @@ import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
 
 // Import Material-ui 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import TextField from 'material-ui/TextField';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import DatePicker from 'material-ui/DatePicker';
+import RaisedButton from 'material-ui/RaisedButton';
 
 // Import Components
 import LogWorkoutDate from '../components/LogWorkoutDate';
-
-// Page
-const LogWorkout = () => (
-  <MuiThemeProvider>
-    <Container>
-
-      {/* Title with Date Picker */}
-      <Row>
-        <LogWorkoutDate />
-      </Row>
-
-      <br />
+import LogExercise from '../components/LogExercise';
 
 
-      {/* List of Excerises */}
-      <Row>
+// Page Component
+class LogWorkout extends Component {
 
-        {/* Iterate Over Excerises */}
+  constructor(props) {
+    super(props);
 
-          {/* Lift 1 */}
-          <Card>
-            <CardHeader
-              title="[Excerise Name]"
-              actAsExpander={true}
-              showExpandableButton={true}
-            />
-            <CardText expandable={true}>
+    // Sample Data
+    this.state = {
+      routineName: "My Gym Routine",
+      workoutName: "Chest Day",
+      exercises: [
+        {
+          exerciseName: "Bench Press",
+          exerciseUnit: 1,
+          reps: [25, 15, 12, 10]
+        },
+        {
+          exerciseName: "Push Ups",
+          exerciseUnit: 3,
+          reps: ["", "", ""]
+        },
+        {
+          exerciseName: "Pec Fly",
+          exerciseUnit: 2,
+          reps: [15, 15, 15]
+        }
+      ]
+    };
 
-              <Container>
-                <Row>
+  }
 
-                  <Col sm={3} xs={4}>
-                    <TextField
-                      hintText="100"
-                      type="number"
-                      min="0"
-                      floatingLabelText="Set 1 (x25)"
-                      floatingLabelFixed={true}
-                      fullWidth={true}
-                    />
-                  </Col>
+  _uploadWorkout(event, index, value){
+    console.log('Exit Page and Keep Changes')
+    console.log(this.state)
+  }
 
-                  <Col sm={3} xs={4}>
-                    <TextField
-                      hintText="150"
-                      type="number"
-                      min="0"
-                      floatingLabelText="Set 2 (x15)"
-                      floatingLabelFixed={true}
-                      fullWidth={true}
-                    />
-                  </Col>
+  _cancelWorkout(){
+    console.log('Exit Page and Don\'t Save and/or Delete Changes.')
+  }
 
-                  <Col sm={3} xs={4}>
-                    <TextField
-                      hintText="165"
-                      type="number"
-                      min="0"
-                      floatingLabelText="Set 3 (x10)"
-                      floatingLabelFixed={true}
-                      fullWidth={true}
-                    />
-                  </Col>
+  render() {
+    return (
 
-                  <Col sm={3} xs={4}>
-                    <TextField
-                      hintText="175"
-                      type="number"
-                      min="0"
-                      floatingLabelText="Set 4 (x8)"
-                      floatingLabelFixed={true}
-                      fullWidth={true}
-                    />
-                  </Col>
+      <MuiThemeProvider>
+        <Container>
 
-                </Row>
-
-              </Container>
-
-            </CardText>
-          </Card>
+          {/* Title with Date Picker */}
+          <Row>
+            <LogWorkoutDate />
+          </Row>
 
 
-          {/* Add a break after each Lift */}
-          <br/>
+          {/* List of Excerises */}
+          <Row>
 
-          {/* Lift 2 */}
-          <Card>
-            <CardHeader
-              title="Bench Press"
-              actAsExpander={true}
-              showExpandableButton={true}
-            />
-            <CardText expandable={true}>
+            {/* ++++++++++ ITERATE OVER EXERCISES ++++++++++ */}
+            {this.state.exercises.map(function(search, i) {
 
-              <Container>
-                <Row>
+              return (
+                <div key={"routine-" + this.state.routineName + "-workout-" + this.state.workoutName + "-exercise-" + i} >
+                  <br/>
+                  <LogExercise
+                    _routineId={this.state.routineName}
+                    _workoutId={this.state.workoutName}
 
-                  <Col sm={3} xs={4}>
-                    <TextField
-                      hintText="100"
-                      type="number"
-                      min="0"
-                      floatingLabelText="Set 1 (x25)"
-                      floatingLabelFixed={true}
-                      fullWidth={true}
-                    />
-                  </Col>
+                    _exerciseId={i}
+                    _exerciseName={search.exerciseName}
+                    _exerciseUnit={search.exerciseUnit}
+                  />
+                </div>
+              );
 
-                  <Col sm={3} xs={4}>
-                    <TextField
-                      hintText="150"
-                      type="number"
-                      min="0"
-                      floatingLabelText="Set 2 (x15)"
-                      floatingLabelFixed={true}
-                      fullWidth={true}
-                    />
-                  </Col>
+            }.bind(this))}
+            {/* ++++++++++++++++++++++++++++++++++++++++++++ */}
 
-                  <Col sm={3} xs={4}>
-                    <TextField
-                      hintText="165"
-                      type="number"
-                      min="0"
-                      floatingLabelText="Set 3 (x10)"
-                      floatingLabelFixed={true}
-                      fullWidth={true}
-                    />
-                  </Col>
+          </Row>
 
-                </Row>
-
-              </Container>
-
-            </CardText>
-          </Card>
-
-        </Row>
+          <br />
+          {/* Submit or Cancel Form Submisson */}
+          {/* This will need a way to collect all the data from the forms above and then hit an api on the backend */}
+          {/* Maybe add a confirmation modal too... Create this workout? You will not be able to edit after this */}
+          <Row>
+            <center>
+              <Row>
+                <RaisedButton label="Submit" primary={true} onClick={this._uploadWorkout.bind(this)} />
+                <span> </span>
+                <RaisedButton label="Cancel" onClick={this._cancelWorkout.bind(this)} />
+              </Row>
+            </center>
+          </Row>
 
 
-    </Container>
+        </Container>
+      </MuiThemeProvider>
 
-  </MuiThemeProvider>
+    );
+  }
 
-);
+};
 
 export default LogWorkout;
 

@@ -15,6 +15,8 @@ import AddRoutineName from '../components/AddRoutineName';
 import AddWorkoutPrimary from '../components/AddWorkoutPrimary';
 import AddWorkoutSecondary from '../components/AddWorkoutSecondary';
 
+
+// Page Component
 class CreateWorkout extends Component {
 
   constructor(props) {
