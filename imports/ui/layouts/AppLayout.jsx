@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import NavBar from '../components/NavBar.jsx';
+import NavBar from '../components/Navbar.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import SnackbarContainer from '../components/SnackBarContainer.jsx';
 import DrawerLeft from '../components/DrawerLeft.jsx';
