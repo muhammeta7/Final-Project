@@ -27,7 +27,10 @@ var NavBar = React.createClass({
         onTitleTouchTap={this._goToIndex}
         onLeftIconButtonTouchTap={this._toggleAppDrawer}
         zDepth={1}
-        style={{position: 'fixed', top: 0}}
+        style={{
+          position: 'fixed', top: 0,
+          textAlign: 'center'
+        }}
       />
     );
   }
