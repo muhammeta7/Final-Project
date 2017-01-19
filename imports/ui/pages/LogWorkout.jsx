@@ -2,157 +2,122 @@
 import React from 'react';
 import { Component } from 'react';
 
-// Import Material-ui
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import TextField from 'material-ui/TextField';
+// Import React Grid System
+import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
 
-// Page
+// Import Material-ui 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+
+// Import Components
+import LogWorkoutDate from '../components/LogWorkoutDate';
+import LogExercise from '../components/LogExercise';
+
+
+// Page Component
 class LogWorkout extends Component {
+
+  constructor(props) {
+    super(props);
+
+    // Sample Data
+    this.state = {
+      routineName: "Tommy's Gym Routine",
+      workoutName: "Chest Day",
+      exercises: [
+        {
+          exerciseName: "Decline Bench Press",
+          exerciseUnit: 1,
+          reps: [25, 15, 12]
+        },
+        {
+          exerciseName: "Push Ups",
+          exerciseUnit: 3,
+          reps: ["", "", ""]
+        },
+        {
+          exerciseName: "Pec Fly",
+          exerciseUnit: 2,
+          reps: [15, 15, 15]
+        }
+      ]
+    };
+
+  }
+
+  _uploadWorkout(event, index, value){
+    console.log('Exit Page and Keep Changes')
+    console.log(this.state)
+  }
+
+  _cancelWorkout(){
+    console.log('Exit Page and Don\'t Save and/or Delete Changes.')
+  }
+
   render() {
     return (
-      <div>
 
-        {/* Title */}
-        <div className="container">
-          <ul className="collection with-header">
-            <li className="collection-header"><h4>[Workout Name]</h4></li>
-            <li className="collection-item">[Workout Day]</li>
-          </ul>
-        </div>
+      <MuiThemeProvider>
+        <Container>
+
+          {/* Title with Date Picker */}
+          <Row>
+            <LogWorkoutDate
+              _routineName={this.state.routineName}
+              _workoutName={this.state.workoutName}
+            />
+          </Row>
 
 
-        {/* List of Excerises */}
-        <div className="container">
-          
-          {/* Iterate Over Excerises */}
-          
-            {/* Excercise 1 */}
-            <ul className="collapsible" data-collapsible="accordion">
-              <li>
+          {/* List of Excerises */}
+          <Row>
 
-                {/* Exercise Name */}
-                <div className="collapsible-header">
-                  <b>[Ex. 1 Name]</b>
+            {/* ++++++++++ ITERATE OVER EXERCISES ++++++++++ */}
+            {this.state.exercises.map(function(search, i) {
+
+              return (
+                <div key={"routine-" + this.state.routineName + "-workout-" + this.state.workoutName + "-exercise-" + i} >
+                  <br/>
+                  <LogExercise
+                    _routineId={this.state.routineName}
+                    _workoutId={this.state.workoutName}
+
+                    _exerciseId={i}
+                    _exerciseName={search.exerciseName}
+                    _exerciseUnit={search.exerciseUnit}
+
+                    _repArray={search.reps}
+                  />
                 </div>
+              );
 
-                {/* Exercise Input Form */}
-                <div className="collapsible-body">
-                  <div className="container">
-                    <div className="row">
-                      <br/>
-                      <form className="col s12">
-                        <div className="row">
+            }.bind(this))}
+            {/* ++++++++++++++++++++++++++++++++++++++++++++ */}
 
-                          {/* Iterate Over Sets */}
+          </Row>
 
-                            <div className="input-field col s4">
-                              <input id="exName-1" placeholder="[xxx]" type="number" min="0" className="validate" />
-                              <label for="exName-1">Set 1 (x[Reps])</label>
-                            </div>
-
-                            <div className="input-field col s4">
-                              <input id="exName-2" placeholder="[xxx]" type="number" min="0" className="validate" />
-                              <label for="exName-2">Set 2 (x[Reps])</label>
-                            </div>
-
-                            <div className="input-field col s4">
-                              <input id="exName-3" placeholder="[xxx]" type="number" min="0" className="validate" />
-                              <label for="exName-3">Set 3 (x[Reps])</label>
-                            </div>
-
-                            <div className="input-field col s4">
-                              <input id="exName-4" placeholder="[xxx]" type="number" min="0" className="validate" />
-                              <label for="exName-4">Set 4 (x[Reps])</label>
-                            </div>
-
-                            <div className="input-field col s4">
-                              <input id="exName-5" placeholder="[xxx]" type="number" min="0" className="validate" />
-                              <label for="exName-5">Set 5 (x[Reps])</label>
-                            </div>
-
-                            <div className="input-field col s4">
-                              <input id="exName-6" placeholder="[xxx]" type="number" min="0" className="validate" />
-                              <label for="exName-6">Set 6 (x[Reps])</label>
-                            </div>                        
+          <br />
+          {/* Submit or Cancel Form Submisson */}
+          {/* This will need a way to collect all the data from the forms above and then hit an api on the backend */}
+          {/* Maybe add a confirmation modal too... Create this workout? You will not be able to edit after this */}
+          <Row>
+            <center>
+              <Row>
+                <RaisedButton label="Submit" primary={true} onClick={this._uploadWorkout.bind(this)} />
+                <span> </span>
+                <RaisedButton label="Cancel" onClick={this._cancelWorkout.bind(this)} />
+              </Row>
+            </center>
+          </Row>
 
 
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+        </Container>
+      </MuiThemeProvider>
 
-              </li>
-            </ul>
-
-
-
-
-            {/* Excercise 2 */}
-            <ul className="collapsible" data-collapsible="accordion">
-              <li>
-
-                {/* Exercise Name */}
-                <div className="collapsible-header">
-                  <b>Bench Press</b>
-                </div>
-
-                {/* Exercise Input Form */}
-                <div className="collapsible-body">
-                  <div className="container">
-                    <div className="row">
-                      <br/>
-                      <form className="col s12">
-                        <div className="row">
-
-                          {/* Iterate Over Sets */}
-                            <div className="input-field col s4">
-                              <input id="benchPress-1" placeholder="100" type="number" min="0" className="validate" />
-                              <label for="benchPress-1">Set 1 (x25)</label>
-                            </div>
-
-                            <div className="input-field col s4">
-                              <input id="benchPress-2" placeholder="135" type="number" min="0" className="validate" />
-                              <label for="benchPress-2">Set 2 (x15)</label>
-                            </div>
-
-                            <div className="input-field col s4">
-                              <input id="benchPress-3" placeholder="160" type="number" min="0" className="validate" />
-                              <label for="benchPress-3">Set 3 (x10)</label>
-                            </div>
-
-
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-
-              </li>
-            </ul>
-
-
-          </div>
-
-
-
-          {/* Submit Button */}
-          <div className="container">
-            <div className="row">
-              <center>
-                {/* This will need a way to collect all the data from the forms above and then hit an api on the backend */}
-                {/* Maybe add a confirmation modal too... Complete this workout? You will not be able to edit after this */}
-                <input className="btn add-comment-button" type="submit" value="Workout Complete" />
-              </center>
-            </div>
-          </div>
-
-
-      </div>
     );
   }
-}
+
+};
 
 export default LogWorkout;
-
 
