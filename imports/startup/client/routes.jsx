@@ -26,7 +26,8 @@ Meteor.startup( () => {
 
   function redirectIfSignedIn(){
     if(Meteor.userId() != null){
-http://stackoverflow.com/questions/5410682/parsing-a-json-string-in-ruby      console.log("Redirecting Signed In User");
+      // http://stackoverflow.com/questions/5410682/parsing-a-json-string-in-ruby
+      console.log("Redirecting Signed In User");
       browserHistory.replace('/');
     } else {
       console.log("User is NOT there");
