@@ -3,10 +3,6 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
-// Material-ui click listener
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
-
 // Import Pages and/or Components
 import AppLayout from '../../ui/layouts/AppLayout.jsx';
 import AdminRoute from '../../ui/pages/AdminRoute.jsx';
