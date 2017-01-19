@@ -44,29 +44,31 @@ Meteor.startup( () => {
   }
 
 
-  function redirectUnlessAdmin(Store){
-    Tracker.autorun(() => {
-      console.log("RUNNING ADMIN CHECK");
-      if(Meteor.userId() === null){
-        console.log("Redirecting Visitor");
-        browserHistory.replace('/users/login');
-        return;
-      }
+  // function redirectUnlessAdmin(Store){
+  //   Tracker.autorun(() => {
+  //     console.log("RUNNING ADMIN CHECK");
+  //     if(Meteor.userId() === null){
+  //       console.log("Redirecting Visitor");
+  //       browserHistory.replace('/users/login');
+  //       return;
+  //     }
 
-      if(!Meteor.user()){
-        return
-      }
+  //     if(!Meteor.user()){
+  //       return
+  //     }
 
-      if(!Roles.userIsInRole(Meteor.user(), ['admin'])){
-        console.log("Redirecting Non-Admin");
-        browserHistory.replace('/users/login');
-      } else {
-        console.log("Admin is present");
-        console.log("state in route: "+ JSON.stringify(Store.getState()));
-        Store.dispatch(loading(false));
-      }
-    });
-  }
+  //     if(!Roles.userIsInRole(Meteor.user(), ['admin'])){
+  //       console.log("Redirecting Non-Admin");
+  //       browserHistory.replace('/users/login');
+  //     } else {
+  //       console.log("Admin is present");
+  //       console.log("state in route: "+ JSON.stringify(Store.getState()));
+  //       Store.dispatch(loading(false));
+  //     }
+  //   });
+  // }
+
+
 
   render(
     <Router history={ browserHistory }>
@@ -75,12 +77,9 @@ Meteor.startup( () => {
         <Route path="users" onChange={ redirectIfSignedIn } onEnter={ redirectIfSignedIn }>
           <Route path="login" component={LoginPage}/>
           <Route path="signup" component={SignUpPage}/>
-          <Route path="workout/log" component={LogWorkout} />
-          <Route path="workout/create" component={CreateWorkout} />
         </Route>
-        <Route path="admin" onChange={ redirectUnlessAdmin(Store) } onEnter={ redirectUnlessAdmin(Store) }>
-          <IndexRoute component={ AdminRoute }/>
-        </Route>
+          <Route path="workout/log" component={LogWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
+          <Route path="workout/create" component={CreateWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
         <Route path="*" component={ NotFound } />
       </Route>
     </Router>,
