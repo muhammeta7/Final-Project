@@ -26,9 +26,9 @@ class LogWorkout extends Component {
       workoutName: "Chest Day",
       exercises: [
         {
-          exerciseName: "Bench Press",
+          exerciseName: "Decline Bench Press",
           exerciseUnit: 1,
-          reps: [25, 15, 12, 10]
+          reps: [25, 15, 12]
         },
         {
           exerciseName: "Push Ups",
