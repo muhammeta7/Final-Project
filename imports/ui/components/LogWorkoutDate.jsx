@@ -24,8 +24,7 @@ class LogWorkoutDate extends Component {
     });
 
     // Update in Parent
-    console.log(date)
-    // TO BE ADDED LATER
+    this.props._editCurrentWorkoutDate(date);
   }
 
   render(){

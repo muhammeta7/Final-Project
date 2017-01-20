@@ -46,7 +46,7 @@ class LogRepWeight extends Component {
 
       <Col sm={3} xs={4}>
         <TextField
-          hintText="[prev weight]"
+          hintText={this.props._prevWorkoutRepWeight}
           type="number"
           min="0"
           floatingLabelText={"Set " + (this.props._repNumber + 1) + " (x" + this.props._repCount + this._writeFailure(this.props._repCount) + ")"}

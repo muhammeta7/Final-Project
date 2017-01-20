@@ -27,22 +27,35 @@ class LogWorkout extends Component {
         {
           exerciseName: "Decline Bench Press",
           exerciseUnit: 1,
-          reps: [25, 15, 12]
+          reps: [25, 15, 12],
+          prevWorkoutWeights: [145, 165, 180],
+          currentWorkoutWeights: []
         },
         {
           exerciseName: "Push Ups",
           exerciseUnit: 3,
-          reps: ["", "", ""]
+          reps: ["", "", "", ""],
+          prevWorkoutWeights: [25, 20, 15, 12],
+          currentWorkoutWeights: []
         },
         {
           exerciseName: "Pec Fly",
           exerciseUnit: 2,
-          reps: [15, 15, 15]
+          reps: [15, 15, 15],
+          prevWorkoutWeights: [90, 100, 110],
+          currentWorkoutWeights: []
         }
-      ]
+      ],
+      currentWorkoutDate: new Date()
+
     };
 
   }
+
+  _editCurrentWorkoutDate(date){
+    this.setState({currentWorkoutDate: date});
+  }
+
 
   _uploadWorkout(event, index, value){
     console.log('Exit Page and Keep Changes')
@@ -62,6 +75,8 @@ class LogWorkout extends Component {
           <LogWorkoutDate
             _routineName={this.state.routineName}
             _workoutName={this.state.workoutName}
+
+            _editCurrentWorkoutDate={this._editCurrentWorkoutDate.bind(this)}
           />
         </Row>
 
@@ -84,6 +99,8 @@ class LogWorkout extends Component {
                   _exerciseUnit={search.exerciseUnit}
 
                   _repArray={search.reps}
+                  _prevWorkoutWeightsArray={search.prevWorkoutWeights}
+                  _currentWorkoutWeights={search.currentWorkoutWeights}
                 />
               </div>
             );
