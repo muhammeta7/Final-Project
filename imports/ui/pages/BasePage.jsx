@@ -13,9 +13,7 @@ import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 import DatePicker from 'material-ui/DatePicker';
 import RaisedButton from 'material-ui/RaisedButton';
-import AppBarExampleComposition from './AppBarExampleComposition.jsx';
 import FlatButton from 'material-ui/FlatButton';
-import {Jumbotron} from 'react-bootstrap';
 
 
 

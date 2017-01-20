@@ -1,13 +1,10 @@
 // Import React Essentials
 import React from 'react';
-
-
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 // Import Pages and/or Components
 import AppLayout from '../../ui/layouts/AppLayout.jsx';
-import AdminRoute from '../../ui/pages/AdminRoute.jsx';
 import NotFound from '../../ui/pages/NotFound.jsx';
 import SignUpPage from '../../ui/pages/SignUpPage.jsx';
 import LoginPage from '../../ui/pages/LoginPage.jsx';
@@ -20,9 +17,6 @@ import BasePage from '../../ui/pages/BasePage.jsx';
 
 
 // Release the meeeettteeeoooor!
-
-
-
 Meteor.startup( () => {
 
   Store.subscribe(refresh);
@@ -50,45 +44,19 @@ Meteor.startup( () => {
     }
   }
 
-
-  // function redirectUnlessAdmin(Store){
-  //   Tracker.autorun(() => {
-  //     console.log("RUNNING ADMIN CHECK");
-  //     if(Meteor.userId() === null){
-  //       console.log("Redirecting Visitor");
-  //       browserHistory.replace('/users/login');
-  //       return;
-  //     }
-
-  //     if(!Meteor.user()){
-  //       return
-  //     }
-
-  //     if(!Roles.userIsInRole(Meteor.user(), ['admin'])){
-  //       console.log("Redirecting Non-Admin");
-  //       browserHistory.replace('/users/login');
-  //     } else {
-  //       console.log("Admin is present");
-  //       console.log("state in route: "+ JSON.stringify(Store.getState()));
-  //       Store.dispatch(loading(false));
-  //     }
-  //   });
-  // }
-
-
-
   render(
     <Router history={ browserHistory }>
+      {/* Signup & Login Routes */}
       <Route path="/" component={ AppLayout }>
         <IndexRoute onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
         <Route path="users" onChange={ redirectIfSignedIn } onEnter={ redirectIfSignedIn }>
           <Route path="login" component={LoginPage}/>
           <Route path="signup" component={SignUpPage}/>
         </Route>
-
-          <Route path="workout/log" component={LogWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
-          <Route path="workout/create" component={CreateWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
-          <Route path="base" component={BasePage} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
+        {/* Home Page, Log Workout, and Create Workout Routes */}
+        <Route path="workout/log" component={LogWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
+        <Route path="workout/create" component={CreateWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
+        <Route path="base" component={BasePage} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
         <Route path="*" component={ NotFound } />
       </Route>
     </Router>,
