@@ -6,7 +6,6 @@ import { Component } from 'react';
 import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
 
 // Import Material-ui 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 
 // Import Components
