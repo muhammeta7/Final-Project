@@ -47,8 +47,8 @@ const BasePage = () => (
       </CardText>
 
        <CardActions>
-        <FlatButton label="Login" />
-        <FlatButton label="Signup" />
+        <FlatButton label="Login" href = "users/login"/>
+        <FlatButton label="Signup" href = "users/signup"/>
        </CardActions>
           </Card>
     </div>
