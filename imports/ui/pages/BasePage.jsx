@@ -13,8 +13,9 @@ import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 import DatePicker from 'material-ui/DatePicker';
 import RaisedButton from 'material-ui/RaisedButton';
-import AppBarExampleComposition from './AppBarExampleComposition.jsx'
-
+import AppBarExampleComposition from './AppBarExampleComposition.jsx';
+import FlatButton from 'material-ui/FlatButton';
+import {Jumbotron} from 'react-bootstrap';
 
 
 
@@ -36,22 +37,27 @@ const styles = {
 };
 
 const BasePage = () => (
-  <MuiThemeProvider>
-  <AppBarExampleComposition/>
+  
     <Container>
         <div>
-    <RaisedButton
-      label="SignUp"
-      labelPosition="before"
-      style={styles.button}
-      containerElement="label"
-      href = "./sign-up"
-    />
-    </div>
+    <Card>
       
+      <CardText>
+      
+       <h1>Welcome to MySwolenessPal! Tracking your workout progress just got 10 sets easier!</h1>
+       <h2>To get started please login or signup below</h2>     
+      </CardText>
+
+       <CardActions>
+        <FlatButton label="Login" />
+        <FlatButton label="Signup" />
+       </CardActions>
+          </Card>
+    </div>
+    
 
     </Container>
-  </MuiThemeProvider>
+  
   );
 
 export default BasePage;
