@@ -39,6 +39,7 @@ class LogExercise extends Component {
 
   }
 
+
   render(){
     return(
 
@@ -59,16 +60,20 @@ class LogExercise extends Component {
               {this.props._repArray.map(function(search, i) {
 
                 // Push another space to current workout weights array
-                this.props._currentWorkoutWeights.push("");
+                //this.props._currentWorkoutWeights.push("");
 
                 return (
                   <LogRepWeight 
                     key={"routine-" + this.props._routineId + "-workout-" + this.props.workoutId + "-exercise-" + this.props._exerciseId + "-rep-" + i}
 
+                    _exerciseNumber={this.props._exerciseId}
+
                     _repNumber={i}
                     _repCount={search}
 
                     _prevWorkoutRepWeight={this.props._prevWorkoutWeightsArray[i]}
+
+                    _editCurrentWorkoutRepWeight={this.props._editCurrentWorkoutRepWeight}
                   />
                 );
 

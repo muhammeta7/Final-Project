@@ -52,8 +52,34 @@ class LogWorkout extends Component {
 
   }
 
+
+  componentDidMount(){
+    // Iterate over the reps arrays (inside each exercise) to generate appropriately sized weight logging array
+    let exercisesArray = this.state.exercises;
+    for(let i=0; i < exercisesArray.length; i++){
+      for(let j=0; j < exercisesArray[i].reps.length; j++){
+        exercisesArray[i].currentWorkoutWeights.push("");
+      }
+    } 
+    // Update the state
+    this.setState({exercises: exercisesArray});
+
+  }
+
+
   _editCurrentWorkoutDate(date){
+    // Updates the current workout's date 
     this.setState({currentWorkoutDate: date});
+  }
+
+
+  _editCurrentWorkoutRepWeight(iOfExercise, iOfRep, weight){
+    // Get current exercises array
+    let exercisesArray = this.state.exercises;
+    // Updates the Weight of the selected Rep in the selected Exercise
+    exercisesArray[iOfExercise].currentWorkoutWeights[iOfRep] = weight;
+    // Update the state
+    this.setState({exercises: exercisesArray});
   }
 
 
@@ -62,9 +88,11 @@ class LogWorkout extends Component {
     console.log(this.state)
   }
 
+
   _cancelWorkout(){
     console.log('Exit Page and Don\'t Save and/or Delete Changes.')
   }
+
 
   render() {
     return (
@@ -101,6 +129,8 @@ class LogWorkout extends Component {
                   _repArray={search.reps}
                   _prevWorkoutWeightsArray={search.prevWorkoutWeights}
                   _currentWorkoutWeights={search.currentWorkoutWeights}
+
+                  _editCurrentWorkoutRepWeight={this._editCurrentWorkoutRepWeight.bind(this)}
                 />
               </div>
             );
