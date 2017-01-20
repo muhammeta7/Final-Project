@@ -14,17 +14,16 @@ class LogRepWeight extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {value: 0};
   }
 
   _handleChange(event, date){
 
-    // Update Locally
-    this.setState({value: event.target.value});
-    console.log(event.target.value)
+    // Log the Weight of the selected Rep in the selected Exercise
+    this.props._editCurrentWorkoutRepWeight(this.props._exerciseNumber, this.props._repNumber, event.target.value);
 
-    // Update Globally
-    //this.props._logRepWeight(event.target.value);
+    // console.log('Weight: ' + event.target.value)
+    // console.log('In Exercise: ' + this.props._exerciseNumber)
+    // console.log('In Rep: ' + this.props._repNumber)
 
   }
 
@@ -46,7 +45,7 @@ class LogRepWeight extends Component {
 
       <Col sm={3} xs={4}>
         <TextField
-          hintText="[prev weight]"
+          hintText={this.props._prevWorkoutRepWeight}
           type="number"
           min="0"
           floatingLabelText={"Set " + (this.props._repNumber + 1) + " (x" + this.props._repCount + this._writeFailure(this.props._repCount) + ")"}
