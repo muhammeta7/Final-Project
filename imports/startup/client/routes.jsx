@@ -1,5 +1,7 @@
 // Import React Essentials
 import React from 'react';
+
+
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
@@ -13,9 +15,14 @@ import loading from '../../actions/loading';
 import Store from '../../reducers/index.js';
 import LogWorkout from '../../ui/pages/LogWorkout.jsx';
 import CreateWorkout from '../../ui/pages/CreateWorkout.jsx';
+import BasePage from '../../ui/pages/BasePage.jsx';
+
 
 
 // Release the meeeettteeeoooor!
+
+
+
 Meteor.startup( () => {
 
   Store.subscribe(refresh);
@@ -78,8 +85,10 @@ Meteor.startup( () => {
           <Route path="login" component={LoginPage}/>
           <Route path="signup" component={SignUpPage}/>
         </Route>
+
           <Route path="workout/log" component={LogWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
           <Route path="workout/create" component={CreateWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
+          <Route path="base" component={BasePage} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
         <Route path="*" component={ NotFound } />
       </Route>
     </Router>,
