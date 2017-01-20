@@ -1,5 +1,7 @@
 // Import React Essentials
 import React from 'react';
+
+
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
@@ -15,7 +17,11 @@ import LogWorkout from '../../ui/pages/LogWorkout.jsx';
 import CreateWorkout from '../../ui/pages/CreateWorkout.jsx';
 
 
+
 // Release the meeeettteeeoooor!
+
+
+
 Meteor.startup( () => {
 
   Store.subscribe(refresh);
