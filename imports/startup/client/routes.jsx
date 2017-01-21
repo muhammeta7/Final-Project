@@ -14,7 +14,7 @@ import LogWorkout from '../../ui/pages/LogWorkout.jsx';
 import CreateWorkout from '../../ui/pages/CreateWorkout.jsx';
 import BasePage from '../../ui/pages/BasePage.jsx';
 import Dashboard from '../../ui/pages/Dashboard.jsx';
-
+import SelectWorkout from '../../ui/pages/SelectWorkout.jsx';
 
 
 // Release the meeeettteeeoooor!
@@ -47,6 +47,7 @@ Meteor.startup( () => {
 
   render(
     <Router history={ browserHistory }>
+
       {/* Signup & Login Routes */}
       <Route path="/" component={ AppLayout }>
         <IndexRoute onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
@@ -54,13 +55,16 @@ Meteor.startup( () => {
           <Route path="login" component={LoginPage}/>
           <Route path="signup" component={SignUpPage}/>
         </Route>
+
         {/* Home Page, Log Workout, and Create Workout Routes */}
         <Route path="workout/log" component={LogWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
         <Route path="workout/create" component={CreateWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
+        <Route path="workout/select" component={SelectWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
         <Route path="home" component={BasePage} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
         <Route path="dashboard" component={Dashboard} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
         <Route path="*" component={ NotFound } />
       </Route>
+
     </Router>,
     document.getElementById( 'render-target' )
   );
