@@ -49,7 +49,7 @@ Meteor.methods({
       }
 
       UserProfile.update(
-        { _id: Meteor.userId() },
+        { user_id: Meteor.userId() },
         { $push: { routines: res }, $set: {currentRoutine: res }}
       )
 
