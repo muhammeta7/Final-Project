@@ -146,51 +146,48 @@ class BasePage extends Component {
 
 
 
-// const styles = {
-//   button: {
-//     margin: 12,
-//   },
-//   exampleImageInput: {
-//     cursor: 'pointer',
-//     position: 'absolute',
-//     top: 0,
-//     bottom: 0,
-//     right: 0,
-//     left: 0,
-//     width: '100%',
-//     opacity: 0,
-//   },
-// }
 
-  render = () => (
+
+  render = () =>{ 
+
+    const styles = {
+  button: {
+    margin: 12,
+  },
+  exampleImageInput: {
+    cursor: 'pointer',
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    width: '100%',
+    opacity: 0,
+  },
+}
+
+ return (
   
     <Container>
-        <div>
-    <Card>
-    
+      <div>
 
-       
-       <CardMedia
-      overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
-    >
-      <img src="../../../public/bigstock-Diet-And-Exercise-2530754 (1)" />
-    </CardMedia>
-    <CardText>
-       <h1>Welcome to MySwolenessPal! Tracking your workout progress just got 10 sets easier!</h1>
-       <h2>To get started please login or signup below</h2>   
-    </CardText>
-    <CardActions>
-        <FlatButton label="Login" href = "users/login"/>
-        <FlatButton label="Signup" href = "users/signup"/>
-    </CardActions>
-          </Card>
-    </div>
-    
+        <Card> 
 
-    
-  
-          </Container>
-    )
+          <CardMedia
+            overlay={<CardTitle title="Welcome to MySwolenessPal! Tracking your workout progress just got 10 sets easier!" 
+            subtitle="To get started please login or signup below" />}>
+            <img src="img/people.jpg" />
+            
+          </CardMedia>
+          <CardActions>
+              <RaisedButton label="Login" primary={true} href = "users/login"/>
+              <FlatButton label="Signup" href = "users/signup"/>
+          </CardActions>
+        </Card>
+      </div>
+  </Container>
+  )
+}
 }
 export default BasePage;
 
