@@ -4,7 +4,11 @@ import { Meteor } from 'meteor/meteor';
 Meteor.methods({
   addUser() {
     UserProfile.insert({
-      user_id: Meteor.user()._id
+      user_id: Meteor.user()._id,
+      routines: [],
+      currentRoutine: '',
+      displayName: '',
+      lastWorkoutLog: ''
     }, function(err, res) {
       if (err) {throw err}
     })
@@ -31,7 +35,7 @@ Meteor.methods({
 
     Routine.insert({
       routineName: data.routineName,
-      user_id: Meteor.user()._id
+      user_id: Meteor.userId()
     }, function(err, res) {
       if (err) {throw err}
 
@@ -40,19 +44,20 @@ Meteor.methods({
         Workout.insert({
           workoutName: workouts[i].workoutName,
           exercises: workouts[i].exercises,
-          routine_id: res._id
+          routine_id: res
         })
       }
 
+      UserProfile.update(
+        { _id: Meteor.userId() },
+        { $push: { routines: res }, $set: {currentRoutine: res }}
+      )
+
       // Not sure if this is correct, idea is to push the routine that was just added to the user's routines 
       //  list and set it as their current routine
-      UserProfile.update(
-        { _id: Meteor.user().id },
-        { $push: { routines: res._id }, currentRoutine: res._id }
-      )
-    })
+    });
   },
-
+  
   // Accepts a workout log, i.e.
   // { workout_id: workoutID (this can be a variable passed in from the previous modal workout selection, or
   //      we'll have another query to get it)
