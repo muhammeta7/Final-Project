@@ -1,4 +1,6 @@
 import { BrowserPolicy } from 'meteor/browser-policy-common';
+import '../imports/api/methods.js';
+
 
 Meteor.startup(() => {
   BrowserPolicy.content.allowOriginForAll('*');

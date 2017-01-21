@@ -48,6 +48,7 @@ class AddWorkoutSecondary extends Component {
           avatar={<FloatingActionButton onClick={this._handleClick.bind(this)} secondary={true} mini={true}><ContentRemove/></FloatingActionButton>}
           title={
             <TextField
+              value={this.props._workoutName}
               onChange={this._handleChange.bind(this)}
               floatingLabelText="Workout Name"
               hintText="Chest Day"
@@ -74,6 +75,7 @@ class AddWorkoutSecondary extends Component {
                       _addAnotherExercise={this.props._addAnotherExercise.bind(this)}
                       _editExerciseName={this.props._editExerciseName.bind(this)}
                       _editExerciseUnits={this.props._editExerciseUnits.bind(this)}
+                      _exerciseName={search.exerciseName}
 
                       _addAnotherRep={this.props._addAnotherRep.bind(this)}
                       _removeLastRep={this.props._removeLastRep.bind(this)}
@@ -96,6 +98,7 @@ class AddWorkoutSecondary extends Component {
                       _removeSelectedExercise={this.props._removeSelectedExercise.bind(this)}
                       _editExerciseName={this.props._editExerciseName.bind(this)}
                       _editExerciseUnits={this.props._editExerciseUnits.bind(this)}
+                      _exerciseName={search.exerciseName}
 
                       _addAnotherRep={this.props._addAnotherRep.bind(this)}
                       _removeLastRep={this.props._removeLastRep.bind(this)}
