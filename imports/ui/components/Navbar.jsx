@@ -29,10 +29,12 @@ var NavBar = React.createClass({
         zDepth={1}
         style={{
           position: 'fixed', top: 0,
-          textAlign: 'center'
+          textAlign: 'center',
+          fontFamily: 'Raleway',
+          fontSize : '40px' 
         }}
       />
-    );
+    ); 
   }
 
 });
