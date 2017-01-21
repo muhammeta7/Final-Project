@@ -1,3 +1,6 @@
+// Import the Meteeeeeeooooor!
+import { Meteor } from 'meteor/meteor';
+
 // Import React
 import React from 'react';
 import { Component } from 'react';
@@ -6,7 +9,7 @@ import { Component } from 'react';
 import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
 
 // Import Material-ui 
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
   
 // Import Components
@@ -68,16 +71,20 @@ class CreateWorkout extends Component {
 
   _removeSelectedWorkout(iOfWorkout){
 
-    // Get current workouts array
-    let workoutsArray = this.state.workouts;
+    // // Get current workouts array
+    // let workoutsArray = this.state.workouts;
     
-    // Remove unwanted Workout using its position in the Workouts array
-    workoutsArray.splice(iOfWorkout, 1);
+    // // Remove unwanted Workout using its position in the Workouts array
+    // workoutsArray.splice(iOfWorkout, 1);
 
-    // Update the state
-    this.setState({workouts: workoutsArray});
+    // // Update the state
+    // this.setState({workouts: workoutsArray});
 
-    console.log('Delete Workout: ' + iOfWorkout)
+    // console.log('Delete Workout: ' + iOfWorkout)
+
+    this.setState((prevState) => ({
+      workouts: prevState.workouts.filter((_, i) => i !== iOfWorkout)
+    }));
 
   }
 
@@ -217,6 +224,10 @@ class CreateWorkout extends Component {
 
   _uploadRoutine(event, index, value){
     console.log(this.state)
+
+    // Push to Database
+    Meteor.call('addRoutine', this.state);
+
   }
 
   _cancelRoutine(event, index, value){
@@ -280,6 +291,7 @@ class CreateWorkout extends Component {
 
                         _removeSelectedWorkout={this._removeSelectedWorkout.bind(this)}
                         _editWorkoutName={this._editWorkoutName.bind(this)}
+                        _workoutName={this.state.workouts[i].workoutName}
 
                         _addAnotherExercise={this._addAnotherExercise.bind(this)}
                         _removeSelectedExercise={this._removeSelectedExercise.bind(this)}

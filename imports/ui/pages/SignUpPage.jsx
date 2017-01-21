@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import React, { Component, PropTypes } from 'react'
 import { browserHistory, Link } from 'react-router'
 import TextField from 'material-ui/TextField';
@@ -21,6 +22,7 @@ export default class SignUpPage extends Component {
         Store.dispatch(setSnackBar(true, err.reason, '#F44336'));
       } else {
         Store.dispatch(setSnackBar(true, 'You\'ve signed up successfully.', '#4CAF50'));
+        Meteor.call('addUser');
         browserHistory.push('/');
       }
     });
