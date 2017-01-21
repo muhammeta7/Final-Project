@@ -57,7 +57,7 @@ Meteor.methods({
       //  list and set it as their current routine
     });
   },
-  
+
   // Accepts a workout log, i.e.
   // { workout_id: workoutID (this can be a variable passed in from the previous modal workout selection, or
   //      we'll have another query to get it)
@@ -73,10 +73,24 @@ Meteor.methods({
     })
   },
 
+  // Returns an array of the user's routine IDs, so that you can for example let them change their current routine
+  getRoutines() {
+    var currentUser = UserProfile.findOne({ user_id: Meteor.userID() }).fetch();
+    return currentUser.routines;
+  },
+
   // Returns the id for the user's current routine, so that you can easily then call getWorkoutOptions
   getCurrentRoutine() {
-    var currentUser = UserProfile.findOne({ _id: Meteor.user()._id }).fetch();
+    var currentUser = UserProfile.findOne({ user_id: Meteor.userID() }).fetch();
     return currentUser.currentRoutine;
+  },
+
+  // Accepts a routineID
+  setCurrentRoutine(data) {
+    UserProfile.update(
+      { user_id: Meteor.userId() },
+      { currentRoutine: data }
+    )
   },
 
   // Accepts a routine ID
@@ -85,5 +99,4 @@ Meteor.methods({
     var workouts = Workout.find({ routine_id: data }).fetch();
     return workouts;
   }
-
 })
