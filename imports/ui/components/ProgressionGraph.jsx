@@ -14,14 +14,14 @@ class ProgressGraph extends Component {
     this.state = {
       options: {
         title: 'Progress over time',
-        hAxis: {title: 'Weight', minValue: 0, maxValue: 315},
-        vAxis: {title: 'Date', minValue: 0, maxValue: 20},
+        hAxis: {title: 'Date'},
+        vAxis: {title: 'Weight'},
         legend: 'none'
       },
       rows: [
-        [1, 135, 155],
-        [2, 155, 175],
-        [3, 160, 180]
+        [10, 135, 155],
+        [20, 155, 175],
+        [30, 160, 180]
       ],
       columns: [
         {
@@ -46,11 +46,11 @@ class ProgressGraph extends Component {
           <h2>Your Progress</h2>
           <div className={"my-pretty-chart-container"}>
             <Chart
-              chartType="ScatterChart"
+              chartType="LineChart"
               rows={this.state.rows}
               columns={this.state.columns}
               options={this.state.options}
-              graph_id="ScatterChart"
+              graph_id="LineChart"
               width="100%"
               height="400px"
               legend_toggle
