@@ -1,3 +1,6 @@
+// Import the Meteeeeeeooooor!
+import { Meteor } from 'meteor/meteor';
+
 // Import React
 import React from 'react';
 import { Component } from 'react';
@@ -6,7 +9,7 @@ import { Component } from 'react';
 import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
 
 // Import Material-ui 
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
   
 // Import Components
@@ -221,6 +224,10 @@ class CreateWorkout extends Component {
 
   _uploadRoutine(event, index, value){
     console.log(this.state)
+
+    // Push to Database
+    Meteor.call('addRoutine', this.state);
+
   }
 
   _cancelRoutine(event, index, value){
