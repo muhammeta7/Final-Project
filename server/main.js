@@ -1,3 +1,5 @@
+import '../imports/api/methods.js';
+
 Meteor.startup(() => {
   // create admin from settings
   if (Meteor.users.findOne(Meteor.settings.adminId)){
