@@ -60,7 +60,7 @@ Meteor.startup( () => {
 
         <Route path="home" component={BasePage}/>
 
-        
+        {/* Dashboard Route */}
         <Route path="dashboard" component={Dashboard} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
 
         <Route path="*" component={ NotFound } />
