@@ -6,7 +6,7 @@ import Store from '../../reducers/index.js';
 var NavBar = React.createClass({
 
   _goToIndex: function(){
-    browserHistory.push('/');
+    browserHistory.push('/dashboard');
   },
 
   _toggleAppDrawer: function(){
@@ -29,10 +29,12 @@ var NavBar = React.createClass({
         zDepth={1}
         style={{
           position: 'fixed', top: 0,
-          textAlign: 'center'
+          textAlign: 'center',
+          fontFamily: 'Raleway',
+          backgroundColor: '#8BC34A' 
         }}
       />
-    );
+    ); 
   }
 
 });

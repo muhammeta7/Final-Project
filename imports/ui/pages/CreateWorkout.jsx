@@ -18,6 +18,7 @@ import AddWorkoutPrimary from '../components/AddWorkoutPrimary';
 import AddWorkoutSecondary from '../components/AddWorkoutSecondary';
 
 
+
 // Page Component
 class CreateWorkout extends Component {
 
@@ -329,6 +330,7 @@ class CreateWorkout extends Component {
             </Row>
           </center>
         </Row>
+
 
       </Container>
     );
