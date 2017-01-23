@@ -21,37 +21,50 @@ class LogWorkout extends Component {
 
     // Sample Data
     this.state = {
-      routineName: "Tommy's Gym Routine",
-      workoutName: "Chest Day",
-      exercises: [
-        {
-          exerciseName: "Decline Bench Press",
-          exerciseUnit: 1,
-          reps: [25, 15, 12],
-          prevWorkoutWeights: [145, 165, 180],
-          currentWorkoutWeights: []
-        },
-        {
-          exerciseName: "Push Ups",
-          exerciseUnit: 3,
-          reps: ["", "", "", ""],
-          prevWorkoutWeights: [25, 20, 15, 12],
-          currentWorkoutWeights: []
-        },
-        {
-          exerciseName: "Pec Fly",
-          exerciseUnit: 2,
-          reps: [15, 15, 15],
-          prevWorkoutWeights: [90, 100, 110],
-          currentWorkoutWeights: []
-        }
-      ],
+      routineName: "[Routine Name]",
+      workoutName: "",
+      workoutId: "",
+      exercises: [],
       currentWorkoutDate: new Date()
 
     };
 
+        // ======= OLD EXERCISE DATA ========
+        // {
+        //   exerciseName: "Decline Bench Press",
+        //   exerciseUnit: 1,
+        //   reps: [25, 15, 12],
+        //   prevWorkoutWeights: [145, 165, 180],
+        //   currentWorkoutWeights: []
+        // },
+        // {
+        //   exerciseName: "Push Ups",
+        //   exerciseUnit: 3,
+        //   reps: ["", "", "", ""],
+        //   prevWorkoutWeights: [25, 20, 15, 12],
+        //   currentWorkoutWeights: []
+        // },
+        // {
+        //   exerciseName: "Pec Fly",
+        //   exerciseUnit: 2,
+        //   reps: [15, 15, 15],
+        //   prevWorkoutWeights: [90, 100, 110],
+        //   currentWorkoutWeights: []
+        // }
+
   }
 
+
+  componentWillMount(){
+    // Collect the Exercises from the "/workout/select" route
+    let workoutObj = JSON.parse(this.props.location.query.workoutObj);
+    let exercisesNew = workoutObj.exercises;
+
+    // Update the states
+    this.setState({exercises: exercisesNew});
+    this.setState({workoutName: workoutObj.workoutName});
+    this.setState({workoutId: workoutObj._id});
+  }
 
   componentDidMount(){
     // Iterate over the reps arrays (inside each exercise) to generate appropriately sized weight logging array
@@ -63,7 +76,6 @@ class LogWorkout extends Component {
     } 
     // Update the state
     this.setState({exercises: exercisesArray});
-
   }
 
 
@@ -84,8 +96,37 @@ class LogWorkout extends Component {
 
 
   _uploadWorkout(event, index, value){
-    console.log('Exit Page and Keep Changes')
-    console.log(this.state)
+    //console.log('Exit Page and Keep Changes')
+    //console.log(this.state)
+
+    // In too deep to re-factor all my functions. So I will pull the logged data out...
+    let currentLog = [];
+
+    // Pull out all the currentWorkoutWeights from each exercise
+    for(let i=0; i<this.state.exercises.length; i++){
+
+      // Make a Object with Name and Weights array
+      let logThisEx = {
+        exerciseName: this.state.exercises[i].exerciseName,
+        weights: this.state.exercises[i].currentWorkoutWeights
+
+      }
+
+      // Push to Log weight array
+      currentLog.push(logThisEx)
+    }
+    
+
+    // Pass in the data for the backend
+    let data = {
+      workout_id: this.state.workoutId,
+      date: this.state.currentWorkoutDate,
+      log: currentLog
+    }
+
+    // Push to Database
+    Meteor.call('logWorkout', data);
+
   }
 
 
@@ -115,6 +156,8 @@ class LogWorkout extends Component {
           {/* ++++++++++ ITERATE OVER EXERCISES ++++++++++ */}
           {this.state.exercises.map(function(search, i) {
 
+// _prevWorkoutWeightsArray={search.prevWorkoutWeights}
+
             return (
               <div key={"routine-" + this.state.routineName + "-workout-" + this.state.workoutName + "-exercise-" + i} >
                 <br/>
@@ -127,7 +170,6 @@ class LogWorkout extends Component {
                   _exerciseUnit={search.exerciseUnit}
 
                   _repArray={search.reps}
-                  _prevWorkoutWeightsArray={search.prevWorkoutWeights}
                   _currentWorkoutWeights={search.currentWorkoutWeights}
 
                   _editCurrentWorkoutRepWeight={this._editCurrentWorkoutRepWeight.bind(this)}
