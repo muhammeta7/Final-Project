@@ -6,6 +6,7 @@ import {Chart} from 'react-google-charts';
 
 // Import Components
 import ProgressGraph from '../components/ProgressionGraph';
+import DashboardNav from '../components/DashboardNav';
 
 // Page Component
 class Dashboard extends Component {
@@ -13,6 +14,7 @@ class Dashboard extends Component {
     return (
     <div>
       <ProgressGraph />
+      <DashboardNav />
     </div>
     );
   }

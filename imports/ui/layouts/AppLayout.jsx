@@ -31,6 +31,7 @@ class AppLayout extends React.Component {
   }
 
   render(){
+
     return (
       <MuiThemeProvider>
         <div>
