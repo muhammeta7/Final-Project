@@ -59,8 +59,7 @@ class LogExercise extends Component {
               {/* ++++++++++ ITERATE OVER REPS ++++++++++ */}
               {this.props._repArray.map(function(search, i) {
 
-                // Push another space to current workout weights array
-                //this.props._currentWorkoutWeights.push("");
+//  _prevWorkoutRepWeight={this.props._prevWorkoutWeightsArray[i]}
 
                 return (
                   <LogRepWeight 
@@ -71,7 +70,7 @@ class LogExercise extends Component {
                     _repNumber={i}
                     _repCount={search}
 
-                    _prevWorkoutRepWeight={this.props._prevWorkoutWeightsArray[i]}
+                   
 
                     _editCurrentWorkoutRepWeight={this.props._editCurrentWorkoutRepWeight}
                   />

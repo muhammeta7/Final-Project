@@ -21,36 +21,50 @@ class LogWorkout extends Component {
 
     // Sample Data
     this.state = {
-      routineName: "Tommy's Gym Routine",
-      workoutName: "Chest Day",
-      exercises: [
-        {
-          exerciseName: "Decline Bench Press",
-          exerciseUnit: 1,
-          reps: [25, 15, 12],
-          prevWorkoutWeights: [145, 165, 180],
-          currentWorkoutWeights: []
-        },
-        {
-          exerciseName: "Push Ups",
-          exerciseUnit: 3,
-          reps: ["", "", "", ""],
-          prevWorkoutWeights: [25, 20, 15, 12],
-          currentWorkoutWeights: []
-        },
-        {
-          exerciseName: "Pec Fly",
-          exerciseUnit: 2,
-          reps: [15, 15, 15],
-          prevWorkoutWeights: [90, 100, 110],
-          currentWorkoutWeights: []
-        }
-      ],
+      routineName: "[Routine Name]",
+      workoutName: "",
+      exercises: [],
       currentWorkoutDate: new Date()
 
     };
 
+        // ======= OLD EXERCISE DATA ========
+        // {
+        //   exerciseName: "Decline Bench Press",
+        //   exerciseUnit: 1,
+        //   reps: [25, 15, 12],
+        //   prevWorkoutWeights: [145, 165, 180],
+        //   currentWorkoutWeights: []
+        // },
+        // {
+        //   exerciseName: "Push Ups",
+        //   exerciseUnit: 3,
+        //   reps: ["", "", "", ""],
+        //   prevWorkoutWeights: [25, 20, 15, 12],
+        //   currentWorkoutWeights: []
+        // },
+        // {
+        //   exerciseName: "Pec Fly",
+        //   exerciseUnit: 2,
+        //   reps: [15, 15, 15],
+        //   prevWorkoutWeights: [90, 100, 110],
+        //   currentWorkoutWeights: []
+        // }
+
   }
+
+
+  componentWillMount(){
+    // Collect the Exercises from the "/workout/select" route
+    var workoutObj = JSON.parse(this.props.location.query.workoutObj)
+    var exercisesNew = workoutObj.exercises;
+
+    // Update the states
+    this.setState({exercises: exercisesNew});
+    this.setState({workoutName: workoutObj.workoutName})
+  }
+
+
 
 
   componentDidMount(){
@@ -63,7 +77,6 @@ class LogWorkout extends Component {
     } 
     // Update the state
     this.setState({exercises: exercisesArray});
-
   }
 
 
@@ -115,6 +128,8 @@ class LogWorkout extends Component {
           {/* ++++++++++ ITERATE OVER EXERCISES ++++++++++ */}
           {this.state.exercises.map(function(search, i) {
 
+// _prevWorkoutWeightsArray={search.prevWorkoutWeights}
+
             return (
               <div key={"routine-" + this.state.routineName + "-workout-" + this.state.workoutName + "-exercise-" + i} >
                 <br/>
@@ -127,7 +142,6 @@ class LogWorkout extends Component {
                   _exerciseUnit={search.exerciseUnit}
 
                   _repArray={search.reps}
-                  _prevWorkoutWeightsArray={search.prevWorkoutWeights}
                   _currentWorkoutWeights={search.currentWorkoutWeights}
 
                   _editCurrentWorkoutRepWeight={this._editCurrentWorkoutRepWeight.bind(this)}

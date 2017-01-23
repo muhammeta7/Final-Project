@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 // Import React
 import React from 'react';
 import { Component } from 'react';
+import { browserHistory } from 'react-router';
 
 // Import React Grid System
 import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
@@ -41,8 +42,20 @@ class SelectWorkout extends Component {
 
 
   _selectWorkout(workoutObj){
-    console.log('Exit Page and Keep Changes')
-    console.log(workoutObj)
+    // console.log('Exit Page and Keep Changes')
+    // console.log(workoutObj)
+
+    // Prep Exercises Array for next page (i.e add empty array into each excercise object)
+    for(var i=0; i < workoutObj.exercises.length; i++){
+      workoutObj.exercises[i]['currentWorkoutWeights'] = [];
+    }
+
+    // Change path to log page and pass (stringified) data to the log page
+    browserHistory.push({ 
+      pathname: '/workout/log',
+      query: {workoutObj: JSON.stringify(workoutObj) }
+    }); 
+
   }
 
 
