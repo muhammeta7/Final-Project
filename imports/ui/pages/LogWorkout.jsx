@@ -23,6 +23,7 @@ class LogWorkout extends Component {
     this.state = {
       routineName: "[Routine Name]",
       workoutName: "",
+      workoutId: "",
       exercises: [],
       currentWorkoutDate: new Date()
 
@@ -56,16 +57,14 @@ class LogWorkout extends Component {
 
   componentWillMount(){
     // Collect the Exercises from the "/workout/select" route
-    var workoutObj = JSON.parse(this.props.location.query.workoutObj)
-    var exercisesNew = workoutObj.exercises;
+    let workoutObj = JSON.parse(this.props.location.query.workoutObj);
+    let exercisesNew = workoutObj.exercises;
 
     // Update the states
     this.setState({exercises: exercisesNew});
-    this.setState({workoutName: workoutObj.workoutName})
+    this.setState({workoutName: workoutObj.workoutName});
+    this.setState({workoutId: workoutObj._id});
   }
-
-
-
 
   componentDidMount(){
     // Iterate over the reps arrays (inside each exercise) to generate appropriately sized weight logging array
@@ -97,8 +96,37 @@ class LogWorkout extends Component {
 
 
   _uploadWorkout(event, index, value){
-    console.log('Exit Page and Keep Changes')
-    console.log(this.state)
+    //console.log('Exit Page and Keep Changes')
+    //console.log(this.state)
+
+    // In too deep to re-factor all my functions. So I will pull the logged data out...
+    let currentLog = [];
+
+    // Pull out all the currentWorkoutWeights from each exercise
+    for(let i=0; i<this.state.exercises.length; i++){
+
+      // Make a Object with Name and Weights array
+      let logThisEx = {
+        exerciseName: this.state.exercises[i].exerciseName,
+        weights: this.state.exercises[i].currentWorkoutWeights
+
+      }
+
+      // Push to Log weight array
+      currentLog.push(logThisEx)
+    }
+    
+
+    // Pass in the data for the backend
+    let data = {
+      workout_id: this.state.workoutId,
+      date: this.state.currentWorkoutDate,
+      log: currentLog
+    }
+
+    // Push to Database
+    Meteor.call('logWorkout', data);
+
   }
 
 
