@@ -6,37 +6,40 @@ import Paper from 'material-ui/Paper';
 import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
 import { IndexLink, Link, browserHistory } from 'react-router';
 
-const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
-const favoritesIcon = <FontIcon className="material-icons"></FontIcon>;
+const createIcon = <FontIcon className="material-icons">queue</FontIcon>;
+const logIcon = <FontIcon className="material-icons">directions_run</FontIcon>;
 
 
+var DashboardNav = React.createClass ({
 
-class DashboardNav extends Component {
-  state = {
-    selectedIndex: 0,
-  };
+  _goToCreateWorkout: function() {
+    browserHistory.push('/workout/create');
+  },
 
-  select = (index) => this.setState({selectedIndex: index});
-
-  render() {
+  _goToLogWorkout: function() {
+    browserHistory.push('/workout/log');
+  },
+  
+  render: function() {
     return (
+
       <Paper zDepth={5}>
-        <BottomNavigation selectedIndex={this.state.selectedIndex}>
+        <BottomNavigation>
           <BottomNavigationItem
             label="Create Workout"
-            icon={recentsIcon}
-            onTouchTap={() => this.select(0)}
+            icon={createIcon}
+            onTouchTap={this._goToCreateWorkout}
           />
           <BottomNavigationItem
             label="Log Workout"
-            icon={favoritesIcon}
-            onTouchTap={() => this.select(1)}
+            icon={logIcon}
+            onTouchTap={this._goToCreateWorkout}
           />
-          
         </BottomNavigation>
       </Paper>
+
     );
   }
-}
+});
 
 export default DashboardNav;
