@@ -67,6 +67,12 @@ class SelectWorkout extends Component {
 
   }
 
+  _reRouteToCreate(){
+    // Takes you to the create page
+    browserHistory.push({ 
+      pathname: '/workout/create'
+    });
+  }
 
   _cancelSelection(){
     // Cancel takes you back to dashboard, no selection is made
@@ -83,9 +89,9 @@ class SelectWorkout extends Component {
         {/* Title with Date Picker */}
         <Row>
           <Card>
-            <CardText>
-              Select a Workout
-            </CardText>
+            <CardHeader>
+              <h2>Select a Workout</h2>
+            </CardHeader>
           </Card>
         </Row>
 
@@ -97,17 +103,19 @@ class SelectWorkout extends Component {
             <center>
               {/* ++++++++++ ITERATE OVER WORKOUT SELECTIONS ++++++++++ */}
               {this.state.workouts.map(function(search, i) {
-                return (
-                  <SelectWorkoutButton
-                    key={"workout-" + i}
-                    _workoutName={search.workoutName}
-                    _workoutObj={search}
-                    _selectWorkout={this._selectWorkout.bind(this)}
-                  />
-                );
-              }.bind(this))}
+                    return (
+                        <SelectWorkoutButton
+                          key={"workout-" + i}
+                          _workoutName={search.workoutName}
+                          _workoutObj={search}
+                          _selectWorkout={this._selectWorkout.bind(this)}
+                        />
+                    );
+                  }.bind(this))}
               {/* ++++++++++++++++++++++++++++++++++++++++++++ */}
               <br />
+              <RaisedButton secondary={true} label="Create new Routine" onClick={this._reRouteToCreate.bind(this)} />
+              <br /><br />
             </center>
           </Card>
         </Row>
