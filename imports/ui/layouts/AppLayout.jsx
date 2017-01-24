@@ -6,6 +6,8 @@ import SnackbarContainer from '../components/SnackBarContainer.jsx';
 import DrawerLeft from '../components/DrawerLeft.jsx';
 import Loader from '../components/Loader.jsx';
 import Store from '../../reducers/index.js';
+import style from '../../../client/styles.js';
+
 
 class AppLayout extends React.Component {
 
