@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 // Import React
 import React from 'react';
 import { Component } from 'react';
+import { browserHistory } from 'react-router';
 
 // Import React Grid System
 import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
@@ -232,7 +233,10 @@ class CreateWorkout extends Component {
   }
 
   _cancelRoutine(event, index, value){
-    console.log('Exit Page')
+    // Cancel takes you back to dashboard, nothing is saved to DB
+    browserHistory.push({ 
+      pathname: '/dashboard'
+    });
   }
 
   render() {
