@@ -1,6 +1,7 @@
 // Import React
 import React from 'react';
 import { Component } from 'react';
+import { browserHistory } from 'react-router';
 
 // Import React Grid System
 import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
@@ -56,14 +57,24 @@ class LogWorkout extends Component {
 
 
   componentWillMount(){
-    // Collect the Exercises from the "/workout/select" route
-    let workoutObj = JSON.parse(this.props.location.query.workoutObj);
-    let exercisesNew = workoutObj.exercises;
 
-    // Update the states
-    this.setState({exercises: exercisesNew});
-    this.setState({workoutName: workoutObj.workoutName});
-    this.setState({workoutId: workoutObj._id});
+    // Move off the page if nothing was selected in the `/workout/select` route
+    if(this.props.location.query.workoutObj == null){
+      browserHistory.push({ 
+        pathname: '/workout/select'
+      });
+    }
+    else{
+      // Collect the Exercises from the "/workout/select" route
+      let workoutObj = JSON.parse(this.props.location.query.workoutObj);
+      let exercisesNew = workoutObj.exercises;
+
+      // Update the states
+      this.setState({exercises: exercisesNew});
+      this.setState({workoutName: workoutObj.workoutName});
+      this.setState({workoutId: workoutObj._id});
+    }
+
   }
 
   componentDidMount(){
@@ -131,7 +142,10 @@ class LogWorkout extends Component {
 
 
   _cancelWorkout(){
-    console.log('Exit Page and Don\'t Save and/or Delete Changes.')
+    // Cancel takes you back to dashboard, no saving of progress in DB
+    browserHistory.push({ 
+      pathname: '/dashboard'
+    });
   }
 
 

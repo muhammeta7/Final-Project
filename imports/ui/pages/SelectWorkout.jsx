@@ -60,7 +60,10 @@ class SelectWorkout extends Component {
 
 
   _cancelSelection(){
-    console.log('Exit Page and Don\'t select anything.')
+    // Cancel takes you back to dashboard, no selection is made
+    browserHistory.push({ 
+      pathname: '/dashboard'
+    });
   }
 
 
