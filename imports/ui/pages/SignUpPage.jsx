@@ -23,7 +23,7 @@ export default class SignUpPage extends Component {
       } else {
         Store.dispatch(setSnackBar(true, 'You\'ve signed up successfully.', '#4CAF50'));
         Meteor.call('addUser');
-        browserHistory.push('/');
+        browserHistory.push('/dashboard');
       }
     });
   }

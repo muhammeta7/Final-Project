@@ -20,6 +20,7 @@ var NavBar = React.createClass({
 
   render: function() {
     return (
+      
       <AppBar
         className="navbar"
         title="Workout App Jawn"
@@ -34,9 +35,9 @@ var NavBar = React.createClass({
           backgroundColor: '#8BC34A' 
         }}
       />
+
     ); 
   }
-
 });
 
 export default NavBar;

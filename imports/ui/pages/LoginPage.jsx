@@ -21,6 +21,7 @@ export default class LoginPage extends Component {
         Store.dispatch(setSnackBar(true, err.reason, '#F44336'));
       } else {
         Store.dispatch(setSnackBar(true, 'You\'ve been signed in successfully.', '#4CAF50'));
+        browserHistory.push('/dashboard');
       }
     });
   }

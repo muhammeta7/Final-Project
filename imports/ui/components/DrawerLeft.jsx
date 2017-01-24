@@ -55,7 +55,7 @@ class DrawerLeft extends React.Component {
           
           { Meteor.user() != null ? (
               [ 
-              <Link key="logout" to="#" className="menu-link"><MenuItem onTouchTap={this._handleLogout}>Log Out</MenuItem></Link>, 
+              <Link key="logout" to="#" className="menu-link"><MenuItem onTouchTap={this._handleLogout}>Sign Out</MenuItem></Link>, 
               <Link to="/workout/create" className="menu-link"><MenuItem onTouchTap={this._handleClose}>Create Workout</MenuItem></Link>,
               <Link to="/workout/log" className="menu-link"><MenuItem onTouchTap={this._handleClose}>Log Workout</MenuItem></Link>
               ]
