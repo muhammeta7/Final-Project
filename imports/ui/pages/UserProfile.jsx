@@ -22,12 +22,16 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
 class UserProfile extends Component{
-	// constructor(props){
- //    	super(props);
-	// }
+	constructor(props){
+    	super(props);
+	}
 	 
 
 	render (){
+
+		  const buttonStyle = {
+      		margin: '10px'
+    	}
 		
 		return (
 			<Container>
@@ -37,8 +41,15 @@ class UserProfile extends Component{
 					<CardText>
 				      Lets Take a look at your progress over the past.
 				    </CardText>
-				    <RaisedButton label="Dashboard" secondary={true} href = "dashboard"/>
-					<RaisedButton label="Create Workout" primary={true} href = "workout/create"/>
+				    <Row>
+		                <center>
+		                  <Row>
+		                  	<RaisedButton style={buttonStyle} label="Dashboard" secondary={true} href = "dashboard"/>
+							<RaisedButton style={buttonStyle} label="Create Workout" primary={true} href = "workout/create"/>
+		                  </Row>
+		                </center>
+		            </Row>
+				    
 				</Card>
 			</div>
 		</Container>

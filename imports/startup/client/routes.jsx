@@ -17,6 +17,9 @@ import Dashboard from '../../ui/pages/Dashboard.jsx';
 import UserProfile from '../../ui/pages/UserProfile.jsx';
 
 
+import SelectWorkout from '../../ui/pages/SelectWorkout.jsx';
+
+
 
 // Release the meeeettteeeoooor!
 Meteor.startup( () => {
@@ -48,6 +51,7 @@ Meteor.startup( () => {
 
   render(
     <Router history={ browserHistory }>
+
       {/* Signup & Login Routes */}
       <Route path="/" component={ AppLayout }>
         <IndexRoute onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
@@ -56,10 +60,11 @@ Meteor.startup( () => {
           <Route path="signup" component={SignUpPage}/>
           
         </Route>
+
         {/* Home Page, Log Workout, and Create Workout Routes */}
         <Route path="workout/log" component={LogWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
         <Route path="workout/create" component={CreateWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
-
+        <Route path="workout/select" component={SelectWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
         <Route path="home" component={BasePage}/>
         <Route path= "profile" component = {UserProfile} />
         {/* Dashboard Route */}
@@ -67,6 +72,7 @@ Meteor.startup( () => {
 
         <Route path="*" component={ NotFound } />
       </Route>
+
     </Router>,
     document.getElementById( 'render-target' )
   );
