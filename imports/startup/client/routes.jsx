@@ -14,6 +14,7 @@ import LogWorkout from '../../ui/pages/LogWorkout.jsx';
 import CreateWorkout from '../../ui/pages/CreateWorkout.jsx';
 import BasePage from '../../ui/pages/BasePage.jsx';
 import Dashboard from '../../ui/pages/Dashboard.jsx';
+import UserProfile from '../../ui/pages/UserProfile.jsx';
 
 
 
@@ -53,13 +54,14 @@ Meteor.startup( () => {
         <Route path="users" onChange={ redirectIfSignedIn } onEnter={ redirectIfSignedIn }>
           <Route path="login" component={LoginPage}/>
           <Route path="signup" component={SignUpPage}/>
+          
         </Route>
         {/* Home Page, Log Workout, and Create Workout Routes */}
         <Route path="workout/log" component={LogWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
         <Route path="workout/create" component={CreateWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
 
         <Route path="home" component={BasePage}/>
-
+        <Route path= "profile" component = {UserProfile} />
         {/* Dashboard Route */}
         <Route path="dashboard" component={Dashboard} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
 
