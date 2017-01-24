@@ -33,7 +33,7 @@ var DashboardNav = React.createClass ({
           <BottomNavigationItem
             label="Log Workout"
             icon={logIcon}
-            onTouchTap={this._goToCreateWorkout}
+            onTouchTap={this._goToLogWorkout}
           />
         </BottomNavigation>
       </Paper>
