@@ -225,10 +225,15 @@ class CreateWorkout extends Component {
 
 
   _uploadRoutine(event, index, value){
-    console.log(this.state)
+    // console.log(this.state)
 
     // Push to Database
     Meteor.call('addRoutine', this.state);
+
+    // Move to the Dashboard
+    browserHistory.push({ 
+      pathname: '/dashboard'
+    });
 
   }
 
