@@ -30,11 +30,20 @@ class SelectWorkout extends Component {
 
     // Get Routine Id
     Meteor.call('getCurrentRoutine', function(err, res){
-      // Get Workouts via Current Routine Id
-      Meteor.call('getWorkoutOptions', res, function(err, res){
-        // Collect all Workouts (Name + Id)
-        this.setState({workouts: res});
-      }.bind(this));
+
+      // If no Routine is found, then take the user to the Create Page instead of moving on
+      if(res == ''){
+        browserHistory.push({ 
+          pathname: '/workout/create'
+        });
+      }
+      else{
+        // Get Workouts via Current Routine Id
+        Meteor.call('getWorkoutOptions', res, function(err, res){
+          // Collect all Workouts (Name + Id)
+          this.setState({workouts: res});
+        }.bind(this));
+      }
 
     }.bind(this));
     
