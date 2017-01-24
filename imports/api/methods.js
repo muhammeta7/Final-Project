@@ -83,8 +83,9 @@ Meteor.methods({
   getCurrentRoutine() {
     var currentUser = UserProfile.find({ user_id: Meteor.userId() }).fetch();
     var routine_id = currentUser[0].currentRoutine;
-    var routineName = Routine.find({ _id: routine_id }).fetch().routineName;
-    return { routine_id: routine_id, routineName: routineName };
+    var routineName = Routine.find({ _id: routine_id }).fetch();
+    return { routine_id: routine_id, routineName: routineName[0].routineName };
+
   },
 
   // Accepts a routineID

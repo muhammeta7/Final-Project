@@ -22,7 +22,7 @@ class LogWorkout extends Component {
 
     // Sample Data
     this.state = {
-      routineName: "[Routine Name]",
+      routineName: "",
       workoutName: "",
       workoutId: "",
       exercises: [],
@@ -65,14 +65,18 @@ class LogWorkout extends Component {
       });
     }
     else{
+
       // Collect the Exercises from the "/workout/select" route
       let workoutObj = JSON.parse(this.props.location.query.workoutObj);
       let exercisesNew = workoutObj.exercises;
 
-      // Update the states
+      // Update the states for workout
       this.setState({exercises: exercisesNew});
       this.setState({workoutName: workoutObj.workoutName});
       this.setState({workoutId: workoutObj._id});
+
+      // Collect the Routine Name and update state
+      this.setState({routineName: this.props.location.query.routineName});
     }
 
   }
