@@ -22,7 +22,7 @@ class SelectWorkout extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {workouts: []}
+    this.state = {workouts: [], routineName: ''}
   }
 
 
@@ -31,20 +31,17 @@ class SelectWorkout extends Component {
     // Get Routine Id
     Meteor.call('getCurrentRoutine', function(err, res){
 
-      // If no Routine is found, then take the user to the Create Page instead of moving on
-      if(res == ''){
-        browserHistory.push({ 
-          pathname: '/workout/create'
-        });
-      }
-      else{
-        // Get Workouts via Current Routine Id
-        Meteor.call('getWorkoutOptions', res, function(err, res){
-          // Collect all Workouts (Name + Id)
-          this.setState({workouts: res});
-        }.bind(this));
-      }
+      // Collect Routine Name
+      this.setState({routineName: res.routineName})
 
+      // Get Workouts via Current Routine Id
+      Meteor.call('getWorkoutOptions', res.routine_id, function(err, res){
+
+        // Collect all Workouts (Name + Id)
+        this.setState({workouts: res});
+
+      }.bind(this));
+      
     }.bind(this));
     
   }
@@ -62,7 +59,7 @@ class SelectWorkout extends Component {
     // Change path to log page and pass (stringified) data to the log page
     browserHistory.push({ 
       pathname: '/workout/log',
-      query: {workoutObj: JSON.stringify(workoutObj) }
+      query: {workoutObj: JSON.stringify(workoutObj), routineName: this.state.routineName}
     }); 
 
   }
