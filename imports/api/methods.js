@@ -82,7 +82,9 @@ Meteor.methods({
   // Returns the id for the user's current routine, so that you can easily then call getWorkoutOptions
   getCurrentRoutine() {
     var currentUser = UserProfile.find({ user_id: Meteor.userId() }).fetch();
-    return currentUser[0].currentRoutine;
+    var routine_id = currentUser[0].currentRoutine;
+    var routineName = Routine.find({ _id: routine_id }).fetch().routineName;
+    return { routine_id: routine_id, routineName: routineName };
   },
 
   // Accepts a routineID
