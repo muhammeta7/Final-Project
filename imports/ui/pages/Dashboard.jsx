@@ -13,8 +13,8 @@ class Dashboard extends Component {
   render() {
     return (
     <div>
-      <ProgressGraph />
       <DashboardNav />
+      <ProgressGraph />
     </div>
     );
   }

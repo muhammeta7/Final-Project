@@ -6,6 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
 import setSnackBar from '../../actions/snackbar.js';
 import Store from '../../reducers/index';
+import style from '../../../client/styles.js';
 
 export default class SignUpPage extends Component {
   constructor(props){
@@ -35,7 +36,7 @@ export default class SignUpPage extends Component {
     }
 
     return (
-      <div className="row-fluid">
+      <div className="row-fluid" style={style.signupStyle}>
         <div className="col-xs-12 col-lg-6 col-lg-offset-3">
           <h1>Sign Up</h1>
         </div>

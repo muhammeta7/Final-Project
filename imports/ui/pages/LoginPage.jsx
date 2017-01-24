@@ -4,7 +4,9 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
 import setSnackBar from '../../actions/snackbar.js';
-import Store from '../../reducers/index'
+import Store from '../../reducers/index';
+import style from '../../../client/styles.js';
+
 
 export default class LoginPage extends Component {
   constructor(props){
@@ -33,9 +35,9 @@ export default class LoginPage extends Component {
     }
 
     return (
-      <div className="row-fluid">
+      <div className="row-fluid" style={style.loginStyle}>
         <div className="col-xs-12 col-lg-6 col-lg-offset-3">
-          <h1>Login</h1>
+          <h1>Login Page</h1>
         </div>
         <form name="loginForm" id="login-form" className="col-xs-12 col-lg-6 col-lg-offset-3">
           <TextField

@@ -30,9 +30,13 @@ var NavBar = React.createClass({
         zDepth={1}
         style={{
           position: 'fixed', top: 0,
+          backgroundColor: '#8BC34A' 
+        }}
+        titleStyle = {{
           textAlign: 'center',
           fontFamily: 'Raleway',
-          backgroundColor: '#8BC34A' 
+          fontSize: 40,
+          padding: 10
         }}
       />
 
