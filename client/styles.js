@@ -5,6 +5,8 @@ module.exports = {
   },
   signupStyle: {
     backgroundColor: "white"
+  },
+  headerStyle: {
+    paddingTop: 20
   }
-
 }

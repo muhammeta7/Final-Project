@@ -37,7 +37,7 @@ export default class LoginPage extends Component {
     return (
       <div className="row-fluid" style={style.loginStyle}>
         <div className="col-xs-12 col-lg-6 col-lg-offset-3">
-          <h1>Login Page</h1>
+          <h1 style={style.headerStyle}>Login Page</h1>
         </div>
         <form name="loginForm" id="login-form" className="col-xs-12 col-lg-6 col-lg-offset-3">
           <TextField
