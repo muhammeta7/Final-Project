@@ -1,17 +1,29 @@
 import { Meteor } from 'meteor/meteor';
-// Do I need to import each collection name individually?
 
 Meteor.methods({
+
+  // Initializes a UserProfile when a user signs up
   addUser() {
     UserProfile.insert({
       user_id: Meteor.user()._id,
       routines: [],
       currentRoutine: '',
-      displayName: '',
-      lastWorkoutLog: ''
+      age: '',
+      weight: '',
+      height: ''
     }, function(err, res) {
       if (err) {throw err}
     })
+  },
+
+  // Accepts an object with information i.e.
+  // { age: 50, weight: 500, height: 70, currentRoutine: 34ASJ123SODJS824 }
+  updateUser(data) {
+    UserProfile.update({ user_id: Meteor.userId() }, 
+      { age: data.age,
+        weight: data.weight,
+        height: data.height
+        currentRoutine: data.currentRoutine })
   },
 
   // Accepts a routine object, i.e.
