@@ -109,5 +109,11 @@ Meteor.methods({
   getWorkoutOptions(data) {
     var workouts = Workout.find({ routine_id: data }).fetch();
     return workouts;
+  },
+
+  // Accepts a workout ID
+  // Returns an object of the last log of the user's requested workout
+  getPreviousWorkoutLog(workout) {
+    return LoggedWorkout.findOne({ user_id: Meteor.userId(), workout_id: workout }, { sort: { date: -1 } }).log;
   }
 })

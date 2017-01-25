@@ -1,6 +1,7 @@
 import React from 'react';
 import { IndexLink, Link, browserHistory } from 'react-router';
 import AppBar from 'material-ui/AppBar';
+import FlatButton from 'material-ui/FlatButton';
 import Store from '../../reducers/index.js';
 
 var NavBar = React.createClass({
@@ -18,19 +19,29 @@ var NavBar = React.createClass({
     console.log("Drawer opening!");
   },
 
+  _handleLogout(e){
+    e.preventDefault();
+    Meteor.logout(function(err){
+      if(!err){
+        browserHistory.push('/users/login');
+        Store.dispatch(setSnackBar(true, 'You\'ve been signed out successfully.', '#4CAF50'));
+      }
+    });
+  },
+
+
   render: function() {
     return (
       
       <AppBar
-        className="navbar"
-        title="Workout App Jawn"
-        iconClassNameRight="logo"
-        onTitleTouchTap={this._goToIndex}
-        onLeftIconButtonTouchTap={this._toggleAppDrawer}
-        zDepth={1}
-        style={{
+        className = "navbar"
+        title = "Workout App Jawn"
+        iconClassNameRight = "logo"
+        onLeftIconButtonTouchTap = {this._toggleAppDrawer}
+        zDepth = {1}
+        style = {{
           position: 'fixed', top: 0,
-          backgroundColor: '#8BC34A' 
+          backgroundColor: '#263238' 
         }}
         titleStyle = {{
           textAlign: 'center',
@@ -38,6 +49,8 @@ var NavBar = React.createClass({
           fontSize: 40,
           padding: 10
         }}
+        iconElementRight = {<FlatButton label="Log Out" />}
+        onRightIconButtonTouchTap = {this._handleLogout}
       />
 
     ); 
