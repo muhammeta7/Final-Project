@@ -12,11 +12,14 @@ import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
 // Import Material-ui 
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
+import Snackbar from 'material-ui/Snackbar';
   
 // Import Components
 import AddRoutineName from '../components/AddRoutineName';
 import AddWorkoutPrimary from '../components/AddWorkoutPrimary';
 import AddWorkoutSecondary from '../components/AddWorkoutSecondary';
+import Store from '../../reducers/index';
+import setSnackBar from '../../actions/snackbar.js';
 
 
 
@@ -228,11 +231,20 @@ class CreateWorkout extends Component {
     // console.log(this.state)
 
     // Push to Database
-    Meteor.call('addRoutine', this.state);
+    Meteor.call('addRoutine', this.state, function(err, res){
 
-    // Move to the Dashboard
-    browserHistory.push({ 
-      pathname: '/dashboard'
+      if(err){
+        Store.dispatch(setSnackBar(true, 'Error. Routine could not be uploaded.', '#F44336'));
+      }
+      else{
+        // Notify User that they submitted successfully
+        Store.dispatch(setSnackBar(true, 'Routine created successfully.', '#4CAF50'));
+        // Move to the Dashboard
+        browserHistory.push({ 
+          pathname: '/dashboard'
+        });  
+      }
+
     });
 
   }

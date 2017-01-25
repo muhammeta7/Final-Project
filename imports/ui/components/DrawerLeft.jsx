@@ -50,13 +50,14 @@ class DrawerLeft extends React.Component {
           onRequestChange={(open) => this._handleClose() }
           disableSwipeToOpen={true}
         >
-          <Link to="/dashboard" className="menu-link"><MenuItem onTouchTap={this._handleClose}>Dashboard</MenuItem></Link>
           
           { Meteor.user() != null ? (
               [ 
-              <Link key="logout" to="#" className="menu-link"><MenuItem onTouchTap={this._handleLogout}>Sign Out</MenuItem></Link>, 
               <Link to="/workout/create" className="menu-link"><MenuItem onTouchTap={this._handleClose}>Create Workout</MenuItem></Link>,
-              <Link to="/workout/log" className="menu-link"><MenuItem onTouchTap={this._handleClose}>Log Workout</MenuItem></Link>
+              <Link to="/dashboard" className="menu-link"><MenuItem onTouchTap={this._handleClose}>Dashboard</MenuItem></Link>, 
+              <Link to="/workout/log" className="menu-link"><MenuItem onTouchTap={this._handleClose}>Log Workout</MenuItem></Link>,
+              <Link key="logout" to="#" className="menu-link"><MenuItem onTouchTap={this._handleLogout}>Sign Out</MenuItem></Link>,
+              <Link to="/" className="menu-link"><MenuItem onTouchTap={this._handleClose}>User Profile</MenuItem></Link>
               ]
             ) : (
               [
