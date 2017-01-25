@@ -75,8 +75,17 @@ Meteor.methods({
 
   // Returns an array of the user's routine IDs, so that you can for example let them change their current routine
   getRoutines() {
-    var currentUser = UserProfile.find({ user_id: Meteor.userId() }).fetch();
+    var currentUser = UserProfile.findOne({ user_id: Meteor.userId() });
     return currentUser.routines;
+  },
+
+  // Accepts an array of routine IDs, gets an array of routine names
+  getRoutineNames(routines) {
+    var routineNames = [];
+    for (var i=0; i<routines.length; i++) {
+      routineNames.push(Routine.findOne({ _id: routines[i] }).routineName);
+    }
+    return routineNames;
   },
 
   // Returns the id for the user's current routine, so that you can easily then call getWorkoutOptions
@@ -85,7 +94,6 @@ Meteor.methods({
     var routine_id = currentUser[0].currentRoutine;
     var routineName = Routine.find({ _id: routine_id }).fetch();
     return { routine_id: routine_id, routineName: routineName[0].routineName };
-
   },
 
   // Accepts a routineID
