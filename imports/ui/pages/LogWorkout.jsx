@@ -142,6 +142,11 @@ class LogWorkout extends Component {
     // Push to Database
     Meteor.call('logWorkout', data);
 
+    // Move to the Dashboard
+    browserHistory.push({ 
+      pathname: '/dashboard'
+    });
+
   }
 
 
