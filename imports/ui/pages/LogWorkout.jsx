@@ -8,10 +8,14 @@ import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
 
 // Import Material-ui 
 import RaisedButton from 'material-ui/RaisedButton';
+import Snackbar from 'material-ui/Snackbar';
 
 // Import Components
 import LogWorkoutDate from '../components/LogWorkoutDate';
 import LogExercise from '../components/LogExercise';
+import Store from '../../reducers/index';
+import setSnackBar from '../../actions/snackbar.js';
+
 
 
 // Page Component
@@ -77,6 +81,12 @@ class LogWorkout extends Component {
 
       // Collect the Routine Name and update state
       this.setState({routineName: this.props.location.query.routineName});
+
+      // Pass back the Workout Id so I can get
+      // Meteor.call('getPreviousWorkoutLog', workoutObj._id, function(err, res){
+      //   console.log(res)
+      // });
+
     }
 
   }
@@ -140,12 +150,23 @@ class LogWorkout extends Component {
     }
 
     // Push to Database
-    Meteor.call('logWorkout', data);
+    Meteor.call('logWorkout', data, function(err, res){
 
-    // Move to the Dashboard
-    browserHistory.push({ 
-      pathname: '/dashboard'
+      if(err){
+        Store.dispatch(setSnackBar(true, 'Error. Workout could not be logged!', '#F44336'));
+      }
+      else{
+        // Notify User that they submitted successfully
+        Store.dispatch(setSnackBar(true, 'Workout logged successfully.', '#4CAF50'));
+        // Move to the Dashboard
+        browserHistory.push({ 
+          pathname: '/dashboard'
+        });  
+      }
+
     });
+
+
 
   }
 
