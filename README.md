@@ -20,9 +20,9 @@ Please try out the deployed app in Heroku, found [here](http://STILLNEEDSANAME.h
 
 [Tom Thompson](https://github.com/tomtom28)
 
-[Muhammet Aydin](https://github.com/darthvader1118)
+[Muhammet Aydin](https://github.com/muhammeta7)
 
-[Krishna Yellayi](https://github.com/muhammeta7)
+[Krishna Yellayi](https://github.com/darthvader1118)
 
 
 
