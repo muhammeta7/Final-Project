@@ -59,8 +59,6 @@ class LogExercise extends Component {
               {/* ++++++++++ ITERATE OVER REPS ++++++++++ */}
               {this.props._repArray.map(function(search, i) {
 
-//  _prevWorkoutRepWeight={this.props._prevWorkoutWeightsArray[i]}
-
                 return (
                   <LogRepWeight 
                     key={"routine-" + this.props._routineId + "-workout-" + this.props.workoutId + "-exercise-" + this.props._exerciseId + "-rep-" + i}
@@ -70,7 +68,7 @@ class LogExercise extends Component {
                     _repNumber={i}
                     _repCount={search}
 
-                   
+                    _prevWorkoutRepWeight={this.props._prevWorkoutWeightsArray[i]}
 
                     _editCurrentWorkoutRepWeight={this.props._editCurrentWorkoutRepWeight}
                   />
