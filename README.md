@@ -1,4 +1,4 @@
-# :muscle: My Swoleness Pal :memo:
+# :memo: My Swoleness Pal :muscle: 
 
 
 
@@ -7,7 +7,9 @@ Gains, brah!
 
 This is a web app that allows users to create custom workout routines and track their progress.
 
-Create an account, make a routine, and log your progress during each workout. Using the Meteor framework for NodeJS, the application can work both on your computer as well as mobile device. The ability to move seemlessly between computer to mobile, is what make our app ideal for those looking to get in shape. Spare your thumbs; navigate to our webpage from your home computer to make a routine. And when you're ready to hit the gym, use the mobile app to log your progress between each set.
+Create an account, make a routine, and log your progress during each workout. Using the Meteor framework for NodeJS, the application can work both on your computer as well as mobile device. 
+
+The ability to move seemlessly between computer to mobile, is what makes our app ideal for those looking to get in shape. Spare your thumbs by navigating to our webpage on your home computer to make a routine. And when you're ready to hit the gym, use the mobile app to log your progress between each set.
 
 Please try out the deployed app in Heroku, found [here](http://STILLNEEDSANAME.herokuapp.com).
 
