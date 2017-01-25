@@ -8,7 +8,7 @@ import { IndexLink, Link, browserHistory } from 'react-router';
 
 const createIcon = <FontIcon className="material-icons">queue</FontIcon>;
 const logIcon = <FontIcon className="material-icons">directions_run</FontIcon>;
-
+const profileIcon = <FontIcon className="material-icons">account_circle</FontIcon>;
 
 var DashboardNav = React.createClass ({
 
@@ -18,6 +18,10 @@ var DashboardNav = React.createClass ({
 
   _goToLogWorkout: function() {
     browserHistory.push('/workout/log');
+  },
+
+  _goToUserProfile: function() {
+    browserHistory.push('/');
   },
   
   render: function() {
@@ -34,6 +38,11 @@ var DashboardNav = React.createClass ({
             label="Log Workout"
             icon={logIcon}
             onTouchTap={this._goToLogWorkout}
+          />
+          <BottomNavigationItem
+            label="User Profile"
+            icon={profileIcon}
+            onTouchTap={this._goToUserProfile}
           />
         </BottomNavigation>
       </Paper>
