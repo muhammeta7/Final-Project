@@ -38,7 +38,9 @@ class UserProfile extends Component{
 		return Routine.find({user_id: Meteor.userId()}).fetch()
 	}
 
-	handleChange = (event,index,value) => this.setState({value: value});
+	handleChange(event,index,value){
+		this.setState({value: value});
+	} 
 
 	componentWillMount(){
 
