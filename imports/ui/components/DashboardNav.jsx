@@ -18,11 +18,11 @@ var DashboardNav = React.createClass ({
   },
 
   _goToLogWorkout: function() {
-    browserHistory.push('/workout/log');
+    browserHistory.push('/workout/select');
   },
 
   _goToUserProfile: function() {
-    browserHistory.push('/');
+    browserHistory.push('/profile');
   },
   
   render: function() {
