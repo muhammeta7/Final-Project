@@ -36,7 +36,6 @@ var NavBar = React.createClass({
       <AppBar
         className = "navbar"
         title = "My Swoleness Pal"
-        iconClassNameRight = "logo"
         onLeftIconButtonTouchTap = {this._toggleAppDrawer}
         zDepth = {1}
         style = {{
