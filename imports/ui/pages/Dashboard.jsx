@@ -2,7 +2,7 @@
 import React from 'react';
 import { Component } from 'react';
 import {render} from 'react-dom';
-import {Chart} from 'react-google-charts';
+//import {Chart} from 'react-google-charts';
 
 // Import Components
 import DashboardNav from '../components/DashboardNav';
