@@ -6,8 +6,8 @@ import Store from '../../reducers/index.js';
 
 var NavBar = React.createClass({
 
-  _goToIndex: function(){
-    browserHistory.push('/dashboard');
+  _goToHome: function(){
+    browserHistory.push('/home');
   },
 
   _toggleAppDrawer: function(){
@@ -35,8 +35,7 @@ var NavBar = React.createClass({
       
       <AppBar
         className = "navbar"
-        title = "Workout App Jawn"
-        iconClassNameRight = "logo"
+        title = "My Swoleness Pal"
         onLeftIconButtonTouchTap = {this._toggleAppDrawer}
         zDepth = {1}
         style = {{
@@ -49,8 +48,8 @@ var NavBar = React.createClass({
           fontSize: 40,
           padding: 10
         }}
-        iconElementRight = {<FlatButton label="Log Out" />}
-        onRightIconButtonTouchTap = {this._handleLogout}
+        iconElementRight = { Meteor.user() != null ? <FlatButton label="Log Out" /> : <FlatButton label="Welcome" />}
+        onRightIconButtonTouchTap = {this._handleLogout} 
       />
 
     ); 

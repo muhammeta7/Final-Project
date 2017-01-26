@@ -8,5 +8,9 @@ module.exports = {
   },
   headerStyle: {
     paddingTop: 20
+  }, 
+  dashNavStyle: {
+    paddingTop: 30,
+    paddingBottom: 20
   }
 }

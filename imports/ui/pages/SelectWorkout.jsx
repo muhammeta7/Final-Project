@@ -54,6 +54,7 @@ class SelectWorkout extends Component {
     // Prep Exercises Array for next page (i.e add empty array into each excercise object)
     for(var i=0; i < workoutObj.exercises.length; i++){
       workoutObj.exercises[i]['currentWorkoutWeights'] = [];
+      workoutObj.exercises[i]['prevWorkoutWeights'] = [];
     }
 
     // Change path to log page and pass (stringified) data to the log page
