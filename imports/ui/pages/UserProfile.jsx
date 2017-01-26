@@ -30,7 +30,7 @@ class UserProfile extends Component{
 
 	constructor(props){
     	super(props);
-    	this.state = {routine_ids : [], routines: [], value: ""};
+    	this.state = {routine_ids : [], routines: [], value: "", currentRoutineName: ""};
 	}
 
 
@@ -39,7 +39,12 @@ class UserProfile extends Component{
 	}
 
 	handleChange(event,index,value){
-		this.setState({value: value});
+
+		console.log(event, index, value)		
+		Meteor.call("getRoutineName", value, (err, res) => {
+			this.setState({value: value, currentRoutineName: res.routineName});	
+		});		
+
 	} 
 
 	componentWillMount(){
@@ -47,26 +52,33 @@ class UserProfile extends Component{
 		Meteor.call("getRoutines", (err,res) => {
 			if(err) throw err;
 
-			this.setState({routine_ids: res})
+			this.setState({routines: res})
 			console.log(res)
+			// Meteor.call("getRoutineNames", res, (err,res2) => {
 
-			Meteor.call("getRoutineNames", res, (err,res2) => {
-
-				this.setState({routines: res2})
-				console.log(res2)
-			})
+			// 	this.setState({routines: res2})
+			// 	console.log(this.state.value)
+			// })
 		})
-		
 
+
+
+	}
+	componentDidMount(){
+
+		Meteor.call("getCurrentRoutine", (err,res) => {
+			console.log("routine: " + res.routineName)
+			this.setState({value: res.routine_id, currentRoutineName: res.routineName})
+			console.log("value " + this.state.value)
+
+		})
 	}
 	renderRoutines(){
 		let routines = this.state.routines;
-		let routine_id = this.state.routine_ids;
 
-		return routines.map((routine,routine_id) => {
-
+		return routines.map((routine) => {			
 			return (
-				<MenuItem key={routine_id} value={routine_id} primaryText={routine}/>
+				<MenuItem key={routine._id} value={routine._id} primaryText={routine.routineName}/>
 			);
 		});
 	}
@@ -88,7 +100,7 @@ class UserProfile extends Component{
 				    </CardText>
 				    <Row>
 				    	<center>
-				    		<DropDownMenu value={this.state.value} onChange={this.handleChange}>
+				    		<DropDownMenu value={this.state.value} onChange={this.handleChange.bind(this)}>
 				    			{this.renderRoutines()}
 				    		</DropDownMenu>
 				    	</center>
@@ -107,7 +119,9 @@ class UserProfile extends Component{
 			<div>
 				<Card>
 					<CardTitle title="Your current routine"/>
-
+					<CardText>
+				      {this.state.currentRoutineName}
+				    </CardText>
 				</Card>
 			</div>
 		</Container>
