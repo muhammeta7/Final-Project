@@ -22,7 +22,7 @@ Meteor.methods({
     UserProfile.update({ user_id: Meteor.userId() }, 
       { age: data.age,
         weight: data.weight,
-        height: data.height
+        height: data.height,
         currentRoutine: data.currentRoutine })
   },
 
@@ -127,5 +127,11 @@ Meteor.methods({
   // Returns an object of the last log of the user's requested workout
   getPreviousWorkoutLog(workout) {
     return LoggedWorkout.findOne({ user_id: Meteor.userId(), workout_id: workout }, { sort: { date: -1 } }).log;
+  },
+
+  // Accepts a workout ID
+  // Returns an array of objects
+  getWorkoutLogs(workout) {
+    return LoggedWorkout.find({ user_id: Meteor.userId(), workout_id: workout }, { sort: { date: 1 } }).fetch();
   }
 })
