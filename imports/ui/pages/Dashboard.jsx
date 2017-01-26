@@ -5,8 +5,8 @@ import {render} from 'react-dom';
 import {Chart} from 'react-google-charts';
 
 // Import Components
-import ProgressGraph from '../components/ProgressionGraph';
 import DashboardNav from '../components/DashboardNav';
+import ProgressChart from '../components/ProgressChart';
 
 // Page Component
 class Dashboard extends Component {
@@ -14,7 +14,7 @@ class Dashboard extends Component {
     return (
     <div>
       <DashboardNav />
-      <ProgressGraph />
+      <ProgressChart />
     </div>
     );
   }
