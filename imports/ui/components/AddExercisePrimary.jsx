@@ -46,6 +46,7 @@ class AddExercisePrimary extends Component {
             <Container>
               <TextField
                 onChange={this._handleChange.bind(this)}
+                value={this.props._exerciseName}
                 floatingLabelText="Excercise Name"
                 hintText="Bench Press"
                 fullWidth={true}
@@ -79,6 +80,7 @@ class AddExercisePrimary extends Component {
                       _addAnotherRep={this.props._addAnotherRep.bind(this)}
                       _removeLastRep={this.props._removeLastRep.bind(this)}
                       _editNumberOfReps={this.props._editNumberOfReps.bind(this)}
+                      _numberOfReps={search}
                     />
                   </div>
                 );
@@ -95,6 +97,7 @@ class AddExercisePrimary extends Component {
                       _iOfRep={i}
 
                       _editNumberOfReps={this.props._editNumberOfReps.bind(this)}
+                      _numberOfReps={search}
                     />
                   </div>
                 );
