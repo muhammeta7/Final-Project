@@ -11,7 +11,7 @@ Create an account, make a routine, and log your progress during each workout. Us
 
 The ability to move seemlessly between computer to mobile, is what makes our app ideal for those looking to get in shape. Spare your thumbs by navigating to our webpage on your home computer to make a routine. And when you're ready to hit the gym, use the mobile app to log your progress between each set.
 
-Please try out the deployed app in Heroku, found [here](http://STILLNEEDSANAME.herokuapp.com).
+Please try out the deployed app in Heroku, found [here](https://my-swoleness-pal.herokuapp.com).
 
 
 
