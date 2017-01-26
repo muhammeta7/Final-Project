@@ -71,6 +71,7 @@ class LogExercise extends Component {
                     _prevWorkoutRepWeight={this.props._prevWorkoutWeightsArray[i]}
 
                     _editCurrentWorkoutRepWeight={this.props._editCurrentWorkoutRepWeight}
+                    _currentWorkoutRepWeight={this.props._currentWorkoutWeights[i]}
                   />
                 );
 
