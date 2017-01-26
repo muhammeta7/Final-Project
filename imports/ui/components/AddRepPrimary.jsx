@@ -47,6 +47,7 @@ class AddRepPrimary extends Component {
           title={
             <TextField
               onChange={this._handleChange.bind(this)}
+              value={this.props._numberOfReps}
               floatingLabelText={"Reps for Set " + (this.props._iOfRep + 1)}
               type="number"
               min="0"
