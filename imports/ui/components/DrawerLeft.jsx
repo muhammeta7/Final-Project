@@ -4,6 +4,7 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Store from '../../reducers/index.js';
 import setSnackBar from '../../actions/snackbar.js';
+import style from '../../../client/styles.js';
 
 class DrawerLeft extends React.Component {
 
@@ -44,25 +45,26 @@ class DrawerLeft extends React.Component {
     return (
       <div>
         <Drawer
-          docked={false}
-          width={200}
-          open={this._handleOpen()}
-          onRequestChange={(open) => this._handleClose() }
-          disableSwipeToOpen={true}
+          docked  = {false}
+          width = {200}
+          open = {this._handleOpen()}
+          onRequestChange = {(open) => this._handleClose() }
+          disableSwipeToOpen = {true}
+          containerStyle = {style.drawerStyle}
         >
           
           { Meteor.user() != null ? (
               [ 
-              <Link to="/workout/create" className="menu-link"><MenuItem onTouchTap={this._handleClose}>Create Workout</MenuItem></Link>,
-              <Link to="/dashboard" className="menu-link"><MenuItem onTouchTap={this._handleClose}>Dashboard</MenuItem></Link>, 
-              <Link to="/workout/log" className="menu-link"><MenuItem onTouchTap={this._handleClose}>Log Workout</MenuItem></Link>,
-              <Link key="logout" to="#" className="menu-link"><MenuItem onTouchTap={this._handleLogout}>Sign Out</MenuItem></Link>,
-              <Link to="/" className="menu-link"><MenuItem onTouchTap={this._handleClose}>User Profile</MenuItem></Link>
+              <Link to="/workout/create" className="menu-link" ><MenuItem style={style.linkStyle} onTouchTap={this._handleClose}>Create Workout</MenuItem></Link>,
+              <Link to="/dashboard" className="menu-link" ><MenuItem style={style.linkStyle} onTouchTap={this._handleClose}>Dashboard</MenuItem></Link>, 
+              <Link to="/workout/log" className="menu-link" ><MenuItem style={style.linkStyle} onTouchTap={this._handleClose}>Log Workout</MenuItem></Link>,
+              <Link key="logout" to="#" className="menu-link" ><MenuItem style={style.linkStyle} onTouchTap={this._handleLogout}>Sign Out</MenuItem></Link>,
+              <Link to="/profile" className="menu-link" ><MenuItem style={style.linkStyle} onTouchTap={this._handleClose}>User Profile</MenuItem></Link>
               ]
             ) : (
               [
-                <Link key="login" to="/users/login" className="menu-link"><MenuItem onTouchTap={this._handleClose}>Login</MenuItem></Link>,
-                <Link key="signup" to="/users/signup" className="menu-link"><MenuItem onTouchTap={this._handleClose}>Sign Up</MenuItem></Link>
+                <Link key="login" to="/users/login" className="menu-link" ><MenuItem style={style.linkStyle} onTouchTap={this._handleClose}>Login</MenuItem></Link>,
+                <Link key="signup" to="/users/signup" className="menu-link" ><MenuItem style={style.linkStyle} onTouchTap={this._handleClose}>Sign Up</MenuItem></Link>
               ]
             )
           }
