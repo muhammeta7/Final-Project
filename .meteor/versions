@@ -68,7 +68,6 @@ observe-sequence@1.0.14
 ordered-dict@1.0.9
 poetic:materialize-scss@1.97.6_1
 promise@0.8.8
-rafaelhdr:google-charts@0.0.8
 random@1.0.10
 rate-limit@1.0.6
 reactive-dict@1.1.8
