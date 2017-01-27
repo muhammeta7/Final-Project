@@ -20,6 +20,11 @@ module.exports = {
     color: "white",
     fontFamily: 'Raleway',
     padding: 10
+  }, 
+  homepageStyle: {
+    fontFamily: 'Raleway',
+    padding: 10,
+    fontSize: 20
   }
 
 }
