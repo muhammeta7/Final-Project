@@ -110,6 +110,7 @@ Meteor.methods({
 
   // Accepts a routineID
   setCurrentRoutine(data) {
+    console.log(data);
     UserProfile.update(
       { user_id: Meteor.userId() },
       { currentRoutine: data }

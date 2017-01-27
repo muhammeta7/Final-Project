@@ -26,9 +26,6 @@ import style from '../../../client/styles.js';
 
 class UserProfile extends Component{
 
-
-
-
 	constructor(props){
     	super(props);
     	this.state = {routine_ids : [], routines: [], value: "", currentRoutineName: ""};
@@ -45,7 +42,12 @@ class UserProfile extends Component{
 		Meteor.call("getRoutineName", value, (err, res) => {
 			this.setState({value: value, currentRoutineName: res});	
 			console.log(this.state)
-		});		
+
+		});
+		Meteor.call("setCurrentRoutine", value, (err,res) =>{
+			console.log(value);
+			console.log("updated current routine");
+		})		
 
 	} 
 
@@ -67,8 +69,6 @@ class UserProfile extends Component{
 			console.log(res)
 			this.setState({routines: res})
 		})
-
-
 	}
 	componentDidMount(){
 
@@ -102,7 +102,7 @@ class UserProfile extends Component{
 				<Card>
 					<CardTitle title="Welcome Back" subtitle="Your looking awesome!" />
 					<CardText>
-				      Lets Take a look at your progress over the past.
+				      Lets Take a look at the current routine you are on.
 				    </CardText>
 				    <Row>
 				    	<center>
@@ -133,9 +133,5 @@ class UserProfile extends Component{
 		</Container>
 		)
 	}
-
-
-
-
 };
 export default UserProfile;
