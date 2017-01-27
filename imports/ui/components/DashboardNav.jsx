@@ -21,7 +21,7 @@ var DashboardNav = React.createClass ({
   },
 
   _goToUserProfile: function() {
-    browserHistory.push('/');
+    browserHistory.push('/profile');
   },
   
   render: function() {
