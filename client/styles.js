@@ -22,9 +22,26 @@ module.exports = {
     padding: 10
   }, 
   homepageStyle: {
-    fontFamily: 'Raleway',
+    fontFamily: "Raleway",
     padding: 10,
     fontSize: 20
+  },
+  profileTitleStyle: {
+    textAlign: "center",
+    fontFamily: 'Raleway'
+  },
+  dropdownStyle: {
+    fontFamily: 'Raleway',
+    fontSize: 20,
+    padding: 10
+  },
+  profileNavStyle: {
+    paddingTop: 130
+  },
+  routineName: {
+    fontFamily: 'Raleway',
+    fontSize: 20,
+    textAlign: "center"
   }
 
 }

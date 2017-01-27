@@ -51,6 +51,17 @@ xxxxxxxx Add screenshots of completed app. xxxxxxxx
 ### Landing Page
 ![HomePage](/public/screenshots/homepage.png)
 
+### Create Routine
+![Create Workout](/public/screenshots/create.png)
+
+### Select Workout
+
+### Log Workout
+
+### User Profile
+![User Profile](/public/screenshots/profile.png)
+
+
 
 ## Download to Andriod
 The app can be compiled down to your Andriod device by following these steps:

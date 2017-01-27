@@ -2,27 +2,19 @@
 import React from 'react';
 import { Component } from 'react';
 
-// Import React Grid System
+// Import Material-UI components
 import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
-import {
-  Step,
-  Stepper,
-  StepLabel,
-} from 'material-ui/Stepper';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
-
-// Import Material-ui 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import TextField from 'material-ui/TextField';
 import {List, ListItem} from 'material-ui/List';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import Divider from 'material-ui/Divider';
-import DatePicker from 'material-ui/DatePicker';
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
+import Divider from 'material-ui/Divider';
 import style from '../../../client/styles.js';
+
+// Import Components
+import ProfileNav from '../components/ProfileNav';
 
 class UserProfile extends Component{
 
@@ -84,7 +76,7 @@ class UserProfile extends Component{
 
 		return routines.map((routine) => {			
 			return (
-				<MenuItem key={routine._id} value={routine._id} primaryText={routine.routineName}/>
+				<MenuItem style={style.dropdownStyle} key={routine._id} value={routine._id} primaryText={routine.routineName}/>
 			);
 		});
 	}
@@ -92,46 +84,46 @@ class UserProfile extends Component{
 
 	render (){
 
-		  const buttonStyle = {
-      		margin: '10px'
-    	}
-		
 		return (
+
 			<Container>
-			<div>
-				<Card>
-					<CardTitle title="Welcome Back" subtitle="Your looking awesome!" />
-					<CardText>
-				      Lets Take a look at the current routine you are on.
-				    </CardText>
+				
+				<div>
+					<Card>
+						
+						<CardTitle title="Welcome back, you're looking great. Now let's select a routine." style={style.profileTitleStyle} />
+						
 				    <Row>
 				    	<center>
-				    		<DropDownMenu value={this.state.value} onChange={this.handleChange.bind(this)}>
+				    		<DropDownMenu style={style.dropdownStyle} value={this.state.value} onChange={this.handleChange.bind(this)}>
 				    			{this.renderRoutines()}
 				    		</DropDownMenu>
 				    	</center>
 				    </Row>
-				    <Row>
-		                <center>
-		                  <Row>
-		                  	<RaisedButton style={buttonStyle} label="Dashboard" secondary={true} href = "dashboard"/>
-							<RaisedButton style={buttonStyle} label="Create Workout" primary={true} href = "workout/create"/>
-		                  </Row>
-		                </center>
-		            </Row>
-				    
-				</Card>
-			</div>
-			<div>
-				<Card>
-					<CardTitle title="Current info"/>
-					<CardText>
+
+				    <CardText>
+			        <ProfileNav />
+		        </CardText>
+			
+					</Card>
+				</div>
+
+				<div>
+					<Card>
+
+						<CardTitle title="Your Current Routine:"  style={style.profileTitleStyle} />
+						<CardText style={style.routineName}>
 				      {this.state.currentRoutineName}
 				    </CardText>
-				</Card>
-			</div>
-		</Container>
-		)
+
+					</Card>
+				</div>
+
+			</Container>
+
+		);
 	}
+	
 };
+
 export default UserProfile;

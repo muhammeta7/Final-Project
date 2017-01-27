@@ -31,7 +31,7 @@ var DashboardNav = React.createClass ({
       <Paper zDepth={5}>
         <BottomNavigation style={style.dashNavStyle}>
           <BottomNavigationItem
-            label="Create Workout"
+            label="Create Routine"
             icon={createIcon}
             onTouchTap={this._goToCreateWorkout}
           />
