@@ -8,5 +8,18 @@ module.exports = {
   },
   headerStyle: {
     paddingTop: 20
+  }, 
+  dashNavStyle: {
+    paddingTop: 30,
+    paddingBottom: 20
+  },
+  drawerStyle: {
+    backgroundImage: "url('img/background.jpg')"
+  },
+  linkStyle: {
+    color: "white",
+    fontFamily: 'Raleway',
+    padding: 10
   }
+
 }

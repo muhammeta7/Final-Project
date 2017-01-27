@@ -289,6 +289,7 @@ class CreateWorkout extends Component {
 
                         _addAnotherWorkout={this._addAnotherWorkout.bind(this)}
                         _editWorkoutName={this._editWorkoutName.bind(this)}
+                        _workoutName={this.state.workouts[i].workoutName}
 
                         _addAnotherExercise={this._addAnotherExercise.bind(this)}
                         _removeSelectedExercise={this._removeSelectedExercise.bind(this)}

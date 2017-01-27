@@ -14,6 +14,22 @@ class LogRepWeight extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      prevRepHint: ''
+    }
+
+  }
+
+  componentWillMount(){
+    // Show the word "weight" if no previous log was done yet
+    let prevRepWeight = this.props._prevWorkoutRepWeight;
+    if(prevRepWeight == undefined){
+      this.setState({prevRepHint: 'weight'});
+    }
+    else{
+      this.setState({prevRepHint: this.props._prevWorkoutRepWeight});
+    }
   }
 
   _handleChange(event, date){
@@ -42,10 +58,10 @@ class LogRepWeight extends Component {
 
   render(){
     return(
-// hintText={this.props._prevWorkoutRepWeight}
-      <Col sm={3} xs={4}>
+      <Col md={3} sm={4} xs={6}>
         <TextField
-          hintText="weight"
+          hintText={this.state.prevRepHint}
+          value={this.props._currentWorkoutRepWeight}
           type="number"
           min="0"
           floatingLabelText={"Set " + (this.props._repNumber + 1) + " (x" + this.props._repCount + this._writeFailure(this.props._repCount) + ")"}
