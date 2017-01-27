@@ -43,32 +43,37 @@ class UserProfile extends Component{
 
 		console.log(event, index, value)		
 		Meteor.call("getRoutineName", value, (err, res) => {
-			this.setState({value: value, currentRoutineName: res.routineName});	
+			this.setState({value: value, currentRoutineName: res});	
+			console.log(this.state)
 		});		
 
 	} 
 
 	componentWillMount(){
 
-		Meteor.call("getRoutines", (err,res) => {
-			if(err) throw err;
+		// Meteor.call("getRoutines", (err,res) => {
+		// 	if(err) throw err;
 
-			this.setState({routines: res})
+		// 	this.setState({routine_ids: res})
+		// 	console.log("should be array:" + res)
+		// 	Meteor.call("getRoutineNames", res, (err,res2) => {
+
+		// 		this.setState({routines: res2})
+		// 		console.log("names: " + res2);
+		// 		console.log(this.state.value)
+		// 	})
+		// })
+		Meteor.call("getRoutineObjects", (err,res) => {
 			console.log(res)
-			// Meteor.call("getRoutineNames", res, (err,res2) => {
-
-			// 	this.setState({routines: res2})
-			// 	console.log(this.state.value)
-			// })
+			this.setState({routines: res})
 		})
-
 
 
 	}
 	componentDidMount(){
 
 		Meteor.call("getCurrentRoutine", (err,res) => {
-			console.log("routine: " + res.routineName)
+			console.log("routine: " + res.routineNames)
 			this.setState({value: res.routine_id, currentRoutineName: res.routineName})
 			console.log("value " + this.state.value)
 
