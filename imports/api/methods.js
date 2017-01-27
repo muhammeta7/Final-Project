@@ -22,7 +22,7 @@ Meteor.methods({
     UserProfile.update({ user_id: Meteor.userId() }, 
       { age: data.age,
         weight: data.weight,
-        height: data.height
+        height: data.height,
         currentRoutine: data.currentRoutine })
   },
 
