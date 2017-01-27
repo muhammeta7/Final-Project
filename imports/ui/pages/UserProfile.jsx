@@ -4,6 +4,7 @@ import { Component } from 'react';
 
 // Import Material-UI components
 import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
+import { browserHistory } from 'react-router';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
 import {List, ListItem} from 'material-ui/List';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
@@ -13,14 +14,12 @@ import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 import style from '../../../client/styles.js';
 
-// Import Components
-import ProfileNav from '../components/ProfileNav';
 
 class UserProfile extends Component{
 
 	constructor(props){
-    	super(props);
-    	this.state = {routine_ids : [], routines: [], value: "", currentRoutineName: ""};
+    super(props);
+    this.state = {routine_ids : [], routines: [], value: "", currentRoutineName: ""};
 	}
 
 
@@ -40,7 +39,6 @@ class UserProfile extends Component{
 			console.log(value);
 			console.log("updated current routine");
 		})		
-
 	} 
 
 	componentWillMount(){
@@ -62,6 +60,7 @@ class UserProfile extends Component{
 			this.setState({routines: res})
 		})
 	}
+
 	componentDidMount(){
 
 		Meteor.call("getCurrentRoutine", (err,res) => {
@@ -71,6 +70,7 @@ class UserProfile extends Component{
 
 		})
 	}
+
 	renderRoutines(){
 		let routines = this.state.routines;
 
@@ -80,8 +80,12 @@ class UserProfile extends Component{
 			);
 		});
 	}
-	 
 
+	_goToCreateWorkout () {
+    browserHistory.push('/workout/create');
+  }
+
+	 
 	render (){
 
 		return (
@@ -93,7 +97,7 @@ class UserProfile extends Component{
 						
 						<CardTitle title="Welcome back, you're looking great. Now let's select a routine." style={style.profileTitleStyle} />
 						
-				    <Row>
+				    <Row style={style.paddingStyle}>
 				    	<center>
 				    		<DropDownMenu style={style.dropdownStyle} value={this.state.value} onChange={this.handleChange.bind(this)}>
 				    			{this.renderRoutines()}
@@ -101,8 +105,20 @@ class UserProfile extends Component{
 				    	</center>
 				    </Row>
 
-				    <CardText>
-			        <ProfileNav />
+				    <CardText style={style.cardTextStyle} >
+				    	<Row>
+					    	<center>
+					    		If you haven't already, create a new Routine!
+					    	</center>
+				    	</Row>
+				    	
+				    	<br />
+
+				    	<Row>
+					    	<center>
+					    		<RaisedButton label="Create New Routine" secondary={true}  onClick={this._goToCreateWorkout}/>
+					    	</center>
+				    	</Row>
 		        </CardText>
 			
 					</Card>

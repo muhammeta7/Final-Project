@@ -35,13 +35,23 @@ module.exports = {
     fontSize: 20,
     padding: 10
   },
-  profileNavStyle: {
-    paddingTop: 130
+  paddingStyle: {
+    paddingBottom: 130
   },
   routineName: {
     fontFamily: 'Raleway',
     fontSize: 20,
     textAlign: "center"
+  },
+  selectTitle: {
+    fontFamily: 'Raleway',
+    textAlign: "center"
+  },
+  cardTextStyle: {
+    fontFamily: 'Raleway',
+    fontSize: 20,
+    textAlign: "center",
+    padding: 20
   }
 
 }
