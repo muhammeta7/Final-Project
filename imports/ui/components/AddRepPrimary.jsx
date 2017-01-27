@@ -41,10 +41,9 @@ class AddRepPrimary extends Component {
               <i> </i>
               <FloatingActionButton onClick={this._handleRemoveClick.bind(this)} secondary={true} mini={true}><ContentRemove/></FloatingActionButton>
               <i> </i>
-              <i> Please leave the Reps field empty if you plan to Lift Until Failure (xf)</i>
             </div>
           }
-          title={
+          subtitle={
             <TextField
               onChange={this._handleChange.bind(this)}
               value={this.props._numberOfReps}
@@ -55,6 +54,7 @@ class AddRepPrimary extends Component {
               fullWidth={true}
             />
           }
+          title={<i> Please leave the Reps field empty if you plan to Lift Until Failure (xf) </i>}
         />
       </Card>
     )

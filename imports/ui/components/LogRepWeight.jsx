@@ -58,7 +58,7 @@ class LogRepWeight extends Component {
 
   render(){
     return(
-      <Col sm={3} xs={4}>
+      <Col md={3} sm={4} xs={6}>
         <TextField
           hintText={this.state.prevRepHint}
           value={this.props._currentWorkoutRepWeight}
