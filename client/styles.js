@@ -14,7 +14,6 @@ module.exports = {
     paddingBottom: 20
   },
   drawerStyle: {
-    // backgroundColor: "#90CAF9" ,
     backgroundImage: "url('img/background.jpg')"
   },
   linkStyle: {

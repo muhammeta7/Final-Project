@@ -13,7 +13,6 @@ class DrawerLeft extends React.Component {
       type: "CLOSE_DRAWER",
       open: false
     });
-    console.log("Drawer closing!");
   }
 
   _handleLogout(e){

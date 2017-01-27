@@ -15,8 +15,6 @@ var NavBar = React.createClass({
       type: "OPEN_DRAWER",
       open: true
     });
-    console.log(Store.getState());
-    console.log("Drawer opening!");
   },
 
   _handleLogout(e){
