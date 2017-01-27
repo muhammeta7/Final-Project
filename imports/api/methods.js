@@ -113,7 +113,7 @@ Meteor.methods({
     console.log(data);
     UserProfile.update(
       { user_id: Meteor.userId() },
-      { currentRoutine: data }
+      { $set: {currentRoutine: data }}
     )
   },
 
