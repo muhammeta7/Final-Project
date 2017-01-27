@@ -22,6 +22,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
+import style from '../../../client/styles.js';
 
 class UserProfile extends Component{
 
@@ -116,7 +117,7 @@ class UserProfile extends Component{
 			</div>
 			<div>
 				<Card>
-					<CardTitle title="Your current routine"/>
+					<CardTitle title="Current info"/>
 					<CardText>
 				      {this.state.currentRoutineName}
 				    </CardText>
