@@ -134,4 +134,15 @@ Meteor.methods({
   getWorkoutLogs(workout) {
     return LoggedWorkout.find({ user_id: Meteor.userId(), workout_id: workout }, { sort: { date: 1 } }).fetch();
   }
+
+
+  getRoutineObjects(){
+     return Routine.find({user_id: Meteor.userId()}).fetch();
+   }
+
+  getRoutineName(routineId){
+    var routine = Routine.findOne({_id: routineId})
+    return routine.routineName;
+  }
+
 })
