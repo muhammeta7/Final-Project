@@ -34,7 +34,7 @@ Meteor.startup( () => {
     if(Meteor.userId() != null){
       // http://stackoverflow.com/questions/5410682/parsing-a-json-string-in-ruby
       console.log("Redirecting Signed In User");
-      browserHistory.replace('/');
+      browserHistory.replace('/dashboard');
     } else {
       console.log("User is NOT there");
     }
@@ -55,7 +55,7 @@ Meteor.startup( () => {
       <Route path="/" component={ AppLayout } >
 
         {/* Home Page */}
-        <IndexRoute component={ BasePage } />
+        <IndexRoute component={ BasePage }  onChange={ redirectIfSignedIn } onEnter={ redirectIfSignedIn } />
 
         {/* Signup & Login Routes */}
         <Route path="users" onChange={ redirectIfSignedIn } onEnter={ redirectIfSignedIn } >
