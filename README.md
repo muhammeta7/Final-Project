@@ -49,3 +49,25 @@ If you wish to clone the app down to your local machine...
 
 xxxxxxxx Add screenshots of completed app. xxxxxxxx
 
+
+
+## Download to Andriod
+The app can be compiled down to your Andriod device by following these steps:
+  1. Connect your Andriod Device to your laptop.
+  2. Ensure that your Android device has "USB debugging" enabled.
+  3. To enable Step 2, please refer to this [Stack Overflow Question](http://stackoverflow.com/questions/31993182/failed-to-deploy-to-device-while-deploying-cordova-app-to-a-connected-device).
+  4. Then `cd` into this repo on your laptop.
+  5. In terminal, run `MONGO_URL="mongodb://tom:12345678@ds131099.mlab.com:31099/heroku_1kd2vdn1" meteor run android-device --mobile-server=https://my-swoleness-pal.herokuapp.com`
+  6. If it worked properly, you should now have the app on your mobile device.
+
+
+If you are curious about the MONGO_URL, note that it was created by the following steps:
+  1. Navigating to the app in the Heroku Dashboard.
+  2. Under the "Installed add-ons", selecting "mLab MongoDB".
+  3. This will take you to the mLab webpage, where you would click "Users".
+  4. Then selecting, "+ Add database user" and filling out the form.
+  5. Notice how the username and password are part of the MONGO_URL.
+  6. Notice how the top of the page has a "To connect using a driver via the standard MongoDB URI" link.
+  7. These parameters were passed into the following format...
+  `MONGO_URL="mongodb://<username>:<password>@<mlab url>.mlab.com:<portnumber>/<dbname>" meteor run android-device --mobile-server=https://<appname>.herokuapp.com`
+  

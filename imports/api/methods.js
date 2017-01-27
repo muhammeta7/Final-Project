@@ -129,6 +129,10 @@ Meteor.methods({
     return LoggedWorkout.findOne({ user_id: Meteor.userId(), workout_id: workout }, { sort: { date: -1 } }).log;
   },
 
+  getRoutineObjects(){
+    return Routine.find({user_id: Meteor.userId()}).fetch();
+  },
+
   // Accepts a workout ID
   // Returns an array of objects
   getWorkoutLogs(workout) {
@@ -137,5 +141,11 @@ Meteor.methods({
 
   getWorkoutName(data) {
     return Workout.findOne({ _id: data }).workoutName
+  },
+  
+  getRoutineName(routineId){
+    var routine = Routine.findOne({_id: routineId})
+    return routine.routineName;
   }
+
 })

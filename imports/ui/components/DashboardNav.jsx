@@ -5,6 +5,7 @@ import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigati
 import Paper from 'material-ui/Paper';
 import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
 import { IndexLink, Link, browserHistory } from 'react-router';
+import style from '../../../client/styles.js';
 
 const createIcon = <FontIcon className="material-icons">queue</FontIcon>;
 const logIcon = <FontIcon className="material-icons">directions_run</FontIcon>;
@@ -21,14 +22,14 @@ var DashboardNav = React.createClass ({
   },
 
   _goToUserProfile: function() {
-    browserHistory.push('/');
+    browserHistory.push('/profile');
   },
   
   render: function() {
     return (
 
       <Paper zDepth={5}>
-        <BottomNavigation>
+        <BottomNavigation style={style.dashNavStyle}>
           <BottomNavigationItem
             label="Create Workout"
             icon={createIcon}
