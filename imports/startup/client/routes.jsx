@@ -54,7 +54,7 @@ Meteor.startup( () => {
 
       {/* Signup & Login Routes */}
       <Route path="/" component={ AppLayout }>
-        <IndexRoute onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
+        <IndexRoute component={BasePage} />
         <Route path="users" onChange={ redirectIfSignedIn } onEnter={ redirectIfSignedIn }>
           <Route path="login" component={LoginPage}/>
           <Route path="signup" component={SignUpPage}/>
@@ -65,7 +65,6 @@ Meteor.startup( () => {
         <Route path="workout/log" component={LogWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
         <Route path="workout/create" component={CreateWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
         <Route path="workout/select" component={SelectWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
-        <Route path="home" component={BasePage}/>
         <Route path= "profile" component = {UserProfile} />
         {/* Dashboard Route */}
         <Route path="dashboard" component={Dashboard} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
