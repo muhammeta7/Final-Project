@@ -33,30 +33,6 @@ class LogWorkout extends Component {
       currentWorkoutDate: new Date()
 
     };
-
-        // ======= OLD EXERCISE DATA ========
-        // {
-        //   exerciseName: "Decline Bench Press",
-        //   exerciseUnit: 1,
-        //   reps: [25, 15, 12],
-        //   prevWorkoutWeights: [145, 165, 180],
-        //   currentWorkoutWeights: []
-        // },
-        // {
-        //   exerciseName: "Push Ups",
-        //   exerciseUnit: 3,
-        //   reps: ["", "", "", ""],
-        //   prevWorkoutWeights: [25, 20, 15, 12],
-        //   currentWorkoutWeights: []
-        // },
-        // {
-        //   exerciseName: "Pec Fly",
-        //   exerciseUnit: 2,
-        //   reps: [15, 15, 15],
-        //   prevWorkoutWeights: [90, 100, 110],
-        //   currentWorkoutWeights: []
-        // }
-
   }
 
 
@@ -83,9 +59,26 @@ class LogWorkout extends Component {
       this.setState({routineName: this.props.location.query.routineName});
 
       // Pass back the Workout Id so I can get
-      // Meteor.call('getPreviousWorkoutLog', workoutObj._id, function(err, res){
-      //   console.log(res)
-      // });
+      Meteor.call('getPreviousWorkoutLog', workoutObj._id, function(err, res){
+
+        // Set the states if there was a prev workout found (via position)
+        if(res){
+          // Get the current exercises state
+          let exercisesArray = this.state.exercises;
+
+          // Iterate over response and set the prevWorkoutArray to old values
+          for(let i=0; i < res.length; i++){
+            for(let j=0; j < res[i].weights.length; j++){
+              // Set the prevWorkoutWeights for the exercises via position
+              let prevRepWeight = res[i].weights[j];
+              exercisesArray[i].prevWorkoutWeights.push(prevRepWeight); 
+            }
+          }
+          // Update the state
+          this.setState({exercises: exercisesArray});
+        }
+
+      }.bind(this));
 
     }
 
@@ -200,8 +193,6 @@ class LogWorkout extends Component {
           {/* ++++++++++ ITERATE OVER EXERCISES ++++++++++ */}
           {this.state.exercises.map(function(search, i) {
 
-// _prevWorkoutWeightsArray={search.prevWorkoutWeights}
-
             return (
               <div key={"routine-" + this.state.routineName + "-workout-" + this.state.workoutName + "-exercise-" + i} >
                 <br/>
@@ -215,6 +206,7 @@ class LogWorkout extends Component {
 
                   _repArray={search.reps}
                   _currentWorkoutWeights={search.currentWorkoutWeights}
+                  _prevWorkoutWeightsArray={search.prevWorkoutWeights}
 
                   _editCurrentWorkoutRepWeight={this._editCurrentWorkoutRepWeight.bind(this)}
                 />

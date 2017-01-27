@@ -40,11 +40,13 @@ class UserProfile extends Component{
 	}
 
 	handleChange(event,index,value){
+
 		console.log(event, index, value)		
 		Meteor.call("getRoutineName", value, (err, res) => {
 			this.setState({value: value, currentRoutineName: res});	
 			console.log(this.state)
 		});		
+
 	} 
 
 	componentWillMount(){
