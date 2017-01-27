@@ -52,14 +52,14 @@ xxxxxxxx Add screenshots of completed app. xxxxxxxx
 ![HomePage](/public/screenshots/homepage.png)
 
 ### Create Routine
-![Create Workout](/public/screenshots/create.png)
+![Create Workout](/public/screenshots/create.PNG)
 
 ### Select Workout
 
 ### Log Workout
 
 ### User Profile
-![User Profile](/public/screenshots/profile.png)
+![User Profile](/public/screenshots/profile.PNG)
 
 
 
