@@ -59,7 +59,7 @@ xxxxxxxx Add screenshots of completed app. xxxxxxxx
 ### Log Workout
 
 ### User Profile
-![User Profile](/public/screenshots/profile.PNG)
+![User Profile](/public/screenshots/profile.png)
 
 
 
