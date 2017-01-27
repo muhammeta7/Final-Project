@@ -12,14 +12,10 @@ import loading from '../../actions/loading';
 import Store from '../../reducers/index.js';
 import LogWorkout from '../../ui/pages/LogWorkout.jsx';
 import CreateWorkout from '../../ui/pages/CreateWorkout.jsx';
-import BasePage from '../../ui/pages/BasePage.jsx';
+import HomePage from '../../ui/pages/HomePage.jsx';
 import Dashboard from '../../ui/pages/Dashboard.jsx';
 import UserProfile from '../../ui/pages/UserProfile.jsx';
-
-
 import SelectWorkout from '../../ui/pages/SelectWorkout.jsx';
-
-
 
 // Release the meeeettteeeoooor!
 Meteor.startup( () => {
@@ -56,7 +52,7 @@ Meteor.startup( () => {
       <Route path="/" component={ AppLayout } >
 
         {/* Home Page */}
-        <IndexRoute component={ BasePage }  onChange={ redirectIfSignedIn } onEnter={ redirectIfSignedIn } />
+        <IndexRoute component={ HomePage }  onChange={ redirectIfSignedIn } onEnter={ redirectIfSignedIn } />
 
         {/* Signup & Login Routes */}
         <Route path="users" onChange={ redirectIfSignedIn } onEnter={ redirectIfSignedIn } >

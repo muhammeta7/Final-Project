@@ -48,7 +48,8 @@ If you wish to clone the app down to your local machine...
 ## Screenshots
 
 xxxxxxxx Add screenshots of completed app. xxxxxxxx
-
+### Landing Page
+![HomePage](/public/screenshots/homepage.png)
 
 
 ## Download to Andriod
