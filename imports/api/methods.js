@@ -127,5 +127,14 @@ Meteor.methods({
   // Returns an object of the last log of the user's requested workout
   getPreviousWorkoutLog(workout) {
     return LoggedWorkout.findOne({ user_id: Meteor.userId(), workout_id: workout }, { sort: { date: -1 } }).log;
+  },
+
+  getRoutineObjects(){
+    return Routine.find({user_id: Meteor.userId()}).fetch();
+  },
+
+  getRoutineName(routineId){
+    var routine = Routine.findOne({_id: routineId})
+    return routine.routineName;
   }
 })
