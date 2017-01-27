@@ -50,27 +50,35 @@ Meteor.startup( () => {
   }
 
   render(
-    <Router history={ browserHistory }>
+    <Router history={ browserHistory } >
 
-      {/* Signup & Login Routes */}
-      <Route path="/" component={ AppLayout }>
-        <IndexRoute onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
-        <Route path="users" onChange={ redirectIfSignedIn } onEnter={ redirectIfSignedIn }>
-          <Route path="login" component={LoginPage}/>
-          <Route path="signup" component={SignUpPage}/>
-          
+      <Route path="/" component={ AppLayout } >
+
+        {/* Home Page */}
+        <IndexRoute component={ BasePage } />
+
+        {/* Signup & Login Routes */}
+        <Route path="users" onChange={ redirectIfSignedIn } onEnter={ redirectIfSignedIn } >
+          <Route path="login" component={ LoginPage } />
+          <Route path="signup" component={ SignUpPage } />
         </Route>
 
-        {/* Home Page, Log Workout, and Create Workout Routes */}
-        <Route path="workout/log" component={LogWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
-        <Route path="workout/create" component={CreateWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
-        <Route path="workout/select" component={SelectWorkout} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
-        <Route path="home" component={BasePage}/>
-        <Route path= "profile" component = {UserProfile} />
-        {/* Dashboard Route */}
-        <Route path="dashboard" component={Dashboard} onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
+        {/* Log Workout, and Create Workout Routes */}
+        <Route path="workout" onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } >
+          <Route path="log" component={LogWorkout} />
+          <Route path="create" component={ CreateWorkout } />
+          <Route path="select" component={ SelectWorkout } />
+        </Route>
 
+        {/* User Profile */}
+        <Route path="profile" component={ UserProfile } onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
+        
+        {/* Dashboard Route */}
+        <Route path="dashboard" component={ Dashboard } onEnter={ redirectUnlessSignedIn } onChange={ redirectUnlessSignedIn } />
+
+        {/* 404 Error */}
         <Route path="*" component={ NotFound } />
+
       </Route>
 
     </Router>,
