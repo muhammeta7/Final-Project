@@ -65,9 +65,9 @@ If you wish to clone the app down to your local machine...
 ![Dashboard](/public/screenshots/dashboard.png)
 
 
-## Download to Andriod
-The app can be compiled down to your Andriod device by following these steps:
-  1. Connect your Andriod Device to your laptop.
+## Download to Android
+The app can be compiled down to your Android device by following these steps:
+  1. Connect your Android Device to your laptop.
   2. Ensure that your Android device has "USB debugging" enabled.
   3. To enable Step 2, please refer to this [Stack Overflow Question](http://stackoverflow.com/questions/31993182/failed-to-deploy-to-device-while-deploying-cordova-app-to-a-connected-device).
   4. Then `cd` into this repo on your laptop.
