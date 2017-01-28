@@ -178,35 +178,66 @@ class UserProfile extends Component{
 				    	</CardText>
 				    	<Row>
 				    		<Col md={4}>
+				    			<center>
 				    			Age: <span>{this.state.age}</span>
+				    			</center>
 				    		</Col>
 				    		<Col md={4}>
+				    			<center>
 				    			Height: <span>{this.state.height}</span>
+				    			</center>
 				    		</Col>
 				    		<Col md={4}>
+				    			<center>
 				    			Weight: <span>{this.state.weight}</span>
+				    			</center>
 				    		</Col>
 				    	</Row>
 				    	<br/>
-
-				    	 <TextField
-				            hintText= "Please enter your height in feet' inches "
-				            floatingLabelText="height"
-				            id="height"
-				            fullWidth={true}
-				         />
-				         <TextField
-				            hintText= "Please enter your weight in lb"
-				            floatingLabelText="weight"
-				            id="weight"
-				            fullWidth={true}
-				         />
-				         <TextField
-				            hintText= "Please enter your age"
-				            floatingLabelText="age"
-				            id="age"
-				            fullWidth={true}
-				         />
+				    	<Container>
+				    		<Row>
+				    			<Col md={5}>
+				    				<h1 style={style.profileTitleStyle}>Enter your body info below</h1>
+				    			</Col>
+				    		</Row>
+				    		<Row>
+				    			<Col md={5}>
+				    			<center>
+						    	 <TextField
+						            hintText= "Please enter your height in feet' inches "
+						            floatingLabelText="height"
+						            id="height"
+						         />
+						         </center>
+						         </Col>
+					         </Row>
+					         <br/>
+					         <Row>
+				    			<Col md={5}>
+				    				<center>
+								         <TextField
+								            hintText= "Please enter your weight in lb"
+								            floatingLabelText="weight"
+								            id="weight"
+								            
+								         />
+							     </center>
+						      	</Col>
+						     </Row>
+						     <Row>
+				    			<Col md={5}>
+				    				<center>
+								         <TextField
+								            hintText= "Please enter your age"
+								            floatingLabelText="age"
+								            id="age"
+								            
+								         />
+							     	</center>
+						      	</Col>
+						     </Row>
+					         <br/>
+				         </Container>
 				         <center>
 					         <RaisedButton
 					            id="submit"
