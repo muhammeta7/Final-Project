@@ -87,15 +87,6 @@ class SelectWorkout extends Component {
     return (
       <Container>
 
-        {/* Title with Date Picker */}
-        <Row>
-          <Card>
-            
-          </Card>
-        </Row>
-
-        <br/>
-
         {/* List of Excerises */}
         <Row>
           <Card>
