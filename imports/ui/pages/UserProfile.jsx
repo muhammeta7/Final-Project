@@ -67,7 +67,13 @@ class UserProfile extends Component{
 		// })
 		Meteor.call("getRoutineObjects", (err,res) => {
 			console.log(res)
-			this.setState({routines: res})
+			if(res.length == 0){
+				var none = "no Routine";
+				this.setState({currentRoutineName: none, value: "0"})
+			}
+			else{
+			this.setState({routines: res});
+			}
 		})
 	}
 	componentDidMount(){
@@ -81,6 +87,13 @@ class UserProfile extends Component{
 	}
 	renderRoutines(){
 		let routines = this.state.routines;
+		if(routines.length == 0){
+			routines = [{
+				_id: "0",
+				routineName: "No current Routine has been created"
+			}]
+
+		}
 
 		return routines.map((routine) => {			
 			return (
@@ -122,6 +135,7 @@ class UserProfile extends Component{
 				    
 				</Card>
 			</div>
+			<br/>
 			<div>
 				<Card>
 					<CardTitle title="Current info"/>
