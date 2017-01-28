@@ -48,6 +48,20 @@ If you wish to clone the app down to your local machine...
 ## Screenshots
 
 xxxxxxxx Add screenshots of completed app. xxxxxxxx
+### Landing Page
+![HomePage](/public/screenshots/homepage.png)
+
+### Create Routine
+![Create Workout](/public/screenshots/create.PNG)
+
+### Select Workout
+![Create Workout](/public/screenshots/select.png)
+
+### Log Workout
+![Log Workout](/public/screenshots/logWorkout.png)
+
+### User Profile
+![User Profile](/public/screenshots/profile.PNG)
 
 
 

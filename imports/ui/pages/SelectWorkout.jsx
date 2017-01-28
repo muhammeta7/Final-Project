@@ -16,6 +16,9 @@ import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 // Import Components
 import SelectWorkoutButton from '../components/SelectWorkoutButton';
 
+// Import Styles
+import style from '../../../client/styles.js';
+
 
 // Page Component
 class SelectWorkout extends Component {
@@ -84,20 +87,12 @@ class SelectWorkout extends Component {
     return (
       <Container>
 
-        {/* Title with Date Picker */}
-        <Row>
-          <Card>
-            <CardHeader>
-              <h2>Select a Workout</h2>
-            </CardHeader>
-          </Card>
-        </Row>
-
-        <br/>
-
         {/* List of Excerises */}
         <Row>
           <Card>
+            <CardHeader style={style.selectTitle}>
+              <h2>Select a Workout</h2>
+            </CardHeader>
             <center>
               {/* ++++++++++ ITERATE OVER WORKOUT SELECTIONS ++++++++++ */}
               {this.state.workouts.map(function(search, i) {

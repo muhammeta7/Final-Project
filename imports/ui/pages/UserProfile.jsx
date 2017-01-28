@@ -2,33 +2,25 @@
 import React from 'react';
 import { Component } from 'react';
 
-// Import React Grid System
+// Import Material-UI components
 import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
-import {
-  Step,
-  Stepper,
-  StepLabel,
-} from 'material-ui/Stepper';
+import { browserHistory } from 'react-router';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
-
-// Import Material-ui 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import TextField from 'material-ui/TextField';
 import {List, ListItem} from 'material-ui/List';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import Divider from 'material-ui/Divider';
-import DatePicker from 'material-ui/DatePicker';
+import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
+import Divider from 'material-ui/Divider';
 import style from '../../../client/styles.js';
+
 
 class UserProfile extends Component{
 
 	constructor(props){
-    	super(props);
-    	this.state = {routine_ids : [], routines: [], value: "", currentRoutineName: ""};
+    super(props);
+    this.state = {routine_ids : [], routines: [], value: "", currentRoutineName: ""};
 	}
 
 
@@ -48,8 +40,24 @@ class UserProfile extends Component{
 			console.log(value);
 			console.log("updated current routine");
 		})		
-
 	} 
+
+	handleSubmit(e){
+		e.preventDefault();
+		let height = document.getElementById("height").value;
+		let weight = document.getElementById("weight").value;
+		let age = document.getElementById("age").value;
+		data = {
+			age: age,
+			weight: weight,
+			height: height
+		}
+		Meteor.call("updateUser", data, (err,res) => {
+			console.log("successfully updated")
+		})
+		browserHistory.push("/profile")
+
+	}
 
 	componentWillMount(){
 
@@ -76,6 +84,7 @@ class UserProfile extends Component{
 			}
 		})
 	}
+
 	componentDidMount(){
 
 		Meteor.call("getCurrentRoutine", (err,res) => {
@@ -85,6 +94,7 @@ class UserProfile extends Component{
 
 		})
 	}
+
 	renderRoutines(){
 		let routines = this.state.routines;
 		if(routines.length == 0){
@@ -97,55 +107,99 @@ class UserProfile extends Component{
 
 		return routines.map((routine) => {			
 			return (
-				<MenuItem key={routine._id} value={routine._id} primaryText={routine.routineName}/>
+				<MenuItem style={style.dropdownStyle} key={routine._id} value={routine._id} primaryText={routine.routineName}/>
 			);
 		});
 	}
-	 
 
+	_goToCreateWorkout () {
+    browserHistory.push('/workout/create');
+  }
+
+	 
 	render (){
 
-		  const buttonStyle = {
-      		margin: '10px'
-    	}
-		
 		return (
+
 			<Container>
-			<div>
-				<Card>
-					<CardTitle title="Welcome Back" subtitle="Your looking awesome!" />
-					<CardText>
-				      Lets Take a look at the current routine you are on.
-				    </CardText>
-				    <Row>
+				
+				<div>
+					<Card>
+						
+						<CardTitle title="Welcome back, you're looking great. Now let's select a routine." style={style.profileTitleStyle} />
+						
+				    <Row style={style.paddingStyle}>
 				    	<center>
-				    		<DropDownMenu value={this.state.value} onChange={this.handleChange.bind(this)}>
+				    		<DropDownMenu style={style.dropdownStyle} value={this.state.value} onChange={this.handleChange.bind(this)}>
 				    			{this.renderRoutines()}
 				    		</DropDownMenu>
 				    	</center>
 				    </Row>
-				    <Row>
-		                <center>
-		                  <Row>
-		                  	<RaisedButton style={buttonStyle} label="Dashboard" secondary={true} href = "dashboard"/>
-							<RaisedButton style={buttonStyle} label="Create Workout" primary={true} href = "workout/create"/>
-		                  </Row>
-		                </center>
-		            </Row>
-				    
-				</Card>
-			</div>
-			<br/>
-			<div>
-				<Card>
-					<CardTitle title="Current info"/>
-					<CardText>
-				      {this.state.currentRoutineName}
-				    </CardText>
-				</Card>
-			</div>
-		</Container>
-		)
+
+
+				    <CardText style={style.cardTextStyle} >
+				    	<Row>
+					    	<center>
+					    		If you haven't already, create a new Routine!
+					    	</center>
+				    	</Row>
+				    	
+				    	<br />
+
+				    	<Row>
+					    	<center>
+					    		<RaisedButton label="Create New Routine" secondary={true}  onClick={this._goToCreateWorkout}/>
+					    		<RaisedButton label="Go to Dashboard" primary={true}  href="/dashboard"/>
+					    	</center>
+				    	</Row>
+		        </CardText>
+			
+					</Card>
+				</div>
+				<br/>
+				<div>
+					<Card>
+
+						<CardTitle title="Your Current Routine:"  style={style.profileTitleStyle} />
+						<CardText style={style.routineName}>
+
+				      	{this.state.currentRoutineName}
+				    	</CardText>
+				    	<br/>
+				    	 <TextField
+				            hintText= "Please enter your height in feet' inches "
+				            floatingLabelText="height"
+				            id="height"
+				            fullWidth={true}
+				         />
+				         <TextField
+				            hintText= "Please enter your weight in lb"
+				            floatingLabelText="weight"
+				            id="weight"
+				            fullWidth={true}
+				         />
+				         <TextField
+				            hintText= "Please enter your age"
+				            floatingLabelText="age"
+				            id="age"
+				            fullWidth={true}
+				         />
+				         <center>
+					         <RaisedButton
+					            id="submit"
+					            label="submit"
+					            primary={true}
+					            onTouchTap={this.handleSubmit}
+					         />
+				         </center>
+					</Card>
+				</div>
+
+			</Container>
+
+		);
 	}
+	
 };
+
 export default UserProfile;
