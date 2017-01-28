@@ -53,6 +53,20 @@ module.exports = {
     textAlign: "center",
     padding: 20
   },
+  logRoutineHeaderStyle: {
+    fontFamily: "Raleway",
+    padding: 10
+  },
+  logRoutineComponentStyle: {
+    fontFamily: "Raleway",
+    paddingLeft: 10,
+    paddingRight: 10
+  },
+  addRepComponentStyle: {
+    fontFamily: "Raleway",
+    paddingLeft: 15,
+    paddingTop: 15
+  },
   progressDropDown: {
     position: "relative",
     left: 150,
@@ -63,6 +77,7 @@ module.exports = {
     fontFamily: 'Raleway',
     fontSize: 14,
     padding: 5
+
   }
 
 }

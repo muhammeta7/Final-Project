@@ -6,6 +6,9 @@ import { Component } from 'react';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 
+// Import Style
+import style from '../../../client/styles.js';
+
 // Create Component
 class AddRoutineName extends Component {
 
@@ -26,7 +29,7 @@ class AddRoutineName extends Component {
     return(
       <Card>
         <CardHeader>
-          <h2>Create a Workout Routine</h2>
+          <h2 style={style.logRoutineHeaderStyle}><b>Create a Workout Routine</b></h2>
           <TextField
             value={this.state.routineName}
             onChange={this._handleChange.bind(this)}

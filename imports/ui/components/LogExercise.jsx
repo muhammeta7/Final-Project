@@ -12,6 +12,9 @@ import TextField from 'material-ui/TextField';
 // Import Components
 import LogRepWeight from '../components/LogRepWeight';
 
+// Import Style
+import style from '../../../client/styles.js';
+
 
 // Create Component
 class LogExercise extends Component {
@@ -46,7 +49,7 @@ class LogExercise extends Component {
       <Card>
         <CardHeader
           title={
-            this.props._exerciseName + "  [" + this._writeUnit(this.props._exerciseUnit) + "]"
+            <p style={style.logRoutineComponentStyle}> {this.props._exerciseName + "  [" + this._writeUnit(this.props._exerciseUnit) + "]"}</p>
           }
           actAsExpander={true}
           showExpandableButton={true}

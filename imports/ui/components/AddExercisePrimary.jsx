@@ -17,6 +17,9 @@ import UnitsDropDownMenu from '../components/UnitsDropDownMenu';
 import AddRepPrimary from '../components/AddRepPrimary';
 import AddRepSecondary from '../components/AddRepSecondary';
 
+// Import Style
+import style from '../../../client/styles.js';
+
 
 // Create Component
 class AddExercisePrimary extends Component {

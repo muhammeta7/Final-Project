@@ -9,6 +9,9 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import ContentRemove from 'material-ui/svg-icons/content/remove';
 
+// Import Style
+import style from '../../../client/styles.js';
+
 // Create Component
 class AddRepPrimary extends Component {
 
@@ -54,7 +57,7 @@ class AddRepPrimary extends Component {
               fullWidth={true}
             />
           }
-          title={<i> Please leave the Reps field empty if you plan to Lift Until Failure (xf) </i>}
+          title={<div style={style.addRepComponentStyle}><i> Please leave the Reps field empty if you plan to Lift Until Failure (xf) </i> </div>}
         />
       </Card>
     )
