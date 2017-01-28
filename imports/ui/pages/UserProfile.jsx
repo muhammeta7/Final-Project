@@ -20,7 +20,14 @@ class UserProfile extends Component{
 
 	constructor(props){
     super(props);
-    this.state = {routine_ids : [], routines: [], value: "", currentRoutineName: ""};
+    this.state = {routine_ids : [], 
+    		routines: [],
+    		value: "",
+    		currentRoutineName: "",
+    		age: "",
+    		weight: "",
+    		height: ""
+    	};
 	}
 
 
@@ -55,7 +62,7 @@ class UserProfile extends Component{
 		Meteor.call("updateUser", data, (err,res) => {
 			console.log("successfully updated")
 		})
-		browserHistory.push("/profile")
+		this.setState({age: age, weight: weight, height: height})
 
 	}
 
@@ -83,6 +90,10 @@ class UserProfile extends Component{
 			this.setState({routines: res});
 			}
 		})
+		Meteor.call("getPersonalInfo", (err,res)=> {
+			console.log(res);
+			this.setState({age: res.age, height: res.height, weight: res.weight});
+		})
 	}
 
 	componentDidMount(){
@@ -93,6 +104,7 @@ class UserProfile extends Component{
 			console.log("value " + this.state.value)
 
 		})
+
 	}
 
 	renderRoutines(){
@@ -149,7 +161,6 @@ class UserProfile extends Component{
 				    	<Row>
 					    	<center>
 					    		<RaisedButton label="Create New Routine" secondary={true}  onClick={this._goToCreateWorkout}/>
-					    		<RaisedButton label="Go to Dashboard" primary={true}  href="/dashboard"/>
 					    	</center>
 				    	</Row>
 		        </CardText>
@@ -165,7 +176,19 @@ class UserProfile extends Component{
 
 				      	{this.state.currentRoutineName}
 				    	</CardText>
+				    	<Row>
+				    		<Col md={4}>
+				    			Age: <span>{this.state.age}</span>
+				    		</Col>
+				    		<Col md={4}>
+				    			Height: <span>{this.state.height}</span>
+				    		</Col>
+				    		<Col md={4}>
+				    			Weight: <span>{this.state.weight}</span>
+				    		</Col>
+				    	</Row>
 				    	<br/>
+
 				    	 <TextField
 				            hintText= "Please enter your height in feet' inches "
 				            floatingLabelText="height"
@@ -189,7 +212,7 @@ class UserProfile extends Component{
 					            id="submit"
 					            label="submit"
 					            primary={true}
-					            onTouchTap={this.handleSubmit}
+					            onTouchTap={this.handleSubmit.bind(this)}
 					         />
 				         </center>
 					</Card>

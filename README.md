@@ -25,7 +25,6 @@ Please try out the deployed app in Heroku, found [here](https://my-swoleness-pal
 [Krishna Yellayi](https://github.com/darthvader1118)
 
 
-
 ## Functionality
 On the Front End, the app uses `React` JavaScript Framework with `React Router` and `Redux`. And for styling, the `Material-Ui` Component Library and `React Grid System` were used.
 
@@ -47,7 +46,6 @@ If you wish to clone the app down to your local machine...
 
 ## Screenshots
 
-xxxxxxxx Add screenshots of completed app. xxxxxxxx
 ### Landing Page
 ![HomePage](/public/screenshots/homepage.png)
 
@@ -55,7 +53,7 @@ xxxxxxxx Add screenshots of completed app. xxxxxxxx
 ![Create Workout](/public/screenshots/create.PNG)
 
 ### Select Workout
-![Create Workout](/public/screenshots/select.png)
+![Select Workout](/public/screenshots/select.png)
 
 ### Log Workout
 ![Log Workout](/public/screenshots/logWorkout.png)
@@ -63,11 +61,13 @@ xxxxxxxx Add screenshots of completed app. xxxxxxxx
 ### User Profile
 ![User Profile](/public/screenshots/profile.PNG)
 
+### Dashboard (Shows User Progess)
+![Dashboard](/public/screenshots/dashboard.png)
 
 
-## Download to Andriod
-The app can be compiled down to your Andriod device by following these steps:
-  1. Connect your Andriod Device to your laptop.
+## Download to Android
+The app can be compiled down to your Android device by following these steps:
+  1. Connect your Android Device to your laptop.
   2. Ensure that your Android device has "USB debugging" enabled.
   3. To enable Step 2, please refer to this [Stack Overflow Question](http://stackoverflow.com/questions/31993182/failed-to-deploy-to-device-while-deploying-cordova-app-to-a-connected-device).
   4. Then `cd` into this repo on your laptop.
