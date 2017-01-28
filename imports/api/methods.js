@@ -20,10 +20,11 @@ Meteor.methods({
   // { age: 50, weight: 500, height: 70, currentRoutine: 34ASJ123SODJS824 }
   updateUser(data) {
     UserProfile.update({ user_id: Meteor.userId() }, 
-      { age: data.age,
+      {$set: { age: data.age,
         weight: data.weight,
         height: data.height,
-        currentRoutine: data.currentRoutine })
+        currentRoutine: data.currentRoutine }}
+        )
   },
 
   // Accepts a routine object, i.e.
@@ -147,6 +148,12 @@ Meteor.methods({
   getRoutineName(routineId){
     var routine = Routine.findOne({_id: routineId})
     return routine.routineName;
+  },
+
+  getPersonalInfo(){
+    var user =  UserProfile.findOne({user_id: Meteor.userId()});
+    console.log(user); 
+    return user;
   }
 
 })
