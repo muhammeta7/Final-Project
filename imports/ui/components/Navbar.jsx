@@ -6,8 +6,8 @@ import Store from '../../reducers/index.js';
 
 var NavBar = React.createClass({
 
-  _goToHome: function(){
-    browserHistory.push('/home');
+  _goToDashboard: function(){
+    browserHistory.push('/dashboard');
   },
 
   _toggleAppDrawer: function(){
@@ -32,11 +32,12 @@ var NavBar = React.createClass({
     return (
       
       <AppBar
-        className = "navbar"
-        title = "My Swoleness Pal"
-        onLeftIconButtonTouchTap = {this._toggleAppDrawer}
-        zDepth = {1}
-        style = {{
+        className= "navbar"
+        title= "My Swoleness Pal"
+        onLeftIconButtonTouchTap= {this._toggleAppDrawer}
+        zDepth= {1}
+        onTitleTouchTap= {this._goToDashboard}
+        style= {{
           position: 'fixed', top: 0,
           backgroundColor: '#263238' 
         }}
