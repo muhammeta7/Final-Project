@@ -52,6 +52,17 @@ module.exports = {
     fontSize: 20,
     textAlign: "center",
     padding: 20
+  },
+  progressDropDown: {
+    position: "relative",
+    left: 150,
+    fontFamily: 'Raleway',
+    fontSize: 20
+  },
+  menuDropdown: {
+    fontFamily: 'Raleway',
+    fontSize: 14,
+    padding: 5
   }
 
 }
