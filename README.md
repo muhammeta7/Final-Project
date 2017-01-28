@@ -16,13 +16,13 @@ Please try out the deployed app in Heroku, found [here](https://my-swoleness-pal
 
 
 ## Authors
-[Tyler Geerdts](https://github.com/tygee713)
+[Tyler Geerdts](https://github.com/tygee713) - Lead Backend Developer / Project Manager 
 
-[Tom Thompson](https://github.com/tomtom28)
+[Tom Thompson](https://github.com/tomtom28) - Lead React Developer / Andriod DevOps
 
-[Muhammet Aydin](https://github.com/muhammeta7)
+[Muhammet Aydin](https://github.com/muhammeta7) - Lead Designer / Meteor Developer
 
-[Krishna Yellayi](https://github.com/darthvader1118)
+[Krishna Yellayi](https://github.com/darthvader1118) - Lead UI Designer / React Developer
 
 
 ## Functionality
