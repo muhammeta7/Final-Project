@@ -3,7 +3,16 @@ import { Meteor } from 'meteor/meteor';
 
 Template.myTemplate.topGenresChart = function() {
   // Receives the current routine and dashboard workout information chosen from ProgressChart component
-  var title = Session.get('currentRoutine') + ': ' + Session.get('workoutName');
+  var currentRoutine = Session.get('currentRoutine');
+  var workoutName = Session.get('workoutName');
+  var title;
+  if(currentRoutine == undefined || workoutName == undefined){
+    title = "Please create a routine to view your progress chart."
+  }
+  else{
+    title = currentRoutine + ': ' + workoutName;
+  }
+
   var id = Session.get('workout_id');
 
   // To be set in the below database method callback
