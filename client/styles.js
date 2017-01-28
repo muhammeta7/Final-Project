@@ -36,7 +36,7 @@ module.exports = {
     padding: 10
   },
   paddingStyle: {
-    paddingBottom: 130
+    paddingBottom: 10
   },
   routineName: {
     fontFamily: 'Raleway',

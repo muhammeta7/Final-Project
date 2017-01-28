@@ -4,6 +4,7 @@ import { Component } from 'react';
 
 // Import Material-UI components
 import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
+
 import { browserHistory } from 'react-router';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
 import {List, ListItem} from 'material-ui/List';
@@ -37,7 +38,7 @@ class UserProfile extends Component{
 
 	handleChange(event,index,value){
 
-		console.log(event, index, value)		
+		//console.log(event, index, value)		
 		Meteor.call("getRoutineName", value, (err, res) => {
 			this.setState({value: value, currentRoutineName: res});	
 			console.log(this.state)
@@ -141,12 +142,14 @@ class UserProfile extends Component{
 						<CardTitle title="Welcome back, you're looking great. Now let's select a routine." style={style.profileTitleStyle} />
 						
 				    <Row style={style.paddingStyle}>
+			    		<CardTitle style={style.profileTitleStyle} title={"Your Current Routine: " + this.state.currentRoutineName}  />	
 				    	<center>
 				    		<DropDownMenu style={style.dropdownStyle} value={this.state.value} onChange={this.handleChange.bind(this)}>
 				    			{this.renderRoutines()}
 				    		</DropDownMenu>
 				    	</center>
 				    </Row>
+
 
 
 				    <CardText style={style.cardTextStyle} >
@@ -159,9 +162,13 @@ class UserProfile extends Component{
 				    	<br />
 
 				    	<Row>
-					    	<center>
-					    		<RaisedButton label="Create New Routine" secondary={true}  onClick={this._goToCreateWorkout}/>
-					    	</center>
+				    		<div>
+						    	<center>
+						    		<RaisedButton label="Create New Routine" secondary={true}  onClick={this._goToCreateWorkout}/>
+				         		<i> </i>
+				         			<RaisedButton label="Go back to Dashboard" primary={true}  href="/dashboard"/>
+						    	</center>
+					    	</div>
 				    	</Row>
 		        </CardText>
 			
@@ -171,83 +178,69 @@ class UserProfile extends Component{
 				<div>
 					<Card>
 
-						<CardTitle title="Your Current Routine:"  style={style.profileTitleStyle} />
-						<CardText style={style.routineName}>
+						<Container style={style.profileTitleStyle} >
 
-				      	{this.state.currentRoutineName}
-				    	</CardText>
+							<CardTitle title="Let's update your information." style={style.profileTitleStyle} />
+							
+							<br/>
+
 				    	<Row>
 				    		<Col md={4}>
-				    			<center>
-				    			Age: <span>{this.state.age}</span>
-				    			</center>
+				    		<center>
+				    		Age: <span>{this.state.age}</span>
+				         	<TextField
+				            hintText="Please enter your age in years."
+				            floatingLabelText="Age"
+				            id="age"
+				            fullWidth={true}
+			         		/>
+			         		</center>
 				    		</Col>
 				    		<Col md={4}>
-				    			<center>
-				    			Height: <span>{this.state.height}</span>
-				    			</center>
+				    			Height [in]: <span>{this.state.height}</span>
+						    	 <TextField
+				            hintText="Please enter your height in inches."
+				            floatingLabelText="Height"
+				            id="height"
+				            fullWidth={true}
+			         		/>
 				    		</Col>
 				    		<Col md={4}>
-				    			<center>
-				    			Weight: <span>{this.state.weight}</span>
-				    			</center>
+				    			Weight [lb]: <span>{this.state.weight}</span>
+				         	<TextField
+				            hintText="Please enter your weight in pounds."
+				            floatingLabelText="Weight"
+				            id="weight"
+				            fullWidth={true}
+			         		/>
+
 				    		</Col>
 				    	</Row>
+
 				    	<br/>
-				    	<Container>
-				    		<Row>
-				    			<Col md={5}>
-				    				<h1 style={style.profileTitleStyle}>Enter your body info below</h1>
-				    			</Col>
-				    		</Row>
-				    		<Row>
-				    			<Col md={5}>
-				    			<center>
-						    	 <TextField
-						            hintText= "Please enter your height in feet' inches "
-						            floatingLabelText="height"
-						            id="height"
-						         />
-						         </center>
-						         </Col>
-					         </Row>
-					         <br/>
-					         <Row>
-				    			<Col md={5}>
-				    				<center>
-								         <TextField
-								            hintText= "Please enter your weight in lb"
-								            floatingLabelText="weight"
-								            id="weight"
-								            
-								         />
-							     </center>
-						      	</Col>
-						     </Row>
-						     <Row>
-				    			<Col md={5}>
-				    				<center>
-								         <TextField
-								            hintText= "Please enter your age"
-								            floatingLabelText="age"
-								            id="age"
-								            
-								         />
-							     	</center>
-						      	</Col>
-						     </Row>
-					         <br/>
-				         </Container>
-				         <center>
-					         <RaisedButton
-					            id="submit"
-					            label="submit"
-					            primary={true}
-					            onTouchTap={this.handleSubmit.bind(this)}
-					         />
-				         </center>
+
+				    	<Row>
+			         <center>
+				         <RaisedButton
+				            id="submit"
+				            label="submit"
+				            primary={true}
+				            onTouchTap={this.handleSubmit.bind(this)}
+				         />
+				         <br/>
+			         </center>
+		         </Row>
+
+			    	</Container>
+
+			    	<br/>
+
 					</Card>
+
+
 				</div>
+
+				<br/>
 
 			</Container>
 
