@@ -22,26 +22,17 @@ class ProgressChart extends Component {
 
   componentWillMount() {
     Meteor.call('getCurrentRoutine', (err, res) => {
-
-      this.setState({ currentRoutine: res.routineName })
-
       Meteor.call('getWorkoutOptions', res.routine_id, (err, res2) => {
-
-        this.setState({ workouts: res2, workout_id: res2[0]._id, workoutName: res2[0].workoutName })
-
+        this.setState({ currentRoutine: res.routineName, workouts: res2, workout_id: res2[0]._id, workoutName: res2[0].workoutName })
         Session.set(this.state)
       })
     })
   }
 
-  componentDidUpdate() {
-    Session.set(this.state)
-    console.log(this.state)
-  }
-
   changeDropDownField(event, index, value) {
     Meteor.call('getWorkoutName', value, (err, res) => {
       this.setState({ workout_id: value, workoutName: res })
+      Session.set(this.state)
     })
   }
 
@@ -71,7 +62,5 @@ class ProgressChart extends Component {
     )
   }
 }
-
-
 
 export default ProgressChart;
