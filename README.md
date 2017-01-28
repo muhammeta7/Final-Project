@@ -55,8 +55,10 @@ xxxxxxxx Add screenshots of completed app. xxxxxxxx
 ![Create Workout](/public/screenshots/create.PNG)
 
 ### Select Workout
+![Create Workout](/public/screenshots/select.png)
 
 ### Log Workout
+![Log Workout](/public/screenshots/logWorkout.png)
 
 ### User Profile
 ![User Profile](/public/screenshots/profile.PNG)
