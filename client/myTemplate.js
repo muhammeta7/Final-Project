@@ -2,68 +2,74 @@ import { Session } from 'meteor/session';
 import { Meteor } from 'meteor/meteor';
 
 Template.myTemplate.topGenresChart = function() {
-    var title = Session.get('currentRoutine') + ': ' + Session.get('workoutName');
-    var id = Session.get('workout_id');
+  // Receives the current routine and dashboard workout information chosen from ProgressChart component
+  var title = Session.get('currentRoutine') + ': ' + Session.get('workoutName');
+  var id = Session.get('workout_id');
 
-    var logs = [];
-    var loggedExercises = Session.get('exercises');
-    console.log(loggedExercises);
+  // To be set in the below database method callback
+  var loggedExercises = Session.get('exercises');
 
-    Meteor.call('getWorkoutLogs', id, function(err, res) {
-        var exercises = [];
-        for (var i=0;i<res.length;i++) {
-            logs.push(res[i].log);
+  Meteor.call('getWorkoutLogs', id, function(err, res) {
+    var exercises = [];
+
+    for (var i=0; i<res.length; i++) {
+      for (var z=0; z<res[i].log.length; z++) {
+        var currentLog = res[i].log;
+
+        // Turns the weights into integers
+        var numericalWeights = currentLog[z].weights.map(Number);
+
+        // Prevents exercises from getting duplicated in the data array
+        if (i == 0) {
+          exercises.push({ name: currentLog[z].exerciseName, data: [[(res[i].date.getTime()), Math.max.apply(Math, numericalWeights)]], type: 'line'})
         }
-        for (var i=0; i<logs.length;i++) {
-            for (var z=0; z<logs[i].length;z++) {
-                var currentLog = logs[i];
-                if (i == 0) {
-                    exercises.push({ name: currentLog[z].exerciseName, data: [parseInt(currentLog[z].weights[0])], type: 'line'})
-                }
-                else {
-                    exercises[z].data.push(parseInt(currentLog[z].weights[0]))
-                }
-            }
+        // Dates are converted to milliseconds so that highcharts recognizes them correctly
+        else {
+          exercises[z].data.push([(res[i].date.getTime()), Math.max.apply(Math, numericalWeights)])
         }
-        Session.set({exercises: exercises});
-    });
+      }
+    }
+    Session.set({exercises: exercises});
+  });
 
-    return {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false
-        },
-        title: {
-            text: title
-        },
-        tooltip: {
-            formatter: function() {
-                
-            }
-        },
-        plotOptions: {
-            line: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    },
-                    connectorColor: 'silver'
-                }
-            }
-        },
-        xAxis: {
-            title: {
-                text: 'Date'
-            }
-        },
-        yAxis: {
-            title: {
-                text: 'Weight'
-            }
-        },
-        series: loggedExercises
-    };
-};
+  return {
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false
+    },
+    title: {
+      text: title
+    },
+    
+    plotOptions: {
+      line: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          style: {
+            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+          },
+          connectorColor: 'silver'
+        }
+      }
+    },
+    xAxis: {
+      title: {
+        text: 'Date'
+      },
+      type: 'datetime',
+      labels: {
+        formatter: function () {
+          return Highcharts.dateFormat('%m/%d', this.value);
+        }
+      },
+    },
+    yAxis: {
+      title: {
+        text: 'Weight'
+      }
+    },
+    series: loggedExercises
+  }
+}
