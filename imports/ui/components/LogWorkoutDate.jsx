@@ -6,6 +6,9 @@ import { Component } from 'react';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import DatePicker from 'material-ui/DatePicker';
 
+// Import Style
+import style from '../../../client/styles.js';
+
 
 // Create Component
 class LogWorkoutDate extends Component {
@@ -31,15 +34,17 @@ class LogWorkoutDate extends Component {
     return(
       <Card>
         <CardHeader>
-           <h2>{this.props._routineName}</h2>
-           <h4>{this.props._workoutName}</h4>
-           <DatePicker
-            hintText="Date of Workout"
-            firstDayOfWeek={0}
-            fullWidth={true}
-            value={this.state.controlledDate}
-            onChange={this._handleChange.bind(this)}
-          />
+           <h2 style={style.logRoutineHeaderStyle}><b>{this.props._routineName}</b></h2>
+           <h4 style={style.logRoutineComponentStyle}>{this.props._workoutName}</h4>
+           <div style={style.logRoutineComponentStyle}>
+             <DatePicker
+              hintText="Date of Workout"
+              firstDayOfWeek={0}
+              fullWidth={true}
+              value={this.state.controlledDate}
+              onChange={this._handleChange.bind(this)}
+            />
+          </div>
          </CardHeader>
       </Card>
     )

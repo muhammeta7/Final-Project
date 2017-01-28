@@ -52,6 +52,20 @@ module.exports = {
     fontSize: 20,
     textAlign: "center",
     padding: 20
+  },
+  logRoutineHeaderStyle: {
+    fontFamily: "Raleway",
+    padding: 10
+  },
+  logRoutineComponentStyle: {
+    fontFamily: "Raleway",
+    paddingLeft: 10,
+    paddingRight: 10
+  },
+  addRepComponentStyle: {
+    fontFamily: "Raleway",
+    paddingLeft: 15,
+    paddingTop: 15
   }
 
 }
