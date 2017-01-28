@@ -20,7 +20,14 @@ class UserProfile extends Component{
 
 	constructor(props){
     super(props);
-    this.state = {routine_ids : [], routines: [], value: "", currentRoutineName: ""};
+    this.state = {routine_ids : [], 
+    		routines: [],
+    		value: "",
+    		currentRoutineName: "",
+    		age: "",
+    		weight: "",
+    		height: ""
+    	};
 	}
 
 
@@ -149,7 +156,6 @@ class UserProfile extends Component{
 				    	<Row>
 					    	<center>
 					    		<RaisedButton label="Create New Routine" secondary={true}  onClick={this._goToCreateWorkout}/>
-					    		<RaisedButton label="Go to Dashboard" primary={true}  href="/dashboard"/>
 					    	</center>
 				    	</Row>
 		        </CardText>
