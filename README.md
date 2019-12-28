@@ -1,10 +1,7 @@
-# :memo: My Swoleness Pal :muscle: 
-
+# :memo: My Swoleness Pal :chart_with_upwards_trend: 
 
 
 ## Overview
-Gains, brah!
-
 This is a web app that allows users to create custom workout routines and track their progress.
 
 Create an account, make a routine, and log your progress during each workout. Using the Meteor framework for NodeJS, the application can work both on your computer as well as mobile device. 
@@ -13,6 +10,7 @@ The ability to move seemlessly between computer to mobile, is what makes our app
 
 Please try out the deployed app in Heroku, found [here](https://my-swoleness-pal.herokuapp.com).
 
+Please log in with the username: `sample` and password: `sample`.
 
 
 ## Authors
