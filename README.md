@@ -1,10 +1,10 @@
-# :memo: My Swoleness Pal :chart_with_upwards_trend: 
+# :memo: My Swoleness Pal :chart_with_upwards_trend:
 
 
 ## Overview
 This is a web app that allows users to create custom workout routines and track their progress.
 
-Create an account, make a routine, and log your progress during each workout. Using the Meteor framework for NodeJS, the application can work both on your computer as well as mobile device. 
+Create an account, make a routine, and log your progress during each workout. Using the Meteor framework for NodeJS, the application can work both on your computer as well as mobile device.
 
 The ability to move seemlessly between computer to mobile, is what makes our app ideal for those looking to get in shape. Spare your thumbs by navigating to our webpage on your home computer to make a routine. And when you're ready to hit the gym, use the mobile app to log your progress between each set.
 
@@ -14,7 +14,7 @@ Please log in with the username: `sample` and password: `sample`.
 
 
 ## Authors
-[Tyler Geerdts](https://github.com/tygee713) - Lead Backend Developer / Project Manager 
+[Tyler Geerdts](https://github.com/tygee713) - Lead Backend Developer / Project Manager
 
 [Tom Thompson](https://github.com/tomtom28) - Lead React Developer / Android DevOps
 
@@ -82,4 +82,6 @@ If you are curious about the MONGO_URL, note that it was created by the followin
   6. Notice how the top of the page has a "To connect using a driver via the standard MongoDB URI" link.
   7. These parameters were passed into the following format...
   `MONGO_URL="mongodb://<username>:<password>@<mlab url>.mlab.com:<portnumber>/<dbname>" meteor run android-device --mobile-server=https://<appname>.herokuapp.com`
-  
+
+Note that as of 2021, mLab has been replaced with Mongo Atlas.
+
