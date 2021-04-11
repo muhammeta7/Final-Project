@@ -1,0 +1,7 @@
+{
+"galaxy.meteor.com" : {
+    "env" : {
+        "MONGO_URL": "mongodb://darthvader1118:chrono1118@myswolenesspal-shard-00-00.rxfn0.mongodb.net:27017,myswolenesspal-shard-00-01.rxfn0.mongodb.net:27017,myswolenesspal-shard-00-02.rxfn0.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-3e5gdm-shard-0&authSource=admin&retryWrites=true&w=majority"
+    }
+}
+}
