@@ -84,4 +84,11 @@ If you are curious about the MONGO_URL, note that it was created by the followin
   `MONGO_URL="mongodb://<username>:<password>@<mlab url>.mlab.com:<portnumber>/<dbname>" meteor run android-device --mobile-server=https://<appname>.herokuapp.com`
 
 Note that as of 2021, mLab has been replaced with Mongo Atlas.
-
+******2021 update ******
+MONGO_URL was created on MongoDB atlas using the following steps
+  1. Creating a MongoDB atlas account
+  2. Click Create New Project to create new Atlas project
+  3. In your new project click Create New Cluster
+  4. Once Cluster is created with new users click on connect
+  5. Select connect from application to get the specific MONGO_URL
+  6. MONGO_URL is in the following format  `MONGO_URL="mongodb://<username>:<password>@<atlas url1>:<portnumber>,@<atlas url2>:<portnumber>,<atlas url3>:<portnumber>/<dbname>?ssl=true&replicaSet=<replicaSetName>&authSource=admin&retryWrites=true&w=majority" meteor run android-device --mobile-server=https://<appname>.meteorapp.com`
